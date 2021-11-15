@@ -2,11 +2,31 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
-
+const helmet = require('helmet');
+const cors = require('cors');
 var app = express();
+
+app.use(helmet());
+app.use(cors());
+const dotenv = require('dotenv');
+dotenv.config();
+const basicAuth = require('express-basic-auth');
+app.use(basicAuth( { authorizer: myAuthorizer, authorizeAsync:true, } ))
+
+function myAuthorizer(username, password, cb){
+    if(username===process.env.authUser && password ===process.env.authPass){
+        return cb(null, true);
+    }
+    else{
+        return cb(null, false);
+    }
+}
+
+var bookRouter = require('./routes/book');
+var borrowerRouter = require('./routes/borrower');
+var kayttajaRouter = require('./routes/kayttaja');
+var kirjautuminenRouter = require('./routes/kirjautuminen');
+var bankRouter = require('./routes/bank');
 
 app.use(logger('dev'));
 app.use(express.json());
@@ -14,7 +34,10 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', indexRouter);
-app.use('/users', usersRouter);
+app.use('/book', bookRouter);
+app.use('/borrower', borrowerRouter);
+app.use('/kayttaja', kayttajaRouter);
+app.use('/kirjautuminen', kirjautuminenRouter);
+app.use('/bank', bankRouter);
 
 module.exports = app;
