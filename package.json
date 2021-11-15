@@ -1,0 +1,19 @@
+{
+  "name": "group_7",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tvt21kmo-bank-project/group_7.git"
+  },
+  "author": "EliVeliS",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tvt21kmo-bank-project/group_7/issues"
+  },
+  "homepage": "https://github.com/tvt21kmo-bank-project/group_7#readme"
+}
