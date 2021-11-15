@@ -27,4 +27,4 @@ const user={
 
 }
           
-module.exports = Kayttaja;
+module.exports = user;

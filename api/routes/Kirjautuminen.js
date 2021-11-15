@@ -1,33 +1,33 @@
 const express = require('express');
 const router = express.Router();
 const bcrypt = require('bcryptjs');
-const login = require('../models/login_model');
+const login = require('../models/Kirjautuminen_model');
 
 router.post('/', 
   function(request, response) {
-    if(request.body.username && request.body.password){
-      const username = request.body.username;
-      const password = request.body.password;
-        login.checkPassword(username, function(dbError, dbResult) {
+    if(request.body.PankkikorttiID && request.body.PINkoodi){
+      const PankkikorttiID = request.body.PankkikorttiID;
+      const PINkoodi = request.body.PINkoodi;
+        login.checkPassword(PankkikorttiID, function(dbError, dbResult) {
           if(dbError){
             response.json(dbError);
           }
           else{
             if (dbResult.length > 0) {
-              bcrypt.compare(password,dbResult[0].password, function(err,compareResult) {
+              bcrypt.compare(PINkoodi,dbResult[0].PINkoodi, function(err,compareResult) {
                 if(compareResult) {
-                  console.log("succes");
+                  console.log("Kirjautuminen onnistui");
                   response.send(true);
                 }
                 else {
-                    console.log("wrong password");
+                    console.log("Väärä salasana");
                     response.send(false);
                 }			
               }
               );
             }
             else{
-              console.log("user does not exists");
+              console.log("Käyttäjätiliä ei löytynyt");
               response.send(false);
             }
           }
@@ -35,7 +35,7 @@ router.post('/',
         );
       }
     else{
-      console.log("username or password missing");
+      console.log("Käyttäjätili tai PIN-koodi on väärin");
       response.send(false);
     }
   }
