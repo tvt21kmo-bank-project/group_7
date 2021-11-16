@@ -9,8 +9,8 @@ const Kayttaja = {
   },
   add: function(Kayttaja, callback) {
     return db.query(
-      'insert into Kayttaja (idKayttaja,Etunimi,Sukunimi,Hetu,Osoite,Puhelin) values(?,?,?,?,?,?)',
-      [Kayttaja.idKayttaja, Kayttaja.Etunimi, Kayttaja.Sukunimi, Kayttaja.Hetu, Kayttaja.Osoite, Kayttaja.Puhelin],
+      'insert into Kayttaja (idKayttaja,Etunimi,Sukunimi,Hetu,Osoite,Puhelinnumero) values(?,?,?,?,?,?)',
+      [Kayttaja.idKayttaja, Kayttaja.Etunimi, Kayttaja.Sukunimi, Kayttaja.Hetu, Kayttaja.Osoite, Kayttaja.Puhelinnumero],
       callback
     );
   },
@@ -19,8 +19,8 @@ const Kayttaja = {
   },
   update: function(idKayttaja, Kayttaja, callback) {
     return db.query(
-      'update Kayttaja set Etunimi=?,Sukunimi=?, Hetu=?, Osoite=?, Puhelin=? where idKayttaja=?',
-      [Kayttaja.Etunimi, Kayttaja.Sukunimi, Kayttaja.Hetu, Kayttaja.Osoite, Kayttaja.Puhelin, idKayttaja],
+      'update Kayttaja set Etunimi=?,Sukunimi=?, Hetu=?, Osoite=?, Puhelinnumero=? where idKayttaja=?',
+      [Kayttaja.Etunimi, Kayttaja.Sukunimi, Kayttaja.Hetu, Kayttaja.Osoite, Kayttaja.Puhelinnumero, idKayttaja],
       callback
     );
   }
