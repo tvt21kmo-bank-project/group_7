@@ -1,8 +1,9 @@
 const db = require('../database');
 
+
 const login={
-  checkPassword: function(username, callback) {
-      return db.query('SELECT PINkoodi FROM Pankkikortti WHERE PankkikorttiID = ?',[username], callback); 
+  checkPassword: function(PankkikorttiID, callback) {
+      return db.query('SELECT PINkoodi FROM Pankkikortti WHERE PankkikorttiID = ?',[PankkikorttiID], callback); 
     }
 };
           

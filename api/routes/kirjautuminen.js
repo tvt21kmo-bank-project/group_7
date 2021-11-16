@@ -5,18 +5,18 @@ const login = require('../models/kirjautuminen_model');
 
 router.post('/', 
   function(request, response) {
-    if(request.body.username && request.body.password){
-      const username = request.body.username;
-      const password = request.body.password;
-        login.checkPassword(username, function(dbError, dbResult) {
+    if(request.body.PankkikorttiID && request.body.PINkoodi){
+      const PankkikorttiID = request.body.PankkikorttiID;
+      const PINkoodi = request.body.PINkoodi;
+        login.checkPassword(PankkikorttiID, function(dbError, dbResult) {
           if(dbError){
             response.json(dbError);
           }
           else{
             if (dbResult.length > 0) {
-              bcrypt.compare(password,dbResult[0].password, function(err,compareResult) {
+              bcrypt.compare(PINkoodi,dbResult[0].PINkoodi, function(err,compareResult) {
                 if(compareResult) {
-                  console.log("succes");
+                  console.log("Kirjautuminen onnistui");
                   response.send(true);
                 }
                 else {
