@@ -1,10 +1,9 @@
 const db = require('../database');
 
-
-const login={
+const kirjautuminen={
   checkPassword: function(PankkikorttiID, callback) {
       return db.query('SELECT PINkoodi FROM Pankkikortti WHERE PankkikorttiID = ?',[PankkikorttiID], callback); 
     }
 };
           
-module.exports = login;
+module.exports = kirjautuminen;

@@ -1,30 +1,28 @@
 const db = require('../database');
-const bcrypt = require('bcryptjs');
 
-const saltRounds=10;
-const user={
-  get: function(callback) {
-    return db.query('select * from user_table', callback);
-  },
+const Kayttaja = {
   getById: function(id, callback) {
-    return db.query('select * from user_table where id_user=?', [id], callback);
+    return db.query('select * from Kayttaja where idKayttaja=?', [id], callback);
   },
-  add: function(user, callback) {
-    bcrypt.hash(user.password, saltRounds, function(err, hash) {
-      return db.query('insert into user_table (username, password) values(?,?)',
-      [user.username, hash], callback);
-    });
+  getAll: function(callback) {
+    return db.query('select * from Kayttaja', callback);
+  },
+  add: function(Kayttaja, callback) {
+    return db.query(
+      'insert into Kayttaja (idKayttaja,Etunimi,Sukunimi,Hetu,Osoite,Puhelin) values(?,?,?,?,?,?)',
+      [Kayttaja.idKayttaja, Kayttaja.Etunimi, Kayttaja.Sukunimi, Kayttaja.Hetu, Kayttaja.Osoite, Kayttaja.Puhelin],
+      callback
+    );
   },
   delete: function(id, callback) {
-    return db.query('delete from user_table where id_user=?', [id], callback);
+    return db.query('delete from Kayttaja where idKayttaja=?', [id], callback);
   },
-  update: function(id, user, callback) {
-    bcrypt.hash(user.password, saltRounds, function(err, hash) {
-      return db.query('update user_table set username=?, password=? where id_user=?',
-      [user.username, hash, id], callback);
-    });
+  update: function(idKayttaja, Kayttaja, callback) {
+    return db.query(
+      'update Kayttaja set Etunimi=?,Sukunimi=?, Hetu=?, Osoite=?, Puhelin=? where idKayttaja=?',
+      [Kayttaja.Etunimi, Kayttaja.Sukunimi, Kayttaja.Hetu, Kayttaja.Osoite, Kayttaja.Puhelin, idKayttaja],
+      callback
+    );
   }
-
-}
-          
-module.exports = user;
+};
+module.exports = Kayttaja;
