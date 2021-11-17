@@ -1,32 +1,32 @@
 const db = require('../database');
 const bcrypt = require('bcryptjs');
 
-const Pankkikortti = {
+const pankkikortti = {
   getById: function(id, callback) {
-    return db.query('select * from Pankkikortti where idKayttaja=?', [id], callback);
+    return db.query('select * from pankkikortti where idkayttaja=?', [id], callback);
   },
   getAll: function(callback) {
-    return db.query('select * from Pankkikortti', callback);
+    return db.query('select * from pankkikortti', callback);
   },
-  add: function(Pankkikortti, callback) {
+  add: function(pankkikortti, callback) {
     
-      bcrypt.hash(Pankkikortti.PIN,10,function(err,hash){
+      bcrypt.hash(pankkikortti.pinkoodi,10,function(err,hash){
         return db.query(
-      'insert into Pankkikortti (idKayttaja,idTili,PIN,PankkikorttiID) values(?,?,?,?)',
-      [Pankkikortti.idKayttaja, Pankkikortti.idTili, hash, Pankkikortti.PankkikorttiID],
+      'insert into pankkikortti (idkayttaja,idpankkitili,pankkikorttiid,pinkoodi,iddebit,idcredit) values(?,?,?,?,?,?)',
+      [pankkikortti.idkayttaja, pankkikortti.idpankkitili, pankkikortti.pankkikorttiid, hash, pankkikortti.iddebit, pankkikortti.idcredit],
       callback);});
       
   },
   delete: function(id, callback) {
-    return db.query('delete from Pankkikortti where idKayttaja=?', [id], callback);
+    return db.query('delete from pankkikortti where idkayttaja=?', [id], callback);
   },
-  update: function(id, Pankkikortti, callback) {
+  update: function(id, pankkikortti, callback) {
 
-    bcrypt.hash(Pankkikortti.PIN,10,function(err,hash){
+    bcrypt.hash(pankkikortti.pinkoodi,10,function(err,hash){
     return db.query(
-      'update Pankkikortti set PIN=?,PankkikorttiID=? where idKayttaja=?',
-      [hash, Pankkikortti.PankkikorttiID, id],
+      'update pankkikortti set pinkoodi=?,pankkikorttiid=? where idkayttaja=?',
+      [hash, pankkikortti.pankkikorttiid, id],
       callback);});
   }
 };
-module.exports = Pankkikortti;
+module.exports = pankkikortti;

@@ -1,28 +1,26 @@
 const db = require('../database');
 
-const Kayttaja = {
+const kayttaja = {
   getById: function(id, callback) {
-    return db.query('select * from Kayttaja where idKayttaja=?', [id], callback);
+    return db.query('select * from kayttaja where idkayttaja=?', [id], callback);
   },
   getAll: function(callback) {
-    return db.query('select * from Kayttaja', callback);
+    return db.query('select * from kayttaja', callback);
   },
-  add: function(Kayttaja, callback) {
-    return db.query(
-      'insert into Kayttaja (idKayttaja,Etunimi,Sukunimi,Hetu,Osoite,Puhelinnumero) values(?,?,?,?,?,?)',
-      [Kayttaja.idKayttaja, Kayttaja.Etunimi, Kayttaja.Sukunimi, Kayttaja.Hetu, Kayttaja.Osoite, Kayttaja.Puhelinnumero],
-      callback
-    );
+  add: function(kayttaja, callback) {
+      return db.query(
+      'insert into kayttaja (idkayttaja, etunimi, sukunimi, osoite, puhelinnumero, hetu) values(?,?,?,?,?,?)',
+      [kayttaja.idkayttaja, kayttaja.etunimi, kayttaja.sukunimi, kayttaja.osoite, kayttaja.puhelinnumero, kayttaja.hetu], callback);
   },
   delete: function(id, callback) {
-    return db.query('delete from Kayttaja where idKayttaja=?', [id], callback);
+    return db.query('delete from kayttaja where idkayttaja=?', [id], callback);
   },
-  update: function(idKayttaja, Kayttaja, callback) {
+  update: function(idkayttaja, kayttaja, callback) {
     return db.query(
-      'update Kayttaja set Etunimi=?,Sukunimi=?, Hetu=?, Osoite=?, Puhelinnumero=? where idKayttaja=?',
-      [Kayttaja.Etunimi, Kayttaja.Sukunimi, Kayttaja.Hetu, Kayttaja.Osoite, Kayttaja.Puhelinnumero, idKayttaja],
+      'update kayttaja set Etunimi=?,Sukunimi=?, Hetu=?, Osoite=?, Puhelinnumero=? where idkayttaja=?',
+      [kayttaja.etunimi, kayttaja.sukunimi, kayttaja.hetu, kayttaja.osoite, kayttaja.puhelinnumero, idkayttaja],
       callback
-    );
-  }
+      );
+    }
 };
-module.exports = Kayttaja;
+module.exports = kayttaja;

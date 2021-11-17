@@ -5,30 +5,30 @@ const kirjautuminen = require('../models/kirjautuminen_model');
 
 router.post('/', 
   function(request, response) {
-    if(request.body.PankkikorttiID && request.body.PINkoodi){
-      const PankkikorttiID = request.body.PankkikorttiID;
-      const PINkoodi = request.body.PINkoodi;
-        kirjautuminen.checkPassword(PankkikorttiID, function(dbError, dbResult) {
+    if(request.body.pankkikorttiid && request.body.pinkoodi){
+      const pankkikorttiid = request.body.pankkikorttiid;
+      const pinkoodi = request.body.pinkoodi;
+        kirjautuminen.checkPassword(pankkikorttiid, function(dbError, dbResult) {
           if(dbError){
-            response.json(dbError);
+            response.send(dbError);
           }
           else{
             if (dbResult.length > 0) {
-              bcrypt.compare(PINkoodi,dbResult[0].PINkoodi, function(err,compareResult) 
+              bcrypt.compare(pinkoodi,dbResult[0].pinkoodi, function(err,compareResult) 
               {
                 if(compareResult) {
-                  console.log("Kirjautuminen onnistui!");
+                  console.log("succes");
                   response.send(true);
                 }
                 else {
-                    console.log("Väärä PIN-koodi");
+                    console.log("wrong password");
                     response.send(false);
                 }			
               }
               );
             }
             else{
-              console.log("Pankkikorttia ID:tä ei löydy");
+              console.log("user does not exists");
               response.send(false);
             }
           }
@@ -36,7 +36,7 @@ router.post('/',
         );
       }
     else{
-      console.log("Pankkikortin ID tai PIN-koodi puuttuu");
+      console.log("username or password missing");
       response.send(false);
     }
   }

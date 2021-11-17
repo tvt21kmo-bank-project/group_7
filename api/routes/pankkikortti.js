@@ -36,9 +36,9 @@ function(request, response) {
 });
 
 
-router.delete('/:idKayttaja', 
+router.delete('/:idkayttaja', 
 function(request, response) {
-  kayttaja.delete(request.params.idKayttaja, function(err, dbResult) {
+  kayttaja.delete(request.params.idkayttaja, function(err, dbResult) {
     if (err) {
       response.json(err);
     } else {
@@ -48,9 +48,9 @@ function(request, response) {
 });
 
 
-router.put('/:idKayttaja', 
+router.put('/:idkayttaja', 
 function(request, response) {
-  kayttaja.update(request.params.idKayttaja, request.body, function(err, dbResult) {
+  kayttaja.update(request.params.idkayttaja, request.body, function(err, dbResult) {
     if (err) {
       response.json(err);
     } else {

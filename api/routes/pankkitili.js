@@ -36,9 +36,9 @@ function(request, response) {
 });
 
 
-router.delete('/:idPankkitili', 
+router.delete('/:idpankkitili', 
 function(request, response) {
-  pankkitili.delete(request.params.idPankkitili, function(err, dbResult) {
+  pankkitili.delete(request.params.idpankkitili, function(err, dbResult) {
     if (err) {
       response.json(err);
     } else {
@@ -48,9 +48,9 @@ function(request, response) {
 });
 
 
-router.put('/:idPankkitili', 
+router.put('/:idpankkitili', 
 function(request, response) {
-  pankkitili.update(request.params.idPankkitili, request.body, function(err, dbResult) {
+  pankkitili.update(request.params.idpankkitili, request.body, function(err, dbResult) {
     if (err) {
       response.json(err);
     } else {
