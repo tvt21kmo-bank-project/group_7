@@ -85,7 +85,7 @@ CREATE TABLE `kayttaja` (
   `Puhelinnumero` varchar(45) DEFAULT NULL,
   `Hetu` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`idKayttaja`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -94,7 +94,7 @@ CREATE TABLE `kayttaja` (
 
 LOCK TABLES `kayttaja` WRITE;
 /*!40000 ALTER TABLE `kayttaja` DISABLE KEYS */;
-INSERT INTO `kayttaja` VALUES (1,'Pekka','Pouta','Poudankatu 1','0401234567','1234567'),(2,'Maija','Poppanen','Poppasenkuja 3','0407654321','7654321'),(3,'Harry','Potter','Taikatie 420','0401212121','1212121'),(4,'Hilleri','Hiiri','Juustotunneli 313','0403131313','3131313'),(5,'Hyväntekeväisyys','Järjestö','Köyhäkuja 500','0405556666',NULL);
+INSERT INTO `kayttaja` VALUES (1,'Pekka','Pouta','Poudankatu 11','0401234567','1234567'),(2,'Maija','Poppanen','Poppasenkuja 3','0407654321','7654321'),(3,'Harry','Potter','Taikatie 420','0401212121','1212121'),(4,'Hilleri','Hiiri','Juustotunneli 313','0403131313','3131313'),(5,'Hyväntekeväisyys','Järjestö','Köyhäkuja 500','0405556666',NULL);
 /*!40000 ALTER TABLE `kayttaja` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -109,7 +109,7 @@ CREATE TABLE `pankkikortti` (
   `idKayttaja` int NOT NULL,
   `idPankkitili` int NOT NULL,
   `PankkikorttiID` int DEFAULT NULL,
-  `PINkoodi` int DEFAULT NULL,
+  `pinkoodi` varchar(255) DEFAULT NULL,
   `idDebit` int NOT NULL,
   `idCredit` int NOT NULL,
   PRIMARY KEY (`idKayttaja`,`idPankkitili`,`idDebit`,`idCredit`),
@@ -130,7 +130,7 @@ CREATE TABLE `pankkikortti` (
 
 LOCK TABLES `pankkikortti` WRITE;
 /*!40000 ALTER TABLE `pankkikortti` DISABLE KEYS */;
-INSERT INTO `pankkikortti` VALUES (1,1,12,4321,1,1),(2,2,76,7654,2,2),(3,3,21,2121,3,3),(4,4,31,3131,4,4),(5,5,65,6655,5,4);
+INSERT INTO `pankkikortti` VALUES (1,1,12,'$2a$10$b2A5.g1jYJ66KgmCRrdQ/eYeMry5gs3uuw3gia5cGtLhBtbpYYfFi',1,1),(2,2,76,'$2a$10$hWhGttrZrS9DYcZgcJ04veaWkGGO4k9XDut2HPGNyCN123AHBlCoq',2,2),(3,3,21,'$2a$10$.OFKd8dXOMRIEAOIn/U5Cu2Prnk1i73G4ssUiciPshJzGKyqN7Kd.',3,3),(4,4,31,'$2a$10$1Jd.kB2W98361NJyTqBL2.s4ddujndSzAWz4lDZ2vqaHflGFQUIuO',4,4),(5,5,65,'$2a$10$LWja4paKBzRgUUEAy4T95edYtws9JzXdOM/TUIj1oGSgYi5QT508W',5,4);
 /*!40000 ALTER TABLE `pankkikortti` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -150,7 +150,7 @@ CREATE TABLE `pankkitili` (
   PRIMARY KEY (`idPankkitili`,`idKayttaja`),
   KEY `fk_Pankkitili_Kayttaja1_idx` (`idKayttaja`),
   CONSTRAINT `fk_Pankkitili_Kayttaja1` FOREIGN KEY (`idKayttaja`) REFERENCES `kayttaja` (`idKayttaja`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -202,4 +202,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-11-16 18:13:38
+-- Dump completed on 2021-11-17 20:41:36
