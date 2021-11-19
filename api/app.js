@@ -5,8 +5,8 @@ var logger = require('morgan');
 const helmet = require('helmet');
 const cors = require('cors');
 
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
+//var indexRouter = require('./routes/index');
+//var usersRouter = require('./routes/users');
 var kayttajaRouter = require('./routes/kayttaja');
 var pankkikorttiRouter = require('./routes/pankkikortti');
 var pankkitiliRouter = require('./routes/pankkitili');
@@ -23,8 +23,8 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', indexRouter);
-app.use('/users', usersRouter);
+//app.use('/', indexRouter);
+//app.use('/users', usersRouter);
 app.use('/kayttaja', kayttajaRouter);
 app.use('/pankkikortti',pankkikorttiRouter);
 app.use('/pankkitili', pankkitiliRouter);
