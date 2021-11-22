@@ -1,4 +1,4 @@
-childchild_name-- MySQL dump 10.13  Distrib 8.0.23, for Win64 (x86_64)
+-- MySQL dump 10.13  Distrib 8.0.23, for Win64 (x86_64)
 --
 -- Host: localhost    Database: banksimul
 -- ------------------------------------------------------
@@ -22,53 +22,6 @@ childchild_name-- MySQL dump 10.13  Distrib 8.0.23, for Win64 (x86_64)
 CREATE DATABASE /*!32312 IF NOT EXISTS*/ `banksimul` /*!40100 DEFAULT CHARACTER SET utf8 */ /*!80016 DEFAULT ENCRYPTION='N' */;
 
 USE `banksimul`;
-
---
--- Table structure for table `credit`
---
-
-DROP TABLE IF EXISTS `credit`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `credit` (
-  `idCredit` int NOT NULL AUTO_INCREMENT,
-  `Luottoraja` decimal(10,2) DEFAULT NULL,
-  PRIMARY KEY (`idCredit`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `credit`
---
-
-LOCK TABLES `credit` WRITE;
-/*!40000 ALTER TABLE `credit` DISABLE KEYS */;
-INSERT INTO `credit` VALUES (1,2000.00),(2,500.00),(3,100000.00),(4,0.00);
-/*!40000 ALTER TABLE `credit` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `debit`
---
-
-DROP TABLE IF EXISTS `debit`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `debit` (
-  `idDebit` int NOT NULL AUTO_INCREMENT,
-  PRIMARY KEY (`idDebit`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `debit`
---
-
-LOCK TABLES `debit` WRITE;
-/*!40000 ALTER TABLE `debit` DISABLE KEYS */;
-INSERT INTO `debit` VALUES (1),(2),(3),(4),(5);
-/*!40000 ALTER TABLE `debit` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `kayttaja`
@@ -110,17 +63,14 @@ CREATE TABLE `pankkikortti` (
   `idPankkitili` int NOT NULL,
   `PankkikorttiID` int DEFAULT NULL,
   `pinkoodi` varchar(255) DEFAULT NULL,
-  `idDebit` int NOT NULL,
-  `idCredit` int NOT NULL,
-  PRIMARY KEY (`idKayttaja`,`idPankkitili`,`idDebit`,`idCredit`),
+  `Credit` int DEFAULT NULL,
+  `Luottoraja` decimal(10,2) DEFAULT NULL,
+  `Debit` int DEFAULT NULL,
+  PRIMARY KEY (`idKayttaja`,`idPankkitili`),
   KEY `fk_Käyttäjä_has_Pankkitili_Pankkitili1_idx` (`idPankkitili`),
   KEY `fk_Käyttäjä_has_Pankkitili_Käyttäjä_idx` (`idKayttaja`),
-  KEY `fk_Pankkikortti_Debit1_idx` (`idDebit`),
-  KEY `fk_Pankkikortti_Credit1_idx` (`idCredit`),
   CONSTRAINT `fk_Käyttäjä_has_Pankkitili_Käyttäjä` FOREIGN KEY (`idKayttaja`) REFERENCES `kayttaja` (`idKayttaja`),
-  CONSTRAINT `fk_Käyttäjä_has_Pankkitili_Pankkitili1` FOREIGN KEY (`idPankkitili`) REFERENCES `pankkitili` (`idPankkitili`),
-  CONSTRAINT `fk_Pankkikortti_Credit1` FOREIGN KEY (`idCredit`) REFERENCES `credit` (`idCredit`),
-  CONSTRAINT `fk_Pankkikortti_Debit1` FOREIGN KEY (`idDebit`) REFERENCES `debit` (`idDebit`)
+  CONSTRAINT `fk_Käyttäjä_has_Pankkitili_Pankkitili1` FOREIGN KEY (`idPankkitili`) REFERENCES `pankkitili` (`idPankkitili`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -130,7 +80,7 @@ CREATE TABLE `pankkikortti` (
 
 LOCK TABLES `pankkikortti` WRITE;
 /*!40000 ALTER TABLE `pankkikortti` DISABLE KEYS */;
-INSERT INTO `pankkikortti` VALUES (1,1,12,'$2a$10$b2A5.g1jYJ66KgmCRrdQ/eYeMry5gs3uuw3gia5cGtLhBtbpYYfFi',1,1),(2,2,76,'$2a$10$hWhGttrZrS9DYcZgcJ04veaWkGGO4k9XDut2HPGNyCN123AHBlCoq',2,2),(3,3,21,'$2a$10$.OFKd8dXOMRIEAOIn/U5Cu2Prnk1i73G4ssUiciPshJzGKyqN7Kd.',3,3),(4,4,31,'$2a$10$1Jd.kB2W98361NJyTqBL2.s4ddujndSzAWz4lDZ2vqaHflGFQUIuO',4,4),(5,5,65,'$2a$10$LWja4paKBzRgUUEAy4T95edYtws9JzXdOM/TUIj1oGSgYi5QT508W',5,4);
+INSERT INTO `pankkikortti` VALUES (1,1,12,'$2a$10$RRxZCRRdp/4KuEyTk9nA2.uJQukuragwnW3exhUaEGLFKq/noKXP6',1,1000.00,2),(2,2,76,'$2a$10$hWhGttrZrS9DYcZgcJ04veaWkGGO4k9XDut2HPGNyCN123AHBlCoq',1,500.00,2),(3,3,21,'$2a$10$.OFKd8dXOMRIEAOIn/U5Cu2Prnk1i73G4ssUiciPshJzGKyqN7Kd.',1,3000.00,2),(4,4,31,'$2a$10$1Jd.kB2W98361NJyTqBL2.s4ddujndSzAWz4lDZ2vqaHflGFQUIuO',1,NULL,2),(5,5,65,'$2a$10$LWja4paKBzRgUUEAy4T95edYtws9JzXdOM/TUIj1oGSgYi5QT508W',1,NULL,2);
 /*!40000 ALTER TABLE `pankkikortti` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -202,4 +152,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-11-17 20:41:36
+-- Dump completed on 2021-11-22 17:28:15
