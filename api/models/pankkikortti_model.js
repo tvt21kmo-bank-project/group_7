@@ -12,8 +12,8 @@ const pankkikortti = {
     
       bcrypt.hash(pankkikortti.pinkoodi,10,function(err,hash){
         return db.query(
-      'insert into pankkikortti (idkayttaja,idpankkitili,pankkikorttiid,pinkoodi,iddebit,idcredit) values(?,?,?,?,?,?)',
-      [pankkikortti.idkayttaja, pankkikortti.idpankkitili, pankkikortti.pankkikorttiid, hash, pankkikortti.iddebit, pankkikortti.idcredit],
+      'insert into pankkikortti (idkayttaja,idpankkitili,pankkikorttiid,pinkoodi,credit,luottoraja,debit) values(?,?,?,?,?,?,?)',
+      [pankkikortti.idkayttaja, pankkikortti.idpankkitili, pankkikortti.pankkikorttiid, hash, pankkikortti.credit, pankkikortti.luottoraja, pankkikortti.debit],
       callback);});
       
   },
