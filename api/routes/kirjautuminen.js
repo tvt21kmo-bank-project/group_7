@@ -10,7 +10,7 @@ router.post('/',
       const pinkoodi = request.body.pinkoodi;
         kirjautuminen.checkPassword(pankkikorttiid, function(dbError, dbResult) {
           if(dbError){
-            response.send(dbError);
+            response.json(dbError);
           }
           else{
             if (dbResult.length > 0) {
