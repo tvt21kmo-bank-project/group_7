@@ -13,7 +13,7 @@ const pankkikortti = {
       bcrypt.hash(pankkikortti.pinkoodi,10,function(err,hash){
         return db.query(
       'insert into pankkikortti (idkayttaja,idpankkitili,pankkikorttiid,pinkoodi,credit,luottoraja,debit) values(?,?,?,?,?,?,?)',
-      [pankkikortti.idkayttaja, pankkikortti.idpankkitili, pankkikortti.pankkikorttiid, hash, pankkikortti.debit,pankkikortti.luottoraja, pankkikortti.credit],
+      [pankkikortti.idkayttaja, pankkikortti.idpankkitili, pankkikortti.pankkikorttiid, hash, pankkikortti.credit, pankkikortti.luottoraja, pankkikortti.debit],
       callback);});
       
   },
