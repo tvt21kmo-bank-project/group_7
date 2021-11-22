@@ -2,11 +2,28 @@
 #include "ui_mainwindow.h"
 
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> b8222f1ae90ea875b6a1d7f71e0bfa1253c71f6f
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+
+    connect(ui->pushButton_0, SIGNAL(released()),this,SLOT(digit_pressed()));
+    connect(ui->pushButton_1, SIGNAL(released()),this,SLOT(digit_pressed()));
+    connect(ui->pushButton_2, SIGNAL(released()),this,SLOT(digit_pressed()));
+    connect(ui->pushButton_3, SIGNAL(released()),this,SLOT(digit_pressed()));
+    connect(ui->pushButton_4, SIGNAL(released()),this,SLOT(digit_pressed()));
+    connect(ui->pushButton_5, SIGNAL(released()),this,SLOT(digit_pressed()));
+    connect(ui->pushButton_6, SIGNAL(released()),this,SLOT(digit_pressed()));
+    connect(ui->pushButton_7, SIGNAL(released()),this,SLOT(digit_pressed()));
+    connect(ui->pushButton_8, SIGNAL(released()),this,SLOT(digit_pressed()));
+    connect(ui->pushButton_9, SIGNAL(released()),this,SLOT(digit_pressed()));
+
+
 }
 
 MainWindow::~MainWindow()
@@ -14,6 +31,7 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
+<<<<<<< HEAD
 void MainWindow::on_numero1_clicked()
 {
     QString numero1="1";
@@ -110,4 +128,28 @@ void MainWindow::hankiID(QNetworkReply *reply)
         qDebug()<<"Pankkikorttia ei ole olemassa";
     }
 }
+=======
+
+void MainWindow::digit_pressed()
+{
+    QPushButton *button = (QPushButton*)sender();
+
+    double labelNumber;
+    QString newLabel;
+
+    labelNumber = (ui->label->text() + button->text()).toDouble();
+
+    newLabel = QString::number(labelNumber,'g',15);
+
+    ui->label->setText(newLabel);
+}
+
+
+
+
+
+
+
+
+>>>>>>> b8222f1ae90ea875b6a1d7f71e0bfa1253c71f6f
 

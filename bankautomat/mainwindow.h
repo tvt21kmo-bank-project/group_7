@@ -20,6 +20,7 @@ public:
     ~MainWindow();
 
 private slots:
+<<<<<<< HEAD
     void hankiID(QNetworkReply *reply);
     void on_numero1_clicked();
     void on_numero2_clicked();
@@ -40,6 +41,17 @@ private:
     QNetworkAccessManager *kirjauduManager;
     QNetworkReply *reply;
 
+=======
+   // void on_pushButton_clicked();
+
+   // void on_pushButton_2_clicked();
+
+private:
+    Ui::MainWindow *ui;
+
+private slots:
+    void digit_pressed();
+>>>>>>> b8222f1ae90ea875b6a1d7f71e0bfa1253c71f6f
 };
 
 #endif // MAINWINDOW_H
