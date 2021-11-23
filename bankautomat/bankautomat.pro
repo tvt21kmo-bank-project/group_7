@@ -27,14 +27,19 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
         main.cpp \
         mainwindow.cpp \
-    mainwindow2.cpp
+    mainwindow2.cpp \
+    muuttujat.cpp \
+    kayttoliittyma.cpp
 
 HEADERS += \
         mainwindow.h \
-    mainwindow2.h
+    mainwindow2.h \
+    muuttujat.h \
+    kayttoliittyma.h
 
 FORMS += \
         mainwindow.ui \
-    mainwindow2.ui
+    mainwindow2.ui \
+    kayttoliittyma.ui
 
 DISTFILES +=

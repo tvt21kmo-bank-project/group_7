@@ -1,8 +1,8 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
-#include <QMessageBox>
 #include <QPixmap>
 
+#include "muuttujat.h"
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -63,7 +63,6 @@ void MainWindow::on_nappikorjaa_clicked()
 void MainWindow::on_nappiok_clicked()
 {
     saatuID = (ui->hankiID->text());
-    qDebug()<<saatuID;
     objPIN->show();
     this->close();
 }
