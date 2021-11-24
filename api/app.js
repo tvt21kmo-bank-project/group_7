@@ -2,19 +2,16 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-const helmet = require('helmet');
-const cors = require('cors');
 
 var kayttajaRouter = require('./routes/kayttaja');
 var pankkikorttiRouter = require('./routes/pankkikortti');
 var pankkitiliRouter = require('./routes/pankkitili');
 var tilitapahtumaRouter = require('./routes/tilitapahtuma');
 var kirjautuminenRouter = require('./routes/kirjautuminen');
+var nimiRouter = require('./routes/nimi');
 
 var app = express();
 
-app.use(helmet());
-app.use(cors());
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -26,5 +23,6 @@ app.use('/pankkikortti',pankkikorttiRouter);
 app.use('/pankkitili', pankkitiliRouter);
 app.use('/tilitapahtuma',tilitapahtumaRouter);
 app.use('/kirjautuminen',kirjautuminenRouter);
+app.use('/nimi',nimiRouter);
 
 module.exports = app;
