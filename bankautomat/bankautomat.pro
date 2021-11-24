@@ -29,17 +29,20 @@ SOURCES += \
         mainwindow.cpp \
     mainwindow2.cpp \
     muuttujat.cpp \
-    kayttoliittyma.cpp
+    kayttoliittyma.cpp \
+    nostarahaa.cpp
 
 HEADERS += \
         mainwindow.h \
     mainwindow2.h \
     muuttujat.h \
-    kayttoliittyma.h
+    kayttoliittyma.h \
+    nostarahaa.h
 
 FORMS += \
         mainwindow.ui \
     mainwindow2.ui \
-    kayttoliittyma.ui
+    kayttoliittyma.ui \
+    nostarahaa.ui
 
 DISTFILES +=
