@@ -2,6 +2,10 @@
 #include "ui_kayttoliittyma.h"
 #include "mainwindow.h"
 #include "muuttujat.h"
+#include <QMessageBox>
+#include <QPixmap>
+#include <QDebug>
+#include <QApplication>
 
 kayttoliittyma::kayttoliittyma(QWidget *parent) :
     QMainWindow(parent),
@@ -11,6 +15,8 @@ kayttoliittyma::kayttoliittyma(QWidget *parent) :
 
     objTimer2 = new QTimer;
     timerCounter2 = 0;
+
+    objNostarahaa = new nostarahaa;
 
     connect(objTimer2,SIGNAL(timeout()), this, SLOT(menuTimerSlot2()));
 }
@@ -66,6 +72,9 @@ void kayttoliittyma::on_nappiNosta_clicked()
 {
     objTimer2->stop();
     timerCounter2 = 0;
+    objNostarahaa->show();
+    objNostarahaa->naytaTiedot();
+    this ->close();
 }
 
 void kayttoliittyma::on_nappiSaldo_clicked()

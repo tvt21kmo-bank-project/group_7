@@ -7,6 +7,7 @@
 #include <QJsonDocument>
 #include <QString>
 #include <QTimer>
+#include <nostarahaa.h>
 
 
 namespace Ui {
@@ -37,6 +38,7 @@ private:
       QNetworkAccessManager *getManager;
       QNetworkReply *reply;
       QByteArray response_data;
+      nostarahaa *objNostarahaa;
 
 public slots:
       void menuTimerSlot2();
