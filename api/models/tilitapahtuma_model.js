@@ -9,8 +9,8 @@ const tilitapahtuma = {
   },
   add: function(tilitapahtuma, callback) {
     return db.query(
-      'insert into tilitapahtuma (idTilitapahtumat, idPankkitili, idPankkitili, pvm_klo , Tapahtuma, Summa, PankkikorttiID ) values(?,?,?,?,?,?,?,?)',
-      [tilitapahtuma.idTilitapahtumat, tilitapahtuma.idPankkitili, tilitapahtuma.idPankkitili, tilitapahtuma.pvm_klo, tilitapahtuma.Tapahtuma, tilitapahtuma.Summa, tilitapahtuma.PankkikorttiID],
+      'insert into tilitapahtuma (idPankkitili, idKayttaja, pvm_klo , Tapahtuma, Summa, PankkikorttiID ) values(?,?,?,?,?,?)',
+      [tilitapahtuma.idPankkitili, tilitapahtuma.idkayttaja, tilitapahtuma.pvm_klo, tilitapahtuma.Tapahtuma, tilitapahtuma.Summa, tilitapahtuma.PankkikorttiID],
       callback
     );
   },
@@ -20,7 +20,7 @@ const tilitapahtuma = {
   update: function(idTilitapahtumat, tilitapahtuma, callback) {
     return db.query(
       'update tilitapahtuma set pvm_klo=?, Tapahtuma=?,Summa=?, idPankkitili=?, idKayttaja=? where idTilitapahtumat=?',
-      [tilitapahtuma.pvm_klo, tilitapahtuma.Tapahtuma, tilitapahtuma.Summa, tilitapahtuma.PankkikorttiID, tilitapahtuma.idPankkitili, idTilitapahtumat],
+      [tilitapahtuma.pvm_klo, tilitapahtuma.Tapahtuma, tilitapahtuma.Summa, tilitapahtuma.idPankkitili, tilitapahtuma.idkayttaja, idTilitapahtumat],
       callback
     );
   }
