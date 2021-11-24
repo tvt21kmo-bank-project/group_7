@@ -4,6 +4,8 @@
 #include "mainwindow.cpp"
 #include <QMessageBox>
 #include <QPixmap>
+#include <QDebug>
+#include <QApplication>
 
 MainWindow2::MainWindow2(QWidget *parent) :
     QMainWindow(parent),
@@ -98,11 +100,17 @@ void MainWindow2::loginSlot(QNetworkReply *reply)
     else {
         ui->hankiPIN->setText("");
         qDebug()<<"tunnus ja salasana ei täsmää";
-        QWidget *koti;
-        koti = new MainWindow;
-        koti->show();
-        this->close();
-        objTimer->stop();
+        QMessageBox::StandardButton reply;
+        reply = QMessageBox::question(this, "Test", "Pankkikortin ID tai PIN-koodi väärin",
+                                      QMessageBox::Ok|QMessageBox::Ok);
+        if (reply == QMessageBox::Ok) {
+                qDebug() << "Ok nappia painettiin";
+                QWidget *koti;
+                koti = new MainWindow;
+                koti->show();
+                this->close();
+                objTimer->stop();
+        }
     }
 }
 
