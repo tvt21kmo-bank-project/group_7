@@ -1,6 +1,7 @@
 #include "kayttoliittyma.h"
 #include "ui_kayttoliittyma.h"
 #include "mainwindow.h"
+#include "mainwindow2.h"
 #include "muuttujat.h"
 
 kayttoliittyma::kayttoliittyma(QWidget *parent) :
@@ -9,10 +10,7 @@ kayttoliittyma::kayttoliittyma(QWidget *parent) :
 {
     ui->setupUi(this);
 
-    objTimer2 = new QTimer;
-    timerCounter2 = 0;
-
-    connect(objTimer2,SIGNAL(timeout()), this, SLOT(menuTimerSlot2()));
+    connect(timerkayttoliittyma,SIGNAL(timeout()), this, SLOT(menuTimerSlot()));
 }
 
 kayttoliittyma::~kayttoliittyma()
@@ -22,7 +20,7 @@ kayttoliittyma::~kayttoliittyma()
 
 void kayttoliittyma::on_nappikayttaja_clicked()
 {
-    objTimer2->start(1000);
+    timerCounterkayttoliittyma = 0;
     QString site_url="http://localhost:3000/nimi/"+saatuID;
     QString credentials="newAdmin:newPass";
     QNetworkRequest request((site_url));
@@ -64,47 +62,45 @@ void kayttoliittyma::haenimiSlot(QNetworkReply *reply)
 
 void kayttoliittyma::on_nappiNosta_clicked()
 {
-    objTimer2->stop();
-    timerCounter2 = 0;
+    timerCounterkayttoliittyma = 0;
 }
 
 void kayttoliittyma::on_nappiSaldo_clicked()
 {
-    objTimer2->stop();
-    timerCounter2 = 0;
+    timerCounterkayttoliittyma = 0;
 }
 
 void kayttoliittyma::on_nappiTilitapahtuma_clicked()
 {
-    objTimer2->stop();
-    timerCounter2 = 0;
+    timerCounterkayttoliittyma = 0;
 }
 
 void kayttoliittyma::on_nappiLahjoita_clicked()
 {
-    objTimer2->stop();
-    timerCounter2 = 0;
+    timerCounterkayttoliittyma = 0;
 }
 
 void kayttoliittyma::on_nappiUloskirjaus_clicked()
 {
-    objTimer2->stop();
-    timerCounter2 = 0;
+    timerCounterkayttoliittyma = 0;
+    timerkayttoliittyma->stop();
+    disconnect(timerkayttoliittyma,SIGNAL(timeout()), this, SLOT(menuTimerSlot()));
     QWidget *koti;
     koti = new MainWindow;
     koti->show();
     this->close();
 }
 
-void kayttoliittyma::menuTimerSlot2()
+void kayttoliittyma::menuTimerSlot()
 {
-    timerCounter2++;
-    qDebug()<<timerCounter2;
-    if(timerCounter2 == 30)
+    timerCounterkayttoliittyma++;
+    qDebug()<<timerCounterkayttoliittyma;
+    if(timerCounterkayttoliittyma == 30)
     {
-        emit aikaLoppu2();
-        objTimer2->stop();
-        timerCounter2 = 0;
+        emit aikaLoppu();
+        timerkayttoliittyma->stop();
+        timerCounterkayttoliittyma = 0;
+        disconnect(timerkayttoliittyma,SIGNAL(timeout()), this, SLOT(menuTimerSlot()));
         QWidget *koti;
         koti = new MainWindow;
         koti->show();
@@ -112,6 +108,3 @@ void kayttoliittyma::menuTimerSlot2()
     }
 }
 
-void kayttoliittyma::resetTimer2(int){
-    timerCounter2 = 0;
-}

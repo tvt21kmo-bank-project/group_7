@@ -9,8 +9,9 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-
     objPIN = new MainWindow2;
+
+
 
     QPixmap pix("C:/Ohjelmistokehityksen sovellusprojekti/group_7/bankautomat/resources/img/logo.jpg");
     int w = ui->label->width();
@@ -27,8 +28,6 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->numero7, SIGNAL(released()),this,SLOT(nappiapainettu()));
     connect(ui->numero8, SIGNAL(released()),this,SLOT(nappiapainettu()));
     connect(ui->numero9, SIGNAL(released()),this,SLOT(nappiapainettu()));
-
-
 }
 
 MainWindow::~MainWindow()
@@ -65,4 +64,5 @@ void MainWindow::on_nappiok_clicked()
     saatuID = (ui->hankiID->text());
     objPIN->show();
     this->close();
+    timer->start(1000);
 }

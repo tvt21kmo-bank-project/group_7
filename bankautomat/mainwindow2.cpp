@@ -19,11 +19,11 @@ MainWindow2::MainWindow2(QWidget *parent) :
     int h = ui->label->height();
     ui->label->setPixmap(pix.scaled(w,h,Qt::KeepAspectRatio));
 
-    objTimer = new QTimer;
     timerCounter = 0;
     objKayttoliittyma = new kayttoliittyma;
 
-    connect(objTimer,SIGNAL(timeout()), this, SLOT(menuTimerSlot()));
+    connect(timer,SIGNAL(timeout()), this, SLOT(menuTimerSlot()));
+
     connect(ui->numero0, SIGNAL(released()),this,SLOT(nappiapainettu()));
     connect(ui->numero1, SIGNAL(released()),this,SLOT(nappiapainettu()));
     connect(ui->numero2, SIGNAL(released()),this,SLOT(nappiapainettu()));
@@ -44,7 +44,6 @@ MainWindow2::~MainWindow2()
 void MainWindow2::nappiapainettu()
 {
     timerCounter = 0;
-    objTimer->start(1000);
     QPushButton *button = (QPushButton*)sender();
 
     double numero;
@@ -92,10 +91,12 @@ void MainWindow2::loginSlot(QNetworkReply *reply)
     qDebug()<<response_data;
     if(response_data=="true"){
         qDebug()<<"Tunnus oikein";
-         objTimer->stop();
          timerCounter = 0;
+         timer->stop();
          objKayttoliittyma->show();
          this->close();
+         disconnect(timer,SIGNAL(timeout()), this, SLOT(menuTimerSlot()));
+         timerkayttoliittyma->start(1000);
     }
     else {
         ui->hankiPIN->setText("");
@@ -109,7 +110,9 @@ void MainWindow2::loginSlot(QNetworkReply *reply)
                 koti = new MainWindow;
                 koti->show();
                 this->close();
-                objTimer->stop();
+                timerCounter = 0;
+                timer->stop();
+                disconnect(timer,SIGNAL(timeout()), this, SLOT(menuTimerSlot()));
         }
     }
 }
@@ -121,12 +124,14 @@ void MainWindow2::menuTimerSlot()
     if(timerCounter == 30)
     {
         emit aikaLoppu();
-        objTimer->stop();
+        timer->stop();
         timerCounter = 0;
         QWidget *koti;
         koti = new MainWindow;
         koti->show();
         this->close();
+        disconnect(timer,SIGNAL(timeout()), this, SLOT(menuTimerSlot()));
+        objKayttoliittyma->close();
     }
 }
 void MainWindow2::resetTimer(int){
@@ -135,8 +140,9 @@ void MainWindow2::resetTimer(int){
 
 void MainWindow2::on_nappiLopeta_clicked()
 {
-    objTimer->stop();
+    timer->stop();
     timerCounter = 0;
+    disconnect(timer,SIGNAL(timeout()), this, SLOT(menuTimerSlot()));
     QWidget *koti;
     koti = new MainWindow;
     koti->show();

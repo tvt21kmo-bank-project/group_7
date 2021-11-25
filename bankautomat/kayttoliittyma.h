@@ -8,6 +8,7 @@
 #include <QString>
 #include <QTimer>
 
+#include "muuttujat.h"
 
 namespace Ui {
 class kayttoliittyma;
@@ -21,6 +22,9 @@ public:
     explicit kayttoliittyma(QWidget *parent = 0);
     ~kayttoliittyma();
 
+public slots:
+    void menuTimerSlot();
+
 private slots:
     void on_nappiNosta_clicked();
     void on_nappiSaldo_clicked();
@@ -32,18 +36,13 @@ private slots:
 
 private:
     Ui::kayttoliittyma *ui;
-      QTimer *objTimer2;
-      short timerCounter2;
       QNetworkAccessManager *getManager;
       QNetworkReply *reply;
       QByteArray response_data;
-
-public slots:
-      void menuTimerSlot2();
-      void resetTimer2(int);
+      int timerNumero;
 
 signals:
-      void aikaLoppu2();
+      void aikaLoppu();
 };
 
 #endif // KAYTTOLIITTYMA_H

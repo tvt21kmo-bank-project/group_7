@@ -12,5 +12,9 @@ QT_END_NAMESPACE
 #define MAGIC_NUM 42
 
 extern QString saatuID;
+extern QTimer *timer;
+extern short timerCounter;
+extern QTimer *timerkayttoliittyma;
+extern short timerCounterkayttoliittyma;
 
 #endif // MUUTTUJAT_H
