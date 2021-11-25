@@ -2,6 +2,11 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QPixmap>
+#include <QMessageBox>
+
+#include "mainwindow2.h"
+#include "muuttujat.h"
 
 namespace Ui {
 class MainWindow;
@@ -17,6 +22,12 @@ public:
 
 private:
     Ui::MainWindow *ui;
+    MainWindow2 *objPIN;
+
+private slots:
+    void nappiapainettu();
+    void on_nappikorjaa_clicked();
+    void on_nappiok_clicked();
 };
 
 #endif // MAINWINDOW_H
