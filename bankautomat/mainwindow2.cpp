@@ -38,6 +38,7 @@ MainWindow2::~MainWindow2()
 
 void MainWindow2::nappiapainettu()
 {
+    timerCounter = 0;
     QPushButton *button = (QPushButton*)sender();
     double numero;
     QString uusinumero;
@@ -143,8 +144,7 @@ void MainWindow2::loginSlot(QNetworkReply *reply)
             qDebug()<<"Hyväntekeväisyyden väärät yritykset: "<<counterLoginfailedHyvant;
         }
         QMessageBox::StandardButton reply;
-        reply = QMessageBox::question(this, "Test", "Pankkikortin ID tai PIN-koodi väärin",
-                                      QMessageBox::Ok|QMessageBox::Ok);
+        reply = QMessageBox::question(this, "Test", "Pankkikortin ID tai PIN-koodi väärin",QMessageBox::Ok|QMessageBox::Ok);
         if (reply == QMessageBox::Ok) {
                 disconnect(timer,SIGNAL(timeout()), this, SLOT(menuTimerSlot()));
                 QWidget *koti;

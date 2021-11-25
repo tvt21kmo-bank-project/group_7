@@ -28,20 +28,14 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-
 void MainWindow::nappiapainettu()
 {
     QPushButton *button = (QPushButton*)sender();
-
     double numero;
     QString uusinumero;
-
     numero = (ui->hankiID->text() + button->text()).toDouble();
-
     uusinumero = QString::number(numero);
-
     ui->hankiID->setText(uusinumero);
-
 }
 
 void MainWindow::on_nappikorjaa_clicked()
@@ -51,23 +45,18 @@ void MainWindow::on_nappikorjaa_clicked()
     }
 }
 
-
 void MainWindow::on_nappiok_clicked()
 {
     saatuID = (ui->hankiID->text());
     QMessageBox::StandardButton reply;
-
     if((saatuID == "12" && counterLoginfailedPekka == 3) || (saatuID == "76" && counterLoginfailedMaija == 3) || (saatuID == "21" && counterLoginfailedHarry == 3) || (saatuID == "31" && counterLoginfailedHilleri == 3) || (saatuID == "65" && counterLoginfailedHyvant == 3))
     {
-        timer->stop();
-        reply = QMessageBox::question(this, "Test", "PIN-koodia yritetty 3 kertaa väärin ja tilisi on lukittu. Ole yhteydessä pankkiisi.",
-                                      QMessageBox::Ok|QMessageBox::Ok);
+        reply = QMessageBox::question(this, "Test", "PIN-koodia yritetty 3 kertaa väärin, jonka takia tilisi on lukittu. Ole yhteydessä pankkiisi.", QMessageBox::Ok|QMessageBox::Ok);
         if (reply == QMessageBox::Ok)
         {
             ui->hankiID->setText("");
         }
     }
-
     else
     {
         objPIN->show();
