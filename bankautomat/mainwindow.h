@@ -2,7 +2,11 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QPixmap>
+#include <QMessageBox>
+
 #include "mainwindow2.h"
+#include "muuttujat.h"
 
 namespace Ui {
 class MainWindow;

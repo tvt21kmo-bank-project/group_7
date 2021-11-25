@@ -7,6 +7,7 @@
 #include <QJsonDocument>
 #include <QString>
 #include <QTimer>
+#include <QObject>
 
 #include "muuttujat.h"
 
@@ -23,7 +24,7 @@ public:
     ~kayttoliittyma();
 
 public slots:
-    void menuTimerSlot();
+    void menuTimerSlotkayttoliittyma();
 
 private slots:
     void on_nappiNosta_clicked();

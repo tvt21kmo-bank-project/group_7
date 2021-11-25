@@ -1,5 +1,5 @@
-#include "mainwindow.h"
 #include "mainwindow2.h"
+#include "mainwindow.h"
 #include "ui_mainwindow2.h"
 #include "mainwindow.cpp"
 #include <QMessageBox>
@@ -12,18 +12,13 @@ MainWindow2::MainWindow2(QWidget *parent) :
     ui(new Ui::MainWindow2)
 {
     ui->setupUi(this);
-
-
-    QPixmap pix("C:/Ohjelmistokehityksen sovellusprojekti/group_7/bankautomat/resources/img/logo.jpg");
+    QPixmap pix(":/resources/img/logo.jpg");
     int w = ui->label->width();
     int h = ui->label->height();
     ui->label->setPixmap(pix.scaled(w,h,Qt::KeepAspectRatio));
-
     timerCounter = 0;
     objKayttoliittyma = new kayttoliittyma;
-
     connect(timer,SIGNAL(timeout()), this, SLOT(menuTimerSlot()));
-
     connect(ui->numero0, SIGNAL(released()),this,SLOT(nappiapainettu()));
     connect(ui->numero1, SIGNAL(released()),this,SLOT(nappiapainettu()));
     connect(ui->numero2, SIGNAL(released()),this,SLOT(nappiapainettu()));
@@ -43,16 +38,11 @@ MainWindow2::~MainWindow2()
 
 void MainWindow2::nappiapainettu()
 {
-    timerCounter = 0;
     QPushButton *button = (QPushButton*)sender();
-
     double numero;
     QString uusinumero;
-
     numero = (ui->hankiPIN->text() + button->text()).toDouble();
-
     uusinumero = QString::number(numero);
-
     ui->hankiPIN->setText(uusinumero);
 }
 
@@ -97,22 +87,71 @@ void MainWindow2::loginSlot(QNetworkReply *reply)
          this->close();
          disconnect(timer,SIGNAL(timeout()), this, SLOT(menuTimerSlot()));
          timerkayttoliittyma->start(1000);
+         if(saatuID == "12")
+         {
+             counterLoginfailedPekka = 0;
+             qDebug()<<"Pekan väärät yritykset nollattu: "<<counterLoginfailedPekka;
+         }
+         else if(saatuID == "76")
+         {
+             counterLoginfailedMaija = 0;
+             qDebug()<<"Maijan väärät yritykset nollattu: "<<counterLoginfailedMaija;
+         }
+         else if(saatuID == "21")
+         {
+             counterLoginfailedHarry = 0;
+             qDebug()<<"Harryn väärät yritykset nollattu: "<<counterLoginfailedHarry;
+         }
+         else if(saatuID == "31")
+         {
+             counterLoginfailedHilleri = 0;
+             qDebug()<<"Hillerin väärät yritykset nollattu: "<<counterLoginfailedHilleri;
+         }
+         else if(saatuID == "65")
+         {
+             counterLoginfailedHyvant = 0;
+             qDebug()<<"Hyväntekeväisyyden väärät yritykset nollattu: "<<counterLoginfailedHyvant;
+         }
     }
     else {
+        timer->stop();
         ui->hankiPIN->setText("");
         qDebug()<<"tunnus ja salasana ei täsmää";
+        if(saatuID == "12")
+        {
+            counterLoginfailedPekka++;
+            qDebug()<<"Pekan väärät yritykset: "<<counterLoginfailedPekka;
+        }
+        if(saatuID == "76")
+        {
+            counterLoginfailedMaija++;
+            qDebug()<<"Maijan väärät yritykset: "<<counterLoginfailedMaija;
+        }
+        if(saatuID == "21")
+        {
+            counterLoginfailedHarry++;
+            qDebug()<<"Harryn väärät yritykset: "<<counterLoginfailedHarry;
+        }
+        if(saatuID == "31")
+        {
+            counterLoginfailedHilleri++;
+            qDebug()<<"Hillerin väärät yritykset: "<<counterLoginfailedHilleri;
+        }
+        if(saatuID == "65")
+        {
+            counterLoginfailedHyvant++;
+            qDebug()<<"Hyväntekeväisyyden väärät yritykset: "<<counterLoginfailedHyvant;
+        }
         QMessageBox::StandardButton reply;
         reply = QMessageBox::question(this, "Test", "Pankkikortin ID tai PIN-koodi väärin",
                                       QMessageBox::Ok|QMessageBox::Ok);
         if (reply == QMessageBox::Ok) {
-                qDebug() << "Ok nappia painettiin";
+                disconnect(timer,SIGNAL(timeout()), this, SLOT(menuTimerSlot()));
                 QWidget *koti;
                 koti = new MainWindow;
                 koti->show();
                 this->close();
                 timerCounter = 0;
-                timer->stop();
-                disconnect(timer,SIGNAL(timeout()), this, SLOT(menuTimerSlot()));
         }
     }
 }
@@ -123,19 +162,15 @@ void MainWindow2::menuTimerSlot()
     qDebug()<<timerCounter;
     if(timerCounter == 30)
     {
-        emit aikaLoppu();
         timer->stop();
         timerCounter = 0;
         QWidget *koti;
         koti = new MainWindow;
         koti->show();
-        this->close();
+        this->close();;
         disconnect(timer,SIGNAL(timeout()), this, SLOT(menuTimerSlot()));
         objKayttoliittyma->close();
     }
-}
-void MainWindow2::resetTimer(int){
-    timerCounter = 0;
 }
 
 void MainWindow2::on_nappiLopeta_clicked()
@@ -148,3 +183,4 @@ void MainWindow2::on_nappiLopeta_clicked()
     koti->show();
     this->close();
 }
+

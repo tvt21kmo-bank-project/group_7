@@ -43,3 +43,6 @@ FORMS += \
     kayttoliittyma.ui
 
 DISTFILES +=
+
+RESOURCES += \
+    resurssit.qrc

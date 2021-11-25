@@ -9,8 +9,7 @@ kayttoliittyma::kayttoliittyma(QWidget *parent) :
     ui(new Ui::kayttoliittyma)
 {
     ui->setupUi(this);
-
-    connect(timerkayttoliittyma,SIGNAL(timeout()), this, SLOT(menuTimerSlot()));
+    connect(timerkayttoliittyma,SIGNAL(timeout()), this, SLOT(menuTimerSlotkayttoliittyma()));
 }
 
 kayttoliittyma::~kayttoliittyma()
@@ -63,35 +62,47 @@ void kayttoliittyma::haenimiSlot(QNetworkReply *reply)
 void kayttoliittyma::on_nappiNosta_clicked()
 {
     timerCounterkayttoliittyma = 0;
+    timerkayttoliittyma->stop();
+    disconnect(timerkayttoliittyma,SIGNAL(timeout()), this, SLOT(menuTimerSlotkayttoliittyma()));
+    timernostarahaa->start(1000);
 }
 
 void kayttoliittyma::on_nappiSaldo_clicked()
 {
     timerCounterkayttoliittyma = 0;
+    timerkayttoliittyma->stop();
+    disconnect(timerkayttoliittyma,SIGNAL(timeout()), this, SLOT(menuTimerSlotkayttoliittyma()));
+    timernaytasaldo->start(1000);
 }
 
 void kayttoliittyma::on_nappiTilitapahtuma_clicked()
 {
     timerCounterkayttoliittyma = 0;
+    timerkayttoliittyma->stop();
+    disconnect(timerkayttoliittyma,SIGNAL(timeout()), this, SLOT(menuTimerSlotkayttoliittyma()));
+    timertilitapahtuma->start(1000);
 }
 
 void kayttoliittyma::on_nappiLahjoita_clicked()
 {
     timerCounterkayttoliittyma = 0;
+    timerkayttoliittyma->stop();
+    disconnect(timerkayttoliittyma,SIGNAL(timeout()), this, SLOT(menuTimerSlotkayttoliittyma()));
+    timerlahjoita->start(1000);
 }
 
 void kayttoliittyma::on_nappiUloskirjaus_clicked()
 {
     timerCounterkayttoliittyma = 0;
     timerkayttoliittyma->stop();
-    disconnect(timerkayttoliittyma,SIGNAL(timeout()), this, SLOT(menuTimerSlot()));
+    disconnect(timerkayttoliittyma,SIGNAL(timeout()), this, SLOT(menuTimerSlotkayttoliittyma()));
     QWidget *koti;
     koti = new MainWindow;
     koti->show();
     this->close();
 }
 
-void kayttoliittyma::menuTimerSlot()
+void kayttoliittyma::menuTimerSlotkayttoliittyma()
 {
     timerCounterkayttoliittyma++;
     qDebug()<<timerCounterkayttoliittyma;
@@ -100,7 +111,7 @@ void kayttoliittyma::menuTimerSlot()
         emit aikaLoppu();
         timerkayttoliittyma->stop();
         timerCounterkayttoliittyma = 0;
-        disconnect(timerkayttoliittyma,SIGNAL(timeout()), this, SLOT(menuTimerSlot()));
+        disconnect(timerkayttoliittyma,SIGNAL(timeout()), this, SLOT(menuTimerSlotkayttoliittyma()));
         QWidget *koti;
         koti = new MainWindow;
         koti->show();
