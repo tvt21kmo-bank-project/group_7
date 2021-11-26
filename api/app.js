@@ -21,7 +21,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/kayttaja', kayttajaRouter);
 app.use('/pankkikortti',pankkikorttiRouter);
 app.use('/pankkitili', pankkitiliRouter);
-app.use('/tilitilitapahtuma',tilitapahtumaRouter);
+app.use('/tilitapahtuma',tilitapahtumaRouter);
 app.use('/kirjautuminen',kirjautuminenRouter);
 app.use('/nimi',nimiRouter);
 
