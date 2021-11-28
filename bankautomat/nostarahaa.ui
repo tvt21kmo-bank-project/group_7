@@ -108,8 +108,8 @@
    <widget class="QLabel" name="etunimilbl">
     <property name="geometry">
      <rect>
-      <x>320</x>
-      <y>20</y>
+      <x>300</x>
+      <y>0</y>
       <width>231</width>
       <height>31</height>
      </rect>
@@ -121,8 +121,8 @@
    <widget class="QLabel" name="sukunimilbl">
     <property name="geometry">
      <rect>
-      <x>350</x>
-      <y>70</y>
+      <x>310</x>
+      <y>40</y>
       <width>241</width>
       <height>31</height>
      </rect>
@@ -134,8 +134,8 @@
    <widget class="QLabel" name="hetulbl">
     <property name="geometry">
      <rect>
-      <x>290</x>
-      <y>110</y>
+      <x>300</x>
+      <y>90</y>
       <width>251</width>
       <height>41</height>
      </rect>
@@ -147,8 +147,8 @@
    <widget class="QLabel" name="osoitelbl">
     <property name="geometry">
      <rect>
-      <x>350</x>
-      <y>170</y>
+      <x>310</x>
+      <y>140</y>
       <width>271</width>
       <height>21</height>
      </rect>
@@ -160,8 +160,8 @@
    <widget class="QLabel" name="puhlbl">
     <property name="geometry">
      <rect>
-      <x>350</x>
-      <y>210</y>
+      <x>300</x>
+      <y>160</y>
       <width>271</width>
       <height>41</height>
      </rect>
@@ -183,7 +183,7 @@
      <string>Joku muu summa:</string>
     </property>
    </widget>
-   <widget class="QLineEdit" name="lineEdit">
+   <widget class="QLineEdit" name="nostoTaulu">
     <property name="geometry">
      <rect>
       <x>90</x>
@@ -191,6 +191,32 @@
       <width>221</width>
       <height>31</height>
      </rect>
+    </property>
+   </widget>
+   <widget class="QLabel" name="saldolbl">
+    <property name="geometry">
+     <rect>
+      <x>320</x>
+      <y>230</y>
+      <width>261</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="nostoNappi">
+    <property name="geometry">
+     <rect>
+      <x>90</x>
+      <y>430</y>
+      <width>111</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Nosta tämä määrä</string>
     </property>
    </widget>
   </widget>

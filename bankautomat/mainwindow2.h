@@ -23,6 +23,7 @@ public:
     ~MainWindow2();
     QString saatuPIN;
 
+
 private slots:
     void nappiapainettu();
     void on_nappikorjaa_clicked();

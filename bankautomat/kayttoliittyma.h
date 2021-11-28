@@ -8,6 +8,7 @@
 #include <QString>
 #include <QTimer>
 #include <nostarahaa.h>
+//#include <kayttoliittyma.h>
 
 
 namespace Ui {
