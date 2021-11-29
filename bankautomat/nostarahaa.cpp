@@ -3,6 +3,7 @@
 #include "muuttujat.h"
 #include "kayttoliittyma.h"
 #include "mainwindow2.h"
+#include "mainwindow.h"
 
 
 nostarahaa::nostarahaa(QWidget *parent) :
@@ -13,10 +14,8 @@ nostarahaa::nostarahaa(QWidget *parent) :
 
     objTimer = new QTimer;
     timerCounter = 0;
-
-
-
-
+    connect(timernostarahaa,SIGNAL(timeout()), this, SLOT(menuTimerSlotNosta()));
+    //objKayttoliittyma = new kayttoliittyma;
 }
 
 nostarahaa::~nostarahaa()
@@ -67,14 +66,22 @@ void nostarahaa::laskuri(int maara)
     reply = putManager->put(request, QJsonDocument(json).toJson());
 }
 
-void nostarahaa::menuTimerSlot()
+void nostarahaa::menuTimerSlotNosta()
 {
+    timerCounter++;
+    qDebug()<<timerCounter;
+    if(timerCounter == 30)
+    {
+        timernostarahaa->stop();
+        timerCounter = 0;
+        disconnect(timernostarahaa,SIGNAL(timeout()), this, SLOT(menuTimerSlotNosta()));
+        QWidget *koti;
+        koti = new MainWindow;
+        koti->show();
+        this->close();;
 
-}
-
-void nostarahaa::resetTimer(int)
-{
-
+        //objKayttoliittyma->close();
+    }
 }
 
 void nostarahaa::haenimiSlot(QNetworkReply *reply)
@@ -111,9 +118,11 @@ void nostarahaa::on_nappiNosta20_clicked()
 {
 
     this-> laskuri(20);
+    disconnect(timernostarahaa,SIGNAL(timeout()), this, SLOT(menuTimerSlotNosta()));
     QMessageBox msgBox;
     msgBox.setText("Nostit 20 €.");
     msgBox.exec();
+
 
     kayttoliittyma  *objKayttoliittyma;
     objKayttoliittyma = new kayttoliittyma;
@@ -130,6 +139,7 @@ void nostarahaa::updateSaldoSlot (QNetworkReply *reply)
 void nostarahaa::on_nappiNosta40_clicked()
 {
     this-> laskuri(40);
+    disconnect(timernostarahaa,SIGNAL(timeout()), this, SLOT(menuTimerSlotNosta()));
     QMessageBox msgBox;
     msgBox.setText("Nostit 40 €.");
     msgBox.exec();
@@ -143,6 +153,7 @@ void nostarahaa::on_nappiNosta40_clicked()
 void nostarahaa::on_nappiNosta60_clicked()
 {
     this-> laskuri(60);
+    disconnect(timernostarahaa,SIGNAL(timeout()), this, SLOT(menuTimerSlotNosta()));
     QMessageBox msgBox;
     msgBox.setText("Nostit 60 €.");
     msgBox.exec();
@@ -156,6 +167,7 @@ void nostarahaa::on_nappiNosta60_clicked()
 void nostarahaa::on_nappiNosta100_clicked()
 {
     this-> laskuri(100);
+    disconnect(timernostarahaa,SIGNAL(timeout()), this, SLOT(menuTimerSlotNosta()));
     QMessageBox msgBox;
     msgBox.setText("Nostit 100 €.");
     msgBox.exec();
@@ -169,6 +181,7 @@ void nostarahaa::on_nappiNosta100_clicked()
 void nostarahaa::on_nappiNosta200_clicked()
 {
     this-> laskuri(200);
+    disconnect(timernostarahaa,SIGNAL(timeout()), this, SLOT(menuTimerSlotNosta()));
     QMessageBox msgBox;
     msgBox.setText("Nostit 200 €.");
     msgBox.exec();
@@ -182,6 +195,7 @@ void nostarahaa::on_nappiNosta200_clicked()
 void nostarahaa::on_nappiNosta500_clicked()
 {
     this-> laskuri(500);
+    disconnect(timernostarahaa,SIGNAL(timeout()), this, SLOT(menuTimerSlotNosta()));
     QMessageBox msgBox;
     msgBox.setText("Nostit 500 €.");
     msgBox.exec();
@@ -196,6 +210,7 @@ void nostarahaa::on_nostoNappi_clicked()
 {
     double nosto = (ui->nostoTaulu->text().toDouble());
     this->laskuri(nosto);
+    disconnect(timernostarahaa,SIGNAL(timeout()), this, SLOT(menuTimerSlotNosta()));
     QMessageBox msgBox;
     msgBox.setText("Nostit " + ui->nostoTaulu->text() + " €.");
     msgBox.exec();

@@ -37,7 +37,7 @@ private:
     QNetworkAccessManager *putManager;
     QString saldo;
     void laskuri(int maara);
-    //kayttoliittyma *objKayttoliittyma;
+    //kayttoliittyma *objKayttoliittyma; //lisäsin äsken
 
     //QNetworkAccessManager *saldoManager;
     //void naytaTiedot();
@@ -47,8 +47,8 @@ private:
 
 
 public slots:
-    void menuTimerSlot();
-    void resetTimer(int);
+    void menuTimerSlotNosta();
+    //void resetTimer(int);
     //void haenimiSlot(QNetworkReply *reply); tää on ehkä oikeesti tässä?
 
 signals:

@@ -7,7 +7,7 @@
 #include <QJsonDocument>
 #include <QString>
 #include <QTimer>
-#include <nostarahaa.h>
+#include "nostarahaa.h"
 #include "muuttujat.h"
 
 
