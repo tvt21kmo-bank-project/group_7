@@ -7,6 +7,7 @@
 #include <QJsonDocument>
 #include <QString>
 #include <QTimer>
+#include <QObject>
 
 #include "kayttoliittyma.h"
 
@@ -33,18 +34,18 @@ private slots:
 
 private:
     Ui::MainWindow2 *ui;
-    QTimer *objTimer;
-    short timerCounter;
+    //QTimer *objTimer;
+    //short timerCounter;
     QNetworkAccessManager *loginManager;
     QNetworkReply *reply;
     kayttoliittyma *objKayttoliittyma;
 
 public slots:
     void menuTimerSlot();
-    void resetTimer(int);
+    //void resetTimer(int);
 
-signals:
-    void aikaLoppu();
+/*signals:
+    void aikaLoppu();*/
 
 };
 

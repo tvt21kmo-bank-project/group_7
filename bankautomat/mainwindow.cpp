@@ -9,14 +9,11 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-
     objPIN = new MainWindow2;
-
     QPixmap pix("C:/Users/Omistaja/Banksimul/group_7/bankautomat/resources/img/logo.jpg");
     int w = ui->label->width();
     int h = ui->label->height();
     ui->label->setPixmap(pix.scaled(w,h,Qt::KeepAspectRatio));
-
     connect(ui->numero0, SIGNAL(released()),this,SLOT(nappiapainettu()));
     connect(ui->numero1, SIGNAL(released()),this,SLOT(nappiapainettu()));
     connect(ui->numero2, SIGNAL(released()),this,SLOT(nappiapainettu()));
@@ -40,14 +37,10 @@ MainWindow::~MainWindow()
 void MainWindow::nappiapainettu()
 {
     QPushButton *button = (QPushButton*)sender();
-
     double numero;
     QString uusinumero;
-
     numero = (ui->hankiID->text() + button->text()).toDouble();
-
     uusinumero = QString::number(numero);
-
     ui->hankiID->setText(uusinumero);
 
 }
@@ -63,6 +56,19 @@ void MainWindow::on_nappikorjaa_clicked()
 void MainWindow::on_nappiok_clicked()
 {
     saatuID = (ui->hankiID->text());
-    objPIN->show();
-    this->close();
+    QMessageBox::StandardButton reply;
+    if((saatuID == "12" && counterLoginfailedPekka == 3) || (saatuID == "76" && counterLoginfailedMaija == 3) || (saatuID == "21" && counterLoginfailedHarry == 3) || (saatuID == "31" && counterLoginfailedHilleri == 3) || (saatuID == "65" && counterLoginfailedHyvant == 3))
+    {
+        reply = QMessageBox::question(this, "Test", "PIN-koodia yritetty 3 kertaa väärin, jonka takia tilisi on lukittu. Ole yhteydessä pankkiisi.", QMessageBox::Ok|QMessageBox::Ok);
+        if (reply == QMessageBox::Ok)
+        {
+            ui->hankiID->setText("");
+        }
+    }
+    else
+    {
+        objPIN->show();
+        this->close();
+        timer->start(1000);
+    }
 }
