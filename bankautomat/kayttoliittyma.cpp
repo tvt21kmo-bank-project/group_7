@@ -2,6 +2,7 @@
 #include "ui_kayttoliittyma.h"
 #include "mainwindow.h"
 #include "muuttujat.h"
+#include "tilitapahtumat.h"
 
 kayttoliittyma::kayttoliittyma(QWidget *parent) :
     QMainWindow(parent),
@@ -78,6 +79,10 @@ void kayttoliittyma::on_nappiTilitapahtuma_clicked()
 {
     objTimer2->stop();
     timerCounter2 = 0;
+    QWidget *koti;
+    koti = new tilitapahtumat;
+    koti->show();
+    this->close();
 }
 
 void kayttoliittyma::on_nappiLahjoita_clicked()

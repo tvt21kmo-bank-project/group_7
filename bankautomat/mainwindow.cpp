@@ -46,7 +46,7 @@ void MainWindow::nappiapainettu()
 
     numero = (ui->hankiID->text() + button->text()).toDouble();
 
-    uusinumero = QString::number(numero);
+     uusinumero = QString::number(numero);
 
     ui->hankiID->setText(uusinumero);
 
