@@ -15,14 +15,19 @@ nostarahaa::nostarahaa(QWidget *parent) :
     objTimer = new QTimer;
     timerCounter = 0;
     connect(timernostarahaa,SIGNAL(timeout()), this, SLOT(menuTimerSlotNosta()));
-    //objKayttoliittyma = new kayttoliittyma;
 }
 
 nostarahaa::~nostarahaa()
 {
     delete ui;
+    ui = nullptr;
     delete putManager;
     delete getManager;
+    delete timernostarahaa;
+    timernostarahaa = nullptr;
+    timerkayttoliittyma = nullptr;
+    delete timer;
+    timer = nullptr;
 }
 
 void nostarahaa::naytaTiedot()
@@ -47,42 +52,92 @@ void nostarahaa::laskuri(int maara)
     double saldo1 = saldo.toDouble();
     double tulos = saldo1 - vah;
     qDebug()<<tulos;
-    qDebug()<< 1.43 + 5;
 
-    QJsonObject json;
-    json.insert("Saldo",tulos);
+    if (saldo1 < maara)
+    {
+        disconnect(timernostarahaa,SIGNAL(timeout()), this, SLOT(menuTimerSlotNosta()));
+        timerHuomautus->start(1000);
+        connect(timerHuomautus,SIGNAL(timeout()), this, SLOT(huomautusTimer()));
+        msgBox = new QMessageBox;
+        msgBox->setText("Tilillä ei ole näin paljon rahaa!");
+        QAbstractButton *close = msgBox->addButton(tr("Close"),(QMessageBox::ActionRole));
+        msgBox->exec();
 
-    QString site_url="http://localhost:3000/nosta_rahaa/"+saatuID;
-    QString credentials="admin:1234";
-    QNetworkRequest request((site_url));
-    request.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
-    QByteArray data = credentials.toLocal8Bit().toBase64();
-    QString headerData = "Basic " + data;
-    request.setRawHeader( "Authorization", headerData.toLocal8Bit() );
+        if (msgBox->clickedButton() == close)
+        {
+            qDebug() <<"taa toimii";
+            timerCounternostarahaa = 0;
+            disconnect(timerHuomautus,SIGNAL(timeout()), this, SLOT(huomautusTimer()));
+            timernostarahaa->start(1000);
+            connect(timernostarahaa,SIGNAL(timeout()), this, SLOT(menuTimerSlotNosta()));
 
-    putManager = new QNetworkAccessManager(this);
-    connect(putManager, SIGNAL(finished (QNetworkReply*)), this, SLOT(updateSaldoSlot(QNetworkReply*)));
+        }
 
-    reply = putManager->put(request, QJsonDocument(json).toJson());
+
+
+
+    }else{
+        QJsonObject json;
+        json.insert("Saldo",tulos);
+
+        QString site_url="http://localhost:3000/nosta_rahaa/"+saatuID;
+        QString credentials="admin:1234";
+        QNetworkRequest request((site_url));
+        request.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
+        QByteArray data = credentials.toLocal8Bit().toBase64();
+        QString headerData = "Basic " + data;
+        request.setRawHeader( "Authorization", headerData.toLocal8Bit() );
+
+        putManager = new QNetworkAccessManager(this);
+        connect(putManager, SIGNAL(finished (QNetworkReply*)), this, SLOT(updateSaldoSlot(QNetworkReply*)));
+        reply = putManager->put(request, QJsonDocument(json).toJson());
+
+        QMessageBox msgBox;
+        msgBox.setText("Nostit"+ QString::number(vah) + " €.");
+        msgBox.exec();
+
+        kayttoliittyma  *objKayttoliittyma;
+        objKayttoliittyma = new kayttoliittyma;
+        objKayttoliittyma->show();
+        timernostarahaa->stop();
+        timerCounternostarahaa = 0;
+        timerkayttoliittyma->start(1000);
+        this->close();
+    }
 }
 
 void nostarahaa::menuTimerSlotNosta()
 {
-    timerCounter++;
-    qDebug()<<timerCounter;
-    if(timerCounter == 30)
+    timerCounternostarahaa++;
+    qDebug()<<timerCounternostarahaa;
+    if(timerCounternostarahaa == 10)
     {
         timernostarahaa->stop();
-        timerCounter = 0;
+        timerCounternostarahaa = 0;
         disconnect(timernostarahaa,SIGNAL(timeout()), this, SLOT(menuTimerSlotNosta()));
-        QWidget *koti;
-        koti = new MainWindow;
-        koti->show();
-        this->close();;
+        kayttoliittyma  *objKayttoliittyma;
+        objKayttoliittyma = new kayttoliittyma;
+        objKayttoliittyma->show();
+        this->close();
+        timerkayttoliittyma->start(1000);
 
-        //objKayttoliittyma->close();
     }
 }
+
+void nostarahaa::huomautusTimer()
+{
+    timerCounterHuomautus++;
+    qDebug()<<timerCounterHuomautus+"jaajaahuomautus";
+    if(timerCounterHuomautus == 10)
+    {
+        timerHuomautus->stop();
+        timerCounterHuomautus = 0;
+        timernostarahaa->start(1000);
+        disconnect(timerHuomautus,SIGNAL(timeout()), this, SLOT(huomautusTimer()));
+    }
+}
+// ei jaksa laittaa mitään timeriä huomautushommaan, joKA sulkee sen
+
 
 void nostarahaa::haenimiSlot(QNetworkReply *reply)
 {
@@ -113,22 +168,6 @@ void nostarahaa::haenimiSlot(QNetworkReply *reply)
     }
     reply->deleteLater();
 }
-
-void nostarahaa::on_nappiNosta20_clicked()
-{
-
-    this-> laskuri(20);
-    disconnect(timernostarahaa,SIGNAL(timeout()), this, SLOT(menuTimerSlotNosta()));
-    QMessageBox msgBox;
-    msgBox.setText("Nostit 20 €.");
-    msgBox.exec();
-
-
-    kayttoliittyma  *objKayttoliittyma;
-    objKayttoliittyma = new kayttoliittyma;
-    objKayttoliittyma->show();
-    this->close();
-}
 void nostarahaa::updateSaldoSlot (QNetworkReply *reply)
 {
     response_data=reply->readAll();
@@ -136,87 +175,86 @@ void nostarahaa::updateSaldoSlot (QNetworkReply *reply)
     reply->deleteLater();
 }
 
+void nostarahaa::on_nappiNosta20_clicked()
+{
+    disconnect(timernostarahaa,SIGNAL(timeout()), this, SLOT(menuTimerSlotNosta()));
+    timernostarahaa->stop();
+    timerkayttoliittyma->start(1000);
+    timerCounternostarahaa = 0;
+    this-> laskuri(20);
+}
+
+
 void nostarahaa::on_nappiNosta40_clicked()
 {
-    this-> laskuri(40);
-    disconnect(timernostarahaa,SIGNAL(timeout()), this, SLOT(menuTimerSlotNosta()));
-    QMessageBox msgBox;
-    msgBox.setText("Nostit 40 €.");
-    msgBox.exec();
 
-    kayttoliittyma  *objKayttoliittyma;
-    objKayttoliittyma = new kayttoliittyma;
-    objKayttoliittyma->show();
-    this->close();
+    disconnect(timernostarahaa,SIGNAL(timeout()), this, SLOT(menuTimerSlotNosta()));
+    timernostarahaa->stop();
+    timerkayttoliittyma->start(1000);
+    timerCounternostarahaa = 0;
+    this-> laskuri(40);
 }
 
 void nostarahaa::on_nappiNosta60_clicked()
 {
-    this-> laskuri(60);
-    disconnect(timernostarahaa,SIGNAL(timeout()), this, SLOT(menuTimerSlotNosta()));
-    QMessageBox msgBox;
-    msgBox.setText("Nostit 60 €.");
-    msgBox.exec();
 
-    kayttoliittyma  *objKayttoliittyma;
-    objKayttoliittyma = new kayttoliittyma;
-    objKayttoliittyma->show();
-    this->close();
+    disconnect(timernostarahaa,SIGNAL(timeout()), this, SLOT(menuTimerSlotNosta()));
+    timernostarahaa->stop();
+    timerkayttoliittyma->start(1000);
+    timerCounternostarahaa = 0;
+    this-> laskuri(60);
 }
 
 void nostarahaa::on_nappiNosta100_clicked()
 {
-    this-> laskuri(100);
-    disconnect(timernostarahaa,SIGNAL(timeout()), this, SLOT(menuTimerSlotNosta()));
-    QMessageBox msgBox;
-    msgBox.setText("Nostit 100 €.");
-    msgBox.exec();
 
-    kayttoliittyma  *objKayttoliittyma;
-    objKayttoliittyma = new kayttoliittyma;
-    objKayttoliittyma->show();
-    this->close();
+    disconnect(timernostarahaa,SIGNAL(timeout()), this, SLOT(menuTimerSlotNosta()));
+    timernostarahaa->stop();
+    timerkayttoliittyma->start(1000);
+    timerCounternostarahaa = 0;
+    this-> laskuri(100);
 }
 
 void nostarahaa::on_nappiNosta200_clicked()
 {
-    this-> laskuri(200);
-    disconnect(timernostarahaa,SIGNAL(timeout()), this, SLOT(menuTimerSlotNosta()));
-    QMessageBox msgBox;
-    msgBox.setText("Nostit 200 €.");
-    msgBox.exec();
 
-    kayttoliittyma  *objKayttoliittyma;
-    objKayttoliittyma = new kayttoliittyma;
-    objKayttoliittyma->show();
-    this->close();
+    disconnect(timernostarahaa,SIGNAL(timeout()), this, SLOT(menuTimerSlotNosta()));
+    timernostarahaa->stop();
+    timerkayttoliittyma->start(1000);
+    timerCounternostarahaa = 0;
+    this-> laskuri(200);
 }
 
 void nostarahaa::on_nappiNosta500_clicked()
 {
-    this-> laskuri(500);
-    disconnect(timernostarahaa,SIGNAL(timeout()), this, SLOT(menuTimerSlotNosta()));
-    QMessageBox msgBox;
-    msgBox.setText("Nostit 500 €.");
-    msgBox.exec();
 
-    kayttoliittyma  *objKayttoliittyma;
-    objKayttoliittyma = new kayttoliittyma;
-    objKayttoliittyma->show();
-    this->close();
+    disconnect(timernostarahaa,SIGNAL(timeout()), this, SLOT(menuTimerSlotNosta()));
+    timernostarahaa->stop();
+    timerkayttoliittyma->start(1000);
+    timerCounternostarahaa = 0;
+    this-> laskuri(500);
 }
 
 void nostarahaa::on_nostoNappi_clicked()
 {
-    double nosto = (ui->nostoTaulu->text().toDouble());
-    this->laskuri(nosto);
     disconnect(timernostarahaa,SIGNAL(timeout()), this, SLOT(menuTimerSlotNosta()));
-    QMessageBox msgBox;
-    msgBox.setText("Nostit " + ui->nostoTaulu->text() + " €.");
-    msgBox.exec();
+    double nosto = (ui->nostoTaulu->text().toDouble());
+    timernostarahaa->stop();
+    timerkayttoliittyma->start(1000);
+    timerCounternostarahaa = 0;
+    this->laskuri(nosto);
 
+}
+
+void nostarahaa::on_nappiSulje_clicked()
+{
+    disconnect(timernostarahaa,SIGNAL(timeout()), this, SLOT(menuTimerSlotNosta()));
+    timernostarahaa->stop();
+    timerkayttoliittyma->start(1000);
+    timerCounternostarahaa = 0;
     kayttoliittyma  *objKayttoliittyma;
     objKayttoliittyma = new kayttoliittyma;
     objKayttoliittyma->show();
     this->close();
+
 }

@@ -34,6 +34,12 @@ MainWindow2::MainWindow2(QWidget *parent) :
 MainWindow2::~MainWindow2()
 {
     delete ui;
+    delete timer;
+    timer = nullptr;
+    delete timerkayttoliittyma;
+    timerkayttoliittyma = nullptr;
+    delete timernostarahaa;
+    timernostarahaa=nullptr;
 }
 
 void MainWindow2::nappiapainettu()

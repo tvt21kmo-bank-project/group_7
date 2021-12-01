@@ -219,6 +219,19 @@
      <string>Nosta tämä määrä</string>
     </property>
    </widget>
+   <widget class="QPushButton" name="nappiSulje">
+    <property name="geometry">
+     <rect>
+      <x>600</x>
+      <y>480</y>
+      <width>161</width>
+      <height>71</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Sulje</string>
+    </property>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">

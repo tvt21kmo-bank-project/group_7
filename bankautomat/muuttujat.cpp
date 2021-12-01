@@ -13,6 +13,8 @@ QTimer *timertilitapahtuma = new QTimer;
 short timerCountertilitapahtuma = 0;
 QTimer *timerlahjoita = new QTimer;
 short timerCounterlahjoita = 0;
+QTimer *timerHuomautus = new QTimer;
+short timerCounterHuomautus = 0;
 
 short counterLoginfailedPekka = 0;
 short counterLoginfailedMaija = 0;

@@ -24,6 +24,12 @@ kayttoliittyma::kayttoliittyma(QWidget *parent) :
 kayttoliittyma::~kayttoliittyma()
 {
     delete ui;
+    delete timerkayttoliittyma;
+    timerkayttoliittyma = nullptr;
+    delete timernostarahaa;
+    timernostarahaa=nullptr;
+    delete timer;
+    timer = nullptr;
 }
 
 void kayttoliittyma::on_nappikayttaja_clicked()
@@ -132,7 +138,3 @@ void kayttoliittyma::menuTimerSlotkayttoliittyma()
     }
 }
 
-/*void kayttoliittyma::resetTimer2(int){
-    timerCounter2 = 0;
-}
-*/

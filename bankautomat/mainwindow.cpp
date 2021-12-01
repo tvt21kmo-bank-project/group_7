@@ -31,6 +31,12 @@ MainWindow::MainWindow(QWidget *parent) :
 MainWindow::~MainWindow()
 {
     delete ui;
+    delete timer;
+    timer = nullptr;
+    delete timerkayttoliittyma;
+    timerkayttoliittyma = nullptr;
+    delete timernostarahaa;
+    timernostarahaa=nullptr;
 }
 
 

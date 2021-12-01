@@ -9,7 +9,7 @@
 #include <QString>
 #include <QTimer>
 #include <QMessageBox>
-//#include "kayttoliittyma.h"
+#include <QAbstractButton>
 
 
 namespace Ui {
@@ -37,19 +37,13 @@ private:
     QNetworkAccessManager *putManager;
     QString saldo;
     void laskuri(int maara);
-    //kayttoliittyma *objKayttoliittyma; //lisäsin äsken
-
-    //QNetworkAccessManager *saldoManager;
-    //void naytaTiedot();
-    //nostarahaa *objToiminto;  nää on varman turhia...
-
+    QMessageBox *msgBox;
 
 
 
 public slots:
     void menuTimerSlotNosta();
-    //void resetTimer(int);
-    //void haenimiSlot(QNetworkReply *reply); tää on ehkä oikeesti tässä?
+    void huomautusTimer();
 
 signals:
     void aikaLoppu();
@@ -64,6 +58,7 @@ private slots:
     void on_nappiNosta200_clicked();
     void on_nappiNosta500_clicked();
     void on_nostoNappi_clicked();
+    void on_nappiSulje_clicked();
 };
 
 #endif // NOSTARAHAA_H
