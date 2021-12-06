@@ -19,8 +19,8 @@
      <rect>
       <x>80</x>
       <y>320</y>
-      <width>80</width>
-      <height>21</height>
+      <width>91</width>
+      <height>31</height>
      </rect>
     </property>
     <property name="text">
@@ -30,10 +30,10 @@
    <widget class="QPushButton" name="nappiNosta40">
     <property name="geometry">
      <rect>
-      <x>200</x>
+      <x>190</x>
       <y>320</y>
-      <width>80</width>
-      <height>21</height>
+      <width>81</width>
+      <height>31</height>
      </rect>
     </property>
     <property name="text">
@@ -43,10 +43,10 @@
    <widget class="QPushButton" name="nappiNosta60">
     <property name="geometry">
      <rect>
-      <x>310</x>
+      <x>290</x>
       <y>320</y>
-      <width>80</width>
-      <height>21</height>
+      <width>81</width>
+      <height>31</height>
      </rect>
     </property>
     <property name="text">
@@ -56,10 +56,10 @@
    <widget class="QPushButton" name="nappiNosta100">
     <property name="geometry">
      <rect>
-      <x>410</x>
+      <x>390</x>
       <y>320</y>
-      <width>80</width>
-      <height>21</height>
+      <width>91</width>
+      <height>31</height>
      </rect>
     </property>
     <property name="text">
@@ -69,10 +69,10 @@
    <widget class="QPushButton" name="nappiNosta500">
     <property name="geometry">
      <rect>
-      <x>630</x>
+      <x>610</x>
       <y>320</y>
-      <width>80</width>
-      <height>21</height>
+      <width>91</width>
+      <height>31</height>
      </rect>
     </property>
     <property name="text">
@@ -82,10 +82,10 @@
    <widget class="QPushButton" name="nappiNosta200">
     <property name="geometry">
      <rect>
-      <x>530</x>
+      <x>500</x>
       <y>320</y>
-      <width>80</width>
-      <height>21</height>
+      <width>91</width>
+      <height>31</height>
      </rect>
     </property>
     <property name="text">
@@ -95,7 +95,7 @@
    <widget class="QLabel" name="label">
     <property name="geometry">
      <rect>
-      <x>70</x>
+      <x>80</x>
       <y>260</y>
       <width>321</width>
       <height>51</height>
@@ -108,66 +108,66 @@
    <widget class="QLabel" name="etunimilbl">
     <property name="geometry">
      <rect>
-      <x>300</x>
-      <y>0</y>
+      <x>140</x>
+      <y>10</y>
       <width>231</width>
-      <height>31</height>
+      <height>21</height>
      </rect>
     </property>
     <property name="text">
-     <string/>
+     <string>etunimi</string>
     </property>
    </widget>
    <widget class="QLabel" name="sukunimilbl">
     <property name="geometry">
      <rect>
-      <x>310</x>
+      <x>140</x>
       <y>40</y>
       <width>241</width>
-      <height>31</height>
+      <height>21</height>
      </rect>
     </property>
     <property name="text">
-     <string/>
+     <string>sukunimi</string>
     </property>
    </widget>
    <widget class="QLabel" name="hetulbl">
     <property name="geometry">
      <rect>
-      <x>300</x>
-      <y>90</y>
+      <x>140</x>
+      <y>70</y>
       <width>251</width>
-      <height>41</height>
+      <height>21</height>
      </rect>
     </property>
     <property name="text">
-     <string/>
+     <string>hetu</string>
     </property>
    </widget>
    <widget class="QLabel" name="osoitelbl">
     <property name="geometry">
      <rect>
-      <x>310</x>
-      <y>140</y>
+      <x>140</x>
+      <y>100</y>
       <width>271</width>
       <height>21</height>
      </rect>
     </property>
     <property name="text">
-     <string/>
+     <string>osoite</string>
     </property>
    </widget>
    <widget class="QLabel" name="puhlbl">
     <property name="geometry">
      <rect>
-      <x>300</x>
-      <y>160</y>
+      <x>140</x>
+      <y>130</y>
       <width>271</width>
-      <height>41</height>
+      <height>21</height>
      </rect>
     </property>
     <property name="text">
-     <string/>
+     <string>puh</string>
     </property>
    </widget>
    <widget class="QLabel" name="label_2">
@@ -196,23 +196,23 @@
    <widget class="QLabel" name="saldolbl">
     <property name="geometry">
      <rect>
-      <x>320</x>
-      <y>230</y>
+      <x>140</x>
+      <y>160</y>
       <width>261</width>
-      <height>51</height>
+      <height>21</height>
      </rect>
     </property>
     <property name="text">
-     <string/>
+     <string>saldo</string>
     </property>
    </widget>
    <widget class="QPushButton" name="nostoNappi">
     <property name="geometry">
      <rect>
       <x>90</x>
-      <y>430</y>
-      <width>111</width>
-      <height>21</height>
+      <y>440</y>
+      <width>131</width>
+      <height>41</height>
      </rect>
     </property>
     <property name="text">

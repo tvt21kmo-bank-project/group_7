@@ -82,7 +82,8 @@ void kayttoliittyma::on_nappiNosta_clicked()
     timernostarahaa->start(1000);
 
     objNostarahaa->show();
-    objNostarahaa->naytaTiedot();
+    //objNostarahaa-> CDkysely();
+    objNostarahaa->naytaTiedot(); //tämän tekee cdkyselun jälkeen
     this ->close();
 }
 

@@ -26,6 +26,7 @@ public:
 
     QString saatuPIN;
     void naytaTiedot();
+    void CDkysely();
 
 private:
     Ui::nostarahaa *ui;
@@ -38,6 +39,10 @@ private:
     QString saldo;
     void laskuri(int maara);
     QMessageBox *msgBox;
+    nostarahaa *objNostarahaa;
+
+    int CredittaiDebit;
+    QString luottoraja;
 
 
 
