@@ -31,45 +31,31 @@ nostarahaa::~nostarahaa()
     timer = nullptr;
 }
 
-void nostarahaa::naytaTiedot()
-{
-
-    objTimer->start(1000);
-    QString site_url="http://localhost:3000/nosta_rahaa/"+saatuID;
-    QString credentials="newAdmin:newPass";
-    QNetworkRequest request((site_url));
-    request.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
-    QByteArray data = credentials.toLocal8Bit().toBase64();
-    QString headerData = "Basic " + data;
-    request.setRawHeader( "Authorization", headerData.toLocal8Bit() );
-    getManager = new QNetworkAccessManager(this);
-    connect(getManager, SIGNAL(finished (QNetworkReply*)), this, SLOT(haenimiSlot(QNetworkReply*)));
-    reply = getManager->get(request);
-
-}
 
 void nostarahaa::laskuri(int maara)
 {
     double vah = maara;
     double saldoSaldo = saldo.toDouble();
     double saldoLuotto = luottoraja.toDouble();
+    double tulosSaldo;
+    double tulosLuotto;
 
     qDebug()<<"Saldo on "<<saldoSaldo;
     qDebug() <<"Luotto on"<<saldoLuotto;
 
-    double tulosSaldo;
-    double tulosLuotto;
+
 
     if (CredittaiDebit == 2)
     {
       tulosSaldo = saldoSaldo - vah;
-      qDebug()<<tulosSaldo;
+      qDebug()<<tulosSaldo << "tilin saldo";
     }
     if(CredittaiDebit == 1)
     {
       tulosLuotto = saldoLuotto - vah;
-      qDebug()<<tulosLuotto;
+      qDebug()<<tulosLuotto <<"Tilin luotto";
     }
+
     if(CredittaiDebit == 2){
     if (saldoSaldo < maara)
     {
@@ -82,7 +68,6 @@ void nostarahaa::laskuri(int maara)
         QTimer::singleShot(10000, msgBox, SLOT(close()));
         msgBox->exec();
 
-
      if (msgBox->clickedButton() == close)
         {
             qDebug() <<"taa toimii";
@@ -94,10 +79,8 @@ void nostarahaa::laskuri(int maara)
         }
 } else{
         qDebug()<<"Saldo on "<<tulosSaldo;
-        qDebug() <<"Luotto on"<<saldoLuotto;
         QJsonObject json;
         json.insert("Saldo",tulosSaldo);
-        json.insert("luottoraja",saldoLuotto);
         QString site_url="http://localhost:3000/nosta_rahaa/"+saatuID;
         QString credentials="admin:1234";
         QNetworkRequest request((site_url));
@@ -130,7 +113,7 @@ void nostarahaa::laskuri(int maara)
             timerHuomautus->start(1000);
             connect(timerHuomautus,SIGNAL(timeout()), this, SLOT(huomautusTimer()));
             msgBox = new QMessageBox;
-            msgBox->setText("Tilillä ei ole näin paljon rahaa!");
+            msgBox->setText("Ei tarpeeksi luottoa!");
             QAbstractButton *close = msgBox->addButton(tr("Close"),(QMessageBox::ActionRole));
             QTimer::singleShot(10000, msgBox, SLOT(close()));
             msgBox->exec();
@@ -146,13 +129,10 @@ void nostarahaa::laskuri(int maara)
 
             }
     }else{
-
-            qDebug()<<"Saldo on "<<saldoSaldo;
             qDebug() <<"Luotto on"<<tulosLuotto;
             QJsonObject json;
-            json.insert("Saldo",saldoSaldo);
             json.insert("luottoraja",tulosLuotto);
-            QString site_url="http://localhost:3000/nosta_rahaa/"+saatuID;
+            QString site_url="http://localhost:3000/luotto/"+saatuID;
             QString credentials="admin:1234";
             QNetworkRequest request((site_url));
             request.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
@@ -177,46 +157,7 @@ void nostarahaa::laskuri(int maara)
             this->close();
         }
 
-}
-
-
-    /*else{
-        QJsonObject json;
-        if(CredittaiDebit == 2){
-            json.insert("Saldo",tulosSaldo);
-            json.insert("Luottoraja",saldoLuotto);
-        }
-        if(CredittaiDebit == 1){
-            json.insert("Saldo",saldoSaldo);
-            json.insert("Luottoraja",tulosLuotto);
-        }
-
-
-        QString site_url="http://localhost:3000/nosta_rahaa/"+saatuID;
-        QString credentials="admin:1234";
-        QNetworkRequest request((site_url));
-        request.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
-        QByteArray data = credentials.toLocal8Bit().toBase64();
-        QString headerData = "Basic " + data;
-        request.setRawHeader( "Authorization", headerData.toLocal8Bit() );
-
-        putManager = new QNetworkAccessManager(this);
-        connect(putManager, SIGNAL(finished (QNetworkReply*)), this, SLOT(updateSaldoSlot(QNetworkReply*)));
-        reply = putManager->put(request, QJsonDocument(json).toJson());
-
-        QMessageBox msgBox;
-        msgBox.setText("Nostit"+ QString::number(vah) + " €.");
-        msgBox.exec();
-
-        kayttoliittyma  *objKayttoliittyma;
-        objKayttoliittyma = new kayttoliittyma;
-        objKayttoliittyma->show();
-        timernostarahaa->stop();
-        timerCounternostarahaa = 0;
-        timerkayttoliittyma->start(1000);
-        this->close();
-    }*/
-
+    }
 }
 void nostarahaa::CDkysely()
 {
@@ -235,59 +176,33 @@ void nostarahaa::CDkysely()
                    qDebug() <<"debit valittu";
                    CredittaiDebit = 2;
                    timerCounternostarahaa = 0;
-                   disconnect(timerHuomautus,SIGNAL(timeout()), this, SLOT(huomautusTimer()));
-                   timernostarahaa->start(1000);
-                   connect(timernostarahaa,SIGNAL(timeout()), this, SLOT(menuTimerSlotNosta()));
-
                }
             if (msgBox->clickedButton() == credit)
                {
                    qDebug() <<"credit valittu";
                    CredittaiDebit = 1;
                    timerCounternostarahaa = 0;
-                   disconnect(timerHuomautus,SIGNAL(timeout()), this, SLOT(huomautusTimer()));
-                   timernostarahaa->start(1000);
-                   connect(timernostarahaa,SIGNAL(timeout()), this, SLOT(menuTimerSlotNosta()));
-
                }
 
-    }
+          }
     }
 
-
-void nostarahaa::menuTimerSlotNosta()
+void nostarahaa::naytaTiedot()
 {
-    timerCounternostarahaa++;
-    qDebug()<<timerCounternostarahaa;
-    if(timerCounternostarahaa == 10)
-    {
-        timernostarahaa->stop();
-        timerCounternostarahaa = 0;
-        disconnect(timernostarahaa,SIGNAL(timeout()), this, SLOT(menuTimerSlotNosta()));
-        kayttoliittyma  *objKayttoliittyma;
-        objKayttoliittyma = new kayttoliittyma;
-        objKayttoliittyma->show();
-        this->close();
-        timerkayttoliittyma->start(1000);
 
-    }
+    objTimer->start(1000);
+    QString site_url="http://localhost:3000/nosta_rahaa/"+saatuID;
+    QString credentials="newAdmin:newPass";
+    QNetworkRequest request((site_url));
+    request.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
+    QByteArray data = credentials.toLocal8Bit().toBase64();
+    QString headerData = "Basic " + data;
+    request.setRawHeader( "Authorization", headerData.toLocal8Bit() );
+    getManager = new QNetworkAccessManager(this);
+    connect(getManager, SIGNAL(finished (QNetworkReply*)), this, SLOT(haenimiSlot(QNetworkReply*)));
+    reply = getManager->get(request);
+
 }
-
-void nostarahaa::huomautusTimer()
-{
-    timerCounterHuomautus++;
-    qDebug()<<timerCounterHuomautus<<"jaajaahuomautus";
-    if(timerCounterHuomautus == 10)
-    {
-        timerHuomautus->stop();
-        timerCounterHuomautus = 0;
-        timernostarahaa->start(1000);
-        disconnect(timerHuomautus,SIGNAL(timeout()), this, SLOT(huomautusTimer()));
-    }
-}
-// ei jaksa laittaa mitään timeriä huomautushommaan, joKA sulkee sen
-
-
 void nostarahaa::haenimiSlot(QNetworkReply *reply)
 {
     response_data=reply->readAll();
@@ -309,7 +224,6 @@ void nostarahaa::haenimiSlot(QNetworkReply *reply)
        osoite+=(json_obj["osoite"].toString());
        saldo+=QString::number(json_obj["saldo"].toDouble(),'f',2);
        luottoraja+=QString::number(json_obj["luottoraja"].toDouble(),'f',2);
-       qDebug()<<luottoraja;
        this-> CDkysely();
        ui->etunimilbl->setText("Etunimi: "+etunimi);
        ui->sukunimilbl->setText("Sukunimi: "+sukunimi);
@@ -416,4 +330,35 @@ void nostarahaa::on_nappiSulje_clicked()
     objKayttoliittyma->show();
     this->close();
 
+}
+
+void nostarahaa::menuTimerSlotNosta()
+{
+    timerCounternostarahaa++;
+    qDebug()<<timerCounternostarahaa;
+    if(timerCounternostarahaa == 10)
+    {
+        timernostarahaa->stop();
+        timerCounternostarahaa = 0;
+        disconnect(timernostarahaa,SIGNAL(timeout()), this, SLOT(menuTimerSlotNosta()));
+        kayttoliittyma  *objKayttoliittyma;
+        objKayttoliittyma = new kayttoliittyma;
+        objKayttoliittyma->show();
+        this->close();
+        timerkayttoliittyma->start(1000);
+
+    }
+}
+
+void nostarahaa::huomautusTimer()
+{
+    timerCounterHuomautus++;
+    qDebug()<<timerCounterHuomautus<<"jaajaahuomautus";
+    if(timerCounterHuomautus == 10)
+    {
+        timerHuomautus->stop();
+        timerCounterHuomautus = 0;
+        timernostarahaa->start(1000);
+        disconnect(timerHuomautus,SIGNAL(timeout()), this, SLOT(huomautusTimer()));
+    }
 }

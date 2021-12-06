@@ -6,10 +6,10 @@ const nosta_rahaa={
     },
 
 
-update: function(id, pankkikortti, pankkitili, callback) {
+update: function(id, pankkitili,  callback) {
   return db.query(
-    'update pankkitili JOIN pankkikortti on pankkikortti.idPankkitili = pankkitili.idPankkitili set luottoraja=?, saldo=? where pankkikorttiID=?',
-    [pankkikortti.luottoraja, pankkitili.Saldo,  id],
+    'update pankkitili JOIN pankkikortti on pankkikortti.idPankkitili = pankkitili.idPankkitili set Saldo=? where pankkikorttiID=?',
+    [pankkitili.Saldo,  id],
     callback
     );
   }

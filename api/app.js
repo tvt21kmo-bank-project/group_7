@@ -10,6 +10,7 @@ var tilitapahtumaRouter = require('./routes/tilitapahtuma');
 var kirjautuminenRouter = require('./routes/kirjautuminen');
 var nimiRouter = require('./routes/nimi');
 var nosta_rahaaRouter = require('./routes/nosta_rahaa');
+var luottoRouter = require('./routes/luotto');
 
 var app = express();
 
@@ -24,6 +25,7 @@ app.use('/pankkikortti',pankkikorttiRouter);
 app.use('/pankkitili', pankkitiliRouter);
 app.use('/tilitapahtuma',tilitapahtumaRouter);
 app.use('/kirjautuminen',kirjautuminenRouter);
+app.use('/luotto',luottoRouter);
 app.use('/nimi',nimiRouter);
 app.use('/nosta_rahaa', nosta_rahaaRouter);
 
