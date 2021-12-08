@@ -29,18 +29,21 @@ SOURCES += \
         mainwindow.cpp \
     mainwindow2.cpp \
     muuttujat.cpp \
-    kayttoliittyma.cpp
+    kayttoliittyma.cpp \
+    lahjoita.cpp
 
 HEADERS += \
         mainwindow.h \
     mainwindow2.h \
     muuttujat.h \
-    kayttoliittyma.h
+    kayttoliittyma.h \
+    lahjoita.h
 
 FORMS += \
         mainwindow.ui \
     mainwindow2.ui \
-    kayttoliittyma.ui
+    kayttoliittyma.ui \
+    lahjoita.ui
 
 DISTFILES +=
 

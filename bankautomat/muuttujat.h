@@ -22,6 +22,8 @@ extern QTimer *timertilitapahtuma;
 extern short timerCountertilitapahtuma;
 extern QTimer *timerlahjoita;
 extern short timerCounterlahjoita;
+extern QTimer *timerHuomautus;
+extern short timerCounterHuomautus;
 
 extern short counterLoginfailedPekka;
 extern short counterLoginfailedMaija;

@@ -6,10 +6,10 @@
 #include <QNetworkAccessManager>
 #include <QJsonDocument>
 #include <QString>
-#include <QTimer>
 #include <QObject>
 
 #include "muuttujat.h"
+#include "lahjoita.h"
 
 namespace Ui {
 class kayttoliittyma;
@@ -41,6 +41,7 @@ private:
       QNetworkReply *reply;
       QByteArray response_data;
       int timerNumero;
+      lahjoita *objLahjoita;
 
 signals:
       void aikaLoppu();

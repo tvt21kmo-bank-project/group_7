@@ -10,6 +10,9 @@ kayttoliittyma::kayttoliittyma(QWidget *parent) :
 {
     ui->setupUi(this);
     connect(timerkayttoliittyma,SIGNAL(timeout()), this, SLOT(menuTimerSlotkayttoliittyma()));
+
+    objLahjoita = new lahjoita;
+
 }
 
 kayttoliittyma::~kayttoliittyma()
@@ -89,6 +92,8 @@ void kayttoliittyma::on_nappiLahjoita_clicked()
     timerkayttoliittyma->stop();
     disconnect(timerkayttoliittyma,SIGNAL(timeout()), this, SLOT(menuTimerSlotkayttoliittyma()));
     timerlahjoita->start(1000);
+    objLahjoita->show();
+    this->close();
 }
 
 void kayttoliittyma::on_nappiUloskirjaus_clicked()

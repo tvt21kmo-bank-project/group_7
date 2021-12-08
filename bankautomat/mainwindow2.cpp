@@ -143,9 +143,20 @@ void MainWindow2::loginSlot(QNetworkReply *reply)
             counterLoginfailedHyvant++;
             qDebug()<<"Hyväntekeväisyyden väärät yritykset: "<<counterLoginfailedHyvant;
         }
-        QMessageBox::StandardButton reply;
-        reply = QMessageBox::question(this, "Test", "Pankkikortin ID tai PIN-koodi väärin",QMessageBox::Ok|QMessageBox::Ok);
-        if (reply == QMessageBox::Ok) {
+        QMessageBox msg;
+        msg.setText("Käyttäjätunnus tai salasana väärin... \n Tämä ilmoitus sulkeutuu automaattisesti 10 sekunnissa");
+        int cnt = 10;
+        QTimer cntDown;
+        QObject::connect(&cntDown, &QTimer::timeout, [&msg,&cnt, &cntDown]()->void{
+                             if(--cnt < 0){
+                                 cntDown.stop();
+                                 msg.close();
+                             } else {
+                                 msg.setText(QString("Käyttäjätunnus tai salasana väärin... \n Tämä ilmoitus sulkeutuu automaattisesti %1 sekunnissa").arg(cnt));
+                             }
+                         });
+        cntDown.start(1000);
+        msg.exec();
                 disconnect(timer,SIGNAL(timeout()), this, SLOT(menuTimerSlot()));
                 QWidget *koti;
                 koti = new MainWindow;
@@ -154,7 +165,7 @@ void MainWindow2::loginSlot(QNetworkReply *reply)
                 timerCounter = 0;
         }
     }
-}
+
 
 void MainWindow2::menuTimerSlot()
 {
