@@ -15,10 +15,10 @@
     "express-basic-auth": "^1.2.0",
     "helmet": "^4.6.0",
     "morgan": "~1.9.1",
-    "mysql": "^2.18.1"
+    "mysql": "^2.18.1",
+    "path": "^0.12.7"
   },
   "main": "app.js",
-  "devDependencies": {},
   "repository": {
     "type": "git",
     "url": "git+https://github.com/tvt21kmo-bank-project/group_7.git"
