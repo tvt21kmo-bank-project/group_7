@@ -29,18 +29,21 @@ SOURCES += \
         mainwindow.cpp \
     mainwindow2.cpp \
     muuttujat.cpp \
-    kayttoliittyma.cpp
+    kayttoliittyma.cpp \
+    nayta_saldo.cpp
 
 HEADERS += \
         mainwindow.h \
     mainwindow2.h \
     muuttujat.h \
-    kayttoliittyma.h
+    kayttoliittyma.h \
+    nayta_saldo.h
 
 FORMS += \
         mainwindow.ui \
     mainwindow2.ui \
-    kayttoliittyma.ui
+    kayttoliittyma.ui \
+    nayta_saldo.ui
 
 DISTFILES +=
 

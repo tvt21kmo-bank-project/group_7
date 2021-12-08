@@ -10,6 +10,7 @@
 #include <QObject>
 
 #include "muuttujat.h"
+#include "nayta_saldo.h"
 
 namespace Ui {
 class kayttoliittyma;
@@ -40,6 +41,7 @@ private:
       QNetworkAccessManager *getManager;
       QNetworkReply *reply;
       QByteArray response_data;
+      nayta_saldo *objNaytaSaldo;
       int timerNumero;
 
 signals:

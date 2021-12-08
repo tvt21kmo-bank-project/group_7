@@ -73,6 +73,10 @@ void kayttoliittyma::on_nappiSaldo_clicked()
     timerkayttoliittyma->stop();
     disconnect(timerkayttoliittyma,SIGNAL(timeout()), this, SLOT(menuTimerSlotkayttoliittyma()));
     timernaytasaldo->start(1000);
+
+    objNaytaSaldo->show();
+    /**objNaytaSaldo->naytaTiedot();*/
+    this ->close();
 }
 
 void kayttoliittyma::on_nappiTilitapahtuma_clicked()

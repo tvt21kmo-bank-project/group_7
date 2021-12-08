@@ -9,6 +9,7 @@ var pankkitiliRouter = require('./routes/pankkitili');
 var tilitapahtumaRouter = require('./routes/tilitapahtuma');
 var kirjautuminenRouter = require('./routes/kirjautuminen');
 var nimiRouter = require('./routes/nimi');
+var nimiRouter = require('./routes/saldo');
 
 var app = express();
 
@@ -24,5 +25,6 @@ app.use('/pankkitili', pankkitiliRouter);
 app.use('/tilitilitapahtuma',tilitapahtumaRouter);
 app.use('/kirjautuminen',kirjautuminenRouter);
 app.use('/nimi',nimiRouter);
+app.use('/saldo',saldoRouter);
 
 module.exports = app;

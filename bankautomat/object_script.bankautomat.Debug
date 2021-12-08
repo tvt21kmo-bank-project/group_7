@@ -1,0 +1,10 @@
+debug/main.o
+debug/mainwindow2.o
+debug/muuttujat.o
+debug/kayttoliittyma.o
+debug/nayta_saldo.o
+debug/qrc_resurssit.o
+debug/moc_mainwindow.o
+debug/moc_mainwindow2.o
+debug/moc_kayttoliittyma.o
+debug/moc_nayta_saldo.o
