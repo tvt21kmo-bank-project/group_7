@@ -10,6 +10,7 @@ router.post('/lahjoitus', function(request, response){
         else{
             response.json(dbResult.affectedRows);
         }
+        module.exports = router;
     })
     bank.siirto(request.body, function(err, dbResult){
         if(err){
@@ -18,6 +19,7 @@ router.post('/lahjoitus', function(request, response){
         else{
             response.json(dbResult.affectedRows);
         }
+        module.exports = router;
     })
     bank.tilitapahtuma(request.body, function(err, dbResult){
         if(err){
@@ -26,9 +28,9 @@ router.post('/lahjoitus', function(request, response){
         else{
             response.json(dbResult.affectedRows);
         }
+        module.exports = router;
     })
-}
-);
+});
 
 
 module.exports = router;
