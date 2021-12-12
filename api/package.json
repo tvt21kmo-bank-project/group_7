@@ -18,10 +18,8 @@
   "main": "app.js",
   "devDependencies": {},
     "mysql": "^2.18.1",
-    "path": "^0.12.7"
-  },
-  "main": "app.js",
-  "repository": {
+    "path": "^0.12.7",
+    "repository": {
     "type": "git",
     "url": "git+https://github.com/tvt21kmo-bank-project/group_7.git"
   },
@@ -33,3 +31,4 @@
   "homepage": "https://github.com/tvt21kmo-bank-project/group_7#readme",
   "description": ""
 }
+
