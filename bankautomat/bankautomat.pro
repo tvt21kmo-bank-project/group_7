@@ -30,19 +30,22 @@ SOURCES += \
     mainwindow2.cpp \
     muuttujat.cpp \
     kayttoliittyma.cpp \
-    nostarahaa.cpp
+    nostarahaa.cpp\
+    tilitapahtumat.cpp
 
 HEADERS += \
         mainwindow.h \
     mainwindow2.h \
     muuttujat.h \
     kayttoliittyma.h \
-    nostarahaa.h
+    nostarahaa.h\
+    tilitapahtumat.h
 
 FORMS += \
         mainwindow.ui \
     mainwindow2.ui \
     kayttoliittyma.ui \
-    nostarahaa.ui
+    nostarahaa.ui\
+    tilitapahtumat.ui
 
 DISTFILES +=
