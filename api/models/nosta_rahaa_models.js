@@ -5,6 +5,12 @@ const nosta_rahaa={
       return db.query('SELECT etunimi, sukunimi, hetu, puhelinnumero, osoite, saldo, luottoraja FROM pankkikortti JOIN kayttaja ON kayttaja.idkayttaja = pankkikortti.idkayttaja JOIN pankkitili ON pankkikortti.idkayttaja = pankkitili.idkayttaja WHERE pankkikorttiID = ?',[id], callback); 
     },
 
+  add: function(tilitapahtuma, callback) {
+      return db.query(
+      'insert into tilitapahtuma values(NULL, now(),"Nosto"?,?)',
+    [tilitapahtuma.idTilitapahtuma, tilitapahtuma.pvm_klo, tilitapahtuma.tapahtuma, tilitapahtuma.summa, tilitapahtuma.pankkikorttiID], callback);
+    },
+
 
 update: function(id, pankkitili,  callback) {
   return db.query(

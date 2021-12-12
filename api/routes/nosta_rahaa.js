@@ -24,6 +24,17 @@ function(request, response){
     }
 });
 
+router.post('/', 
+function(request, response) {
+  nosta_rahaa.add(request.body, function(err, dbResult) {
+    if (err) {
+      response.json(err);
+    } else {
+      response.json(request.body);
+    }
+  });
+});
+
 router.put('/:id', 
 function(request, response) {
   nosta_rahaa.update(request.params.id, request.body, function(err, dbResult) {
