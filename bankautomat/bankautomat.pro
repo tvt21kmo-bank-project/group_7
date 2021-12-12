@@ -30,20 +30,26 @@ SOURCES += \
     mainwindow2.cpp \
     muuttujat.cpp \
     kayttoliittyma.cpp \
-    lahjoita.cpp
+    lahjoita.cpp \
+    nostarahaa.cpp \
+    nayta_saldo.cpp
 
 HEADERS += \
         mainwindow.h \
     mainwindow2.h \
     muuttujat.h \
     kayttoliittyma.h \
-    lahjoita.h
+    lahjoita.h \
+    nostarahaa.h \
+    nayta_saldo.h
 
 FORMS += \
         mainwindow.ui \
     mainwindow2.ui \
     kayttoliittyma.ui \
-    lahjoita.ui
+    lahjoita.ui \
+    nostarahaa.ui \
+    nayta_saldo.ui
 
 DISTFILES +=
 

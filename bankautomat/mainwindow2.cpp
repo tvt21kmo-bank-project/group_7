@@ -144,8 +144,8 @@ void MainWindow2::loginSlot(QNetworkReply *reply)
             qDebug()<<"Hyväntekeväisyyden väärät yritykset: "<<counterLoginfailedHyvant;
         }
         QMessageBox msg;
-        msg.setText("Käyttäjätunnus tai salasana väärin... \n Tämä ilmoitus sulkeutuu automaattisesti 10 sekunnissa");
-        int cnt = 10;
+        msg.setText("Käyttäjätunnus tai salasana väärin... \n Tämä ilmoitus sulkeutuu automaattisesti 5 sekunnissa");
+        int cnt = 5;
         QTimer cntDown;
         QObject::connect(&cntDown, &QTimer::timeout, [&msg,&cnt, &cntDown]()->void{
                              if(--cnt < 0){

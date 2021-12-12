@@ -51,8 +51,8 @@ void MainWindow::on_nappiok_clicked()
     if((saatuID == "12" && counterLoginfailedPekka == 3) || (saatuID == "76" && counterLoginfailedMaija == 3) || (saatuID == "21" && counterLoginfailedHarry == 3) || (saatuID == "31" && counterLoginfailedHilleri == 3) || (saatuID == "65" && counterLoginfailedHyvant == 3))
     {
         QMessageBox msg;
-        msg.setText("Kirjautumista yritetty liian monesti väärin, jonka myötä tilisi on lukittu, ole yhteydessä pankkiisi \n Tämä ilmoitus sulkeutuu automaattisesti 10 sekunnissa");
-        int cnt = 10;
+        msg.setText("Kirjautumista yritetty liian monesti väärin, jonka myötä tilisi on lukittu, ole yhteydessä pankkiisi \n Tämä ilmoitus sulkeutuu automaattisesti 8 sekunnissa");
+        int cnt = 8;
         QTimer cntDown;
         QObject::connect(&cntDown, &QTimer::timeout, [&msg,&cnt, &cntDown]()->void{
                              if(--cnt < 0){

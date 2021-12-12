@@ -4,9 +4,13 @@ INPUT(
 ./release/muuttujat.o
 ./release/kayttoliittyma.o
 ./release/lahjoita.o
+./release/nostarahaa.o
+./release/nayta_saldo.o
 ./release/qrc_resurssit.o
 ./release/moc_mainwindow.o
 ./release/moc_mainwindow2.o
 ./release/moc_kayttoliittyma.o
 ./release/moc_lahjoita.o
+./release/moc_nostarahaa.o
+./release/moc_nayta_saldo.o
 );

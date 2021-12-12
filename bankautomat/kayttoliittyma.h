@@ -8,8 +8,10 @@
 #include <QString>
 #include <QObject>
 
+#include "nostarahaa.h"
 #include "muuttujat.h"
 #include "lahjoita.h"
+#include "nayta_saldo.h"
 
 namespace Ui {
 class kayttoliittyma;
@@ -42,6 +44,8 @@ private:
       QByteArray response_data;
       int timerNumero;
       lahjoita *objLahjoita;
+      nostarahaa *objNostarahaa;
+      nayta_saldo *objNaytaSaldo;
 
 signals:
       void aikaLoppu();

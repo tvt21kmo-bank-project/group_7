@@ -10,9 +10,9 @@ kayttoliittyma::kayttoliittyma(QWidget *parent) :
 {
     ui->setupUi(this);
     connect(timerkayttoliittyma,SIGNAL(timeout()), this, SLOT(menuTimerSlotkayttoliittyma()));
-
     objLahjoita = new lahjoita;
-
+    objNostarahaa = new nostarahaa;
+    objNaytaSaldo = new nayta_saldo;
 }
 
 kayttoliittyma::~kayttoliittyma()
@@ -67,7 +67,11 @@ void kayttoliittyma::on_nappiNosta_clicked()
     timerCounterkayttoliittyma = 0;
     timerkayttoliittyma->stop();
     disconnect(timerkayttoliittyma,SIGNAL(timeout()), this, SLOT(menuTimerSlotkayttoliittyma()));
+    timerHuomautus->start(1000);
     timernostarahaa->start(1000);
+    objNostarahaa->show();
+    objNostarahaa->naytaTiedot();
+    this ->close();
 }
 
 void kayttoliittyma::on_nappiSaldo_clicked()
@@ -76,6 +80,8 @@ void kayttoliittyma::on_nappiSaldo_clicked()
     timerkayttoliittyma->stop();
     disconnect(timerkayttoliittyma,SIGNAL(timeout()), this, SLOT(menuTimerSlotkayttoliittyma()));
     timernaytasaldo->start(1000);
+    objNaytaSaldo->show();
+    this->close();
 }
 
 void kayttoliittyma::on_nappiTilitapahtuma_clicked()

@@ -1,4 +1,7 @@
 const express = require('express');
+const { append } = require('express/lib/response');
+const { Forever } = require('forever');
+const { start } = require('forever/lib/forever/cli');
 const router = express.Router();
 const bank = require('../models/pankki_model');
 
@@ -10,7 +13,6 @@ router.post('/lahjoitus', function(request, response){
         else{
             response.json(dbResult.affectedRows);
         }
-        module.exports = router;
     })
     bank.siirto(request.body, function(err, dbResult){
         if(err){
@@ -19,7 +21,6 @@ router.post('/lahjoitus', function(request, response){
         else{
             response.json(dbResult.affectedRows);
         }
-        module.exports = router;
     })
     bank.tilitapahtuma(request.body, function(err, dbResult){
         if(err){
@@ -28,8 +29,35 @@ router.post('/lahjoitus', function(request, response){
         else{
             response.json(dbResult.affectedRows);
         }
-        module.exports = router;
     })
+    bank.tilitapahtumalahj(request.body, function(err, dbResult){
+        if(err){
+            response.json(err);
+        }
+        else{
+            response.json(dbResult.affectedRows);
+        }
+    })
+});
+router.get('/:id',
+function(request, response){
+    if(request.params.id){
+      bank.tarkistus(request.params.id, function(err, dbResult){
+            if (err){
+                response.json(err);
+            } else{
+                response.json(dbResult);
+            }
+        });
+    } else{
+      bank.getAll(function(err, dbResult){
+            if (err){
+                response.json(err);
+            } else{
+                response.json(dbResult);
+            }
+        });
+    }
 });
 
 

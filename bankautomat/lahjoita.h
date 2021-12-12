@@ -7,6 +7,7 @@
 #include <QJsonDocument>
 #include <QString>
 #include <QObject>
+#include <QMessageBox>
 
 #include "muuttujat.h"
 
@@ -27,13 +28,19 @@ private:
     QNetworkAccessManager *debitManager;
     QNetworkReply *reply;
     QByteArray response_data;
+    QString saldo;
+    QMessageBox *msgBox;
+    QNetworkAccessManager *getManager;
+    QNetworkAccessManager *putManager;
 
 private slots:
+    void haenimiSlot(QNetworkReply *reply);
     void nappiapainettu();
     void on_nappiPalaa_clicked();
     void on_nappiLahjoita_clicked();
     void on_nappikorjaalahj_clicked();
     void lahjoitaSlot(QNetworkReply *reply);
+    void laskuri(int maara);
 
 public slots:
     void menuTimerSlotlahjoita();

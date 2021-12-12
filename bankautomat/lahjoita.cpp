@@ -62,29 +62,88 @@ void lahjoita::menuTimerSlotlahjoita()
 
 void lahjoita::on_nappiLahjoita_clicked()
 {
-    QString saatuLahjoitus;
-    saatuLahjoitus = (ui->hankiSummalahj->text());
-    QJsonObject json;
-    qDebug()<<saatuLahjoitus<<saatuID;
-    json.insert("summa", saatuLahjoitus);
-    json.insert("pankkikortti", saatuID);
-    json.insert("saatusumma", saatuLahjoitus);
-    json.insert("maara", saatuLahjoitus);
-    json.insert("lahjoittaja", saatuID);
-    timerCounterlahjoita = 0;
-    QString site_url="http://localhost:3000/bank/lahjoitus";
+    QString site_url="http://localhost:3000/bank/"+saatuID;
     QString credentials="newAdmin:newPass";
     QNetworkRequest request((site_url));
     request.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
     QByteArray data = credentials.toLocal8Bit().toBase64();
     QString headerData = "Basic " + data;
     request.setRawHeader( "Authorization", headerData.toLocal8Bit() );
-    debitManager = new QNetworkAccessManager(this);
-    connect(debitManager, SIGNAL(finished (QNetworkReply*)), this, SLOT(lahjoitaSlot(QNetworkReply*)));
-    reply = debitManager->post(request, QJsonDocument(json).toJson());
-    foreach(QLineEdit* le, findChildren<QLineEdit*>()) {
-       le->clear();
+    getManager = new QNetworkAccessManager(this);
+    connect(getManager, SIGNAL(finished (QNetworkReply*)), this, SLOT(haenimiSlot(QNetworkReply*)));
+    reply = getManager->get(request);
+    timerlahjoita->stop();
+    timerCounterlahjoita = 0;
+}
+
+void lahjoita::haenimiSlot(QNetworkReply *reply)
+{
+    response_data=reply->readAll();
+    qDebug()<<saatuID+response_data;
+    QJsonDocument json_doc = QJsonDocument::fromJson(response_data);
+    QJsonArray json_array = json_doc.array();
+
+foreach (const QJsonValue &value, json_array) {
+   double nosto = (ui->hankiSummalahj->text().toDouble());
+   QJsonObject json_obj = value.toObject();
+   saldo+=QString::number(json_obj["saldo"].toDouble(),'f',2);
+   this->laskuri(nosto);
     }
+}
+
+void lahjoita::laskuri(int maara)
+{
+    double vah = maara;
+    double saldoSaldo = saldo.toDouble();
+    double tulosSaldo;
+    tulosSaldo = saldoSaldo - vah;
+    qDebug()<<tulosSaldo << " tilin saldo";
+
+    if (saldoSaldo < maara)
+    {
+        disconnect(timerlahjoita,SIGNAL(timeout()), this, SLOT(menuTimerSlotlahjoita()));
+        timerHuomautus->start(1000);
+        connect(timerHuomautus,SIGNAL(timeout()), this, SLOT(huomautusTimer()));
+        msgBox = new QMessageBox;
+        msgBox->setText("Tilillä ei ole näin paljon rahaa! \n Tämä ilmoitus sulkeutuu automaattisesti.");
+        QAbstractButton *close = msgBox->addButton(tr("Close"),(QMessageBox::ActionRole));
+        QTimer::singleShot(5000, msgBox, SLOT(close()));
+        msgBox->exec();
+
+     if (msgBox->clickedButton() == close)
+        {
+            qDebug() <<"taa toimii";
+            timerCounterlahjoita = 0;
+            disconnect(timerHuomautus,SIGNAL(timeout()), this, SLOT(huomautusTimer()));
+            timerlahjoita->start(1000);
+            connect(timerlahjoita,SIGNAL(timeout()), this, SLOT(menuTimerSlotlahjoita()));
+        }
+} else{
+        QString saatuLahjoitus;
+        saatuLahjoitus = (ui->hankiSummalahj->text());
+        QJsonObject json;
+        qDebug()<<saatuLahjoitus<<saatuID;
+        json.insert("lahjmaara", saatuLahjoitus);
+        json.insert("summa", saatuLahjoitus);
+        json.insert("pankkikortti", saatuID);
+        json.insert("saatusumma", saatuLahjoitus);
+        json.insert("maara", saatuLahjoitus);
+        json.insert("lahjoittaja", saatuID);
+        timerCounterlahjoita = 0;
+        QString site_url="http://localhost:3000/bank/lahjoitus";
+        QString credentials="newAdmin:newPass";
+        QNetworkRequest request((site_url));
+        request.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
+        QByteArray data = credentials.toLocal8Bit().toBase64();
+        QString headerData = "Basic " + data;
+        request.setRawHeader( "Authorization", headerData.toLocal8Bit() );
+        debitManager = new QNetworkAccessManager(this);
+        connect(debitManager, SIGNAL(finished (QNetworkReply*)), this, SLOT(lahjoitaSlot(QNetworkReply*)));
+        reply = debitManager->post(request, QJsonDocument(json).toJson());
+        foreach(QLineEdit* le, findChildren<QLineEdit*>()) {
+        le->clear();
+            }
+        }
 }
 
 void lahjoita::lahjoitaSlot(QNetworkReply*)
@@ -94,8 +153,8 @@ void lahjoita::lahjoitaSlot(QNetworkReply*)
     QJsonDocument json_doc = QJsonDocument::fromJson(response_data);
     QJsonArray json_array = json_doc.array();
     QMessageBox msg;
-    msg.setText("Kiitos lahjoituksestasi! \n Tämä ilmoitus sulkeutuu automaattisesti 10 sekunnissa");
-    int cnt = 10;
+    msg.setText("Kiitos lahjoituksestasi! \n Tämä ilmoitus sulkeutuu automaattisesti 5 sekunnissa");
+    int cnt = 5;
     QTimer cntDown;
     QObject::connect(&cntDown, &QTimer::timeout, [&msg,&cnt, &cntDown]()->void{
                          if(--cnt < 0){
