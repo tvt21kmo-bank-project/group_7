@@ -9,7 +9,7 @@ var pankkitiliRouter = require('./routes/pankkitili');
 var tilitapahtumaRouter = require('./routes/tilitapahtuma');
 var kirjautuminenRouter = require('./routes/kirjautuminen');
 var nimiRouter = require('./routes/nimi');
-var nimiRouter = require('./routes/saldo');
+var saldoRouter = require('./routes/saldo');
 
 var app = express();
 

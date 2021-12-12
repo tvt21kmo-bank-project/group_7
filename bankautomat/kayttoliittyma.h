@@ -6,7 +6,6 @@
 #include <QNetworkAccessManager>
 #include <QJsonDocument>
 #include <QString>
-#include <QTimer>
 #include <QObject>
 
 #include "muuttujat.h"

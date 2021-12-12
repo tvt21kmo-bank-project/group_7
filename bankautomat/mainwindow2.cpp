@@ -34,6 +34,8 @@ MainWindow2::MainWindow2(QWidget *parent) :
 MainWindow2::~MainWindow2()
 {
     delete ui;
+    delete objKayttoliittyma;
+
 }
 
 void MainWindow2::nappiapainettu()
@@ -183,4 +185,3 @@ void MainWindow2::on_nappiLopeta_clicked()
     koti->show();
     this->close();
 }
-

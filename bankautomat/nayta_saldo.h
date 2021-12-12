@@ -7,8 +7,8 @@
 #include <QJsonDocument>
 #include <QString>
 #include <QTimer>
+#include <QObject>
 
-#define BUILD_DLL
 #include "muuttujat.h"
 
 namespace Ui {
@@ -21,34 +21,28 @@ class nayta_saldo : public QMainWindow
 
 public:
     explicit nayta_saldo(QWidget *parent = 0);
-    /*QString number(double saldo, char format, int precision);*/
     ~nayta_saldo();
 
-private slots:
-    void on_nappiPalaa_clicked();
-    void SaldoValittu(QNetworkReply *reply);
-    void on_nappiSaldoni_clicked();
+    QString saatuPIN;
+    void saldoValikko();
 
 private:
     Ui::nayta_saldo *ui;
-    QTimer *objTimer3;
-    short timerCounter3;
-
     QNetworkAccessManager *getManager;
     QNetworkReply *reply;
     QByteArray response_data;
 
     nayta_saldo *objNaytaSaldo;
+    QString saldo;
+
+private slots:
+    void on_nappiPalaa_clicked();
+    void saldoValittu(QNetworkReply *reply);
+    void on_nappiSaldoni_clicked();
 
 public slots:
-      void menuTimerSlot3();
-      void resetTimer3(int);
-
-
-
-signals:
-      void aikaLoppu3 ();
-
+    void menuTimerSlotNaytaSaldo();
+    void huomautusTimer();
 };
 
 

@@ -90,7 +90,6 @@
     <property name="font">
      <font>
       <pointsize>20</pointsize>
-      <weight>75</weight>
       <bold>true</bold>
      </font>
     </property>
@@ -558,7 +557,6 @@
     <property name="font">
      <font>
       <pointsize>20</pointsize>
-      <weight>75</weight>
       <bold>true</bold>
      </font>
     </property>
@@ -578,7 +576,6 @@
     <property name="font">
      <font>
       <pointsize>20</pointsize>
-      <weight>75</weight>
       <bold>true</bold>
      </font>
     </property>
@@ -604,7 +601,6 @@
     <property name="font">
      <font>
       <pointsize>20</pointsize>
-      <weight>75</weight>
       <bold>true</bold>
      </font>
     </property>
@@ -630,7 +626,6 @@
     <property name="font">
      <font>
       <pointsize>20</pointsize>
-      <weight>75</weight>
       <bold>true</bold>
      </font>
     </property>
@@ -656,7 +651,6 @@
     <property name="font">
      <font>
       <pointsize>20</pointsize>
-      <weight>75</weight>
       <bold>true</bold>
      </font>
     </property>
@@ -682,7 +676,6 @@
     <property name="font">
      <font>
       <pointsize>20</pointsize>
-      <weight>75</weight>
       <bold>true</bold>
      </font>
     </property>
@@ -708,7 +701,6 @@
     <property name="font">
      <font>
       <pointsize>20</pointsize>
-      <weight>75</weight>
       <bold>true</bold>
      </font>
     </property>
@@ -734,7 +726,6 @@
     <property name="font">
      <font>
       <pointsize>20</pointsize>
-      <weight>75</weight>
       <bold>true</bold>
      </font>
     </property>
@@ -763,7 +754,6 @@
     <property name="font">
      <font>
       <pointsize>20</pointsize>
-      <weight>75</weight>
       <bold>true</bold>
      </font>
     </property>
@@ -802,7 +792,6 @@
     <property name="font">
      <font>
       <pointsize>20</pointsize>
-      <weight>75</weight>
       <bold>true</bold>
      </font>
     </property>
@@ -828,7 +817,6 @@
     <property name="font">
      <font>
       <pointsize>20</pointsize>
-      <weight>75</weight>
       <bold>true</bold>
      </font>
     </property>
@@ -854,7 +842,6 @@
     <property name="font">
      <font>
       <pointsize>20</pointsize>
-      <weight>75</weight>
       <bold>true</bold>
      </font>
     </property>
@@ -889,7 +876,6 @@
     <property name="font">
      <font>
       <pointsize>43</pointsize>
-      <weight>75</weight>
       <bold>true</bold>
      </font>
     </property>
@@ -921,7 +907,6 @@
     <property name="font">
      <font>
       <pointsize>13</pointsize>
-      <weight>75</weight>
       <bold>true</bold>
      </font>
     </property>
@@ -1386,7 +1371,6 @@
     <property name="font">
      <font>
       <pointsize>26</pointsize>
-      <weight>75</weight>
       <bold>true</bold>
      </font>
     </property>
