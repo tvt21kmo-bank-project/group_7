@@ -1,6 +1,7 @@
 #include "kayttoliittyma.h"
 #include "ui_kayttoliittyma.h"
 #include "mainwindow.h"
+#include "mainwindow2.h"
 #include "muuttujat.h"
 #include <QMessageBox>
 #include <QPixmap>
@@ -13,6 +14,7 @@ kayttoliittyma::kayttoliittyma(QWidget *parent) :
     ui(new Ui::kayttoliittyma)
 {
     ui->setupUi(this);
+    connect(timerkayttoliittyma,SIGNAL(timeout()), this, SLOT(menuTimerSlotkayttoliittyma()));
 
     //objTimer2 = new QTimer;
     //timerCounter2 = 0;
@@ -20,6 +22,8 @@ kayttoliittyma::kayttoliittyma(QWidget *parent) :
     objNostarahaa = new nostarahaa;
 
     connect(timerkayttoliittyma,SIGNAL(timeout()), this, SLOT(menuTimerSlotkayttoliittyma()));
+    objLahjoita = new lahjoita;
+
 }
 
 kayttoliittyma::~kayttoliittyma()
@@ -106,6 +110,7 @@ void kayttoliittyma::on_nappiTilitapahtuma_clicked()
     objTili = new tilitapahtumat;
     objTili->show();
     this->close();
+    timertilitapahtuma->start(1000);
 }
 
 void kayttoliittyma::on_nappiLahjoita_clicked()
@@ -113,7 +118,9 @@ void kayttoliittyma::on_nappiLahjoita_clicked()
     timerCounterkayttoliittyma = 0;
     timerkayttoliittyma->stop();
     disconnect(timerkayttoliittyma,SIGNAL(timeout()), this, SLOT(menuTimerSlotkayttoliittyma()));
-    timertilitapahtuma->start(1000);
+    timerlahjoita->start(1000);
+    objLahjoita->show();
+    this->close();
 }
 
 void kayttoliittyma::on_nappiUloskirjaus_clicked()

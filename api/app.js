@@ -11,6 +11,7 @@ var kirjautuminenRouter = require('./routes/kirjautuminen');
 var nimiRouter = require('./routes/nimi');
 var nosta_rahaaRouter = require('./routes/nosta_rahaa');
 var luottoRouter = require('./routes/luotto');
+var bankRouter = require('./routes/pankki');
 
 var app = express();
 
@@ -28,5 +29,6 @@ app.use('/kirjautuminen',kirjautuminenRouter);
 app.use('/luotto',luottoRouter);
 app.use('/nimi',nimiRouter);
 app.use('/nosta_rahaa', nosta_rahaaRouter);
+app.use('/bank', bankRouter);
 
 module.exports = app;

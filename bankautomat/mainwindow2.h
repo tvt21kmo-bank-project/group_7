@@ -34,19 +34,12 @@ private slots:
 
 private:
     Ui::MainWindow2 *ui;
-    //QTimer *objTimer;
-    //short timerCounter;
     QNetworkAccessManager *loginManager;
     QNetworkReply *reply;
     kayttoliittyma *objKayttoliittyma;
 
 public slots:
     void menuTimerSlot();
-    //void resetTimer(int);
-
-/*signals:
-    void aikaLoppu();*/
-
 };
 
 #endif // MAINWINDOW2_H

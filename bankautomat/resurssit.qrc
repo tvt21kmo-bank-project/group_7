@@ -1,5 +1,6 @@
 <!DOCTYPE RCC><RCC version="1.0">
 <qresource>
     <file>resources/img/logo.jpg</file>
+    <file>resources/img/lahjoita.jpg</file>
 </qresource>
 </RCC>

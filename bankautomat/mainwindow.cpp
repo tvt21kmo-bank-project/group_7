@@ -1,8 +1,5 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
-#include <QPixmap>
-
-#include "muuttujat.h"
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -11,6 +8,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->setupUi(this);
     objPIN = new MainWindow2;
     QPixmap pix("C:/Users/Omistaja/Banksimul/group_7/bankautomat/resources/img/logo.jpg");
+    QPixmap pix(":/resources/img/logo.jpg");
     int w = ui->label->width();
     int h = ui->label->height();
     ui->label->setPixmap(pix.scaled(w,h,Qt::KeepAspectRatio));
@@ -24,8 +22,6 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->numero7, SIGNAL(released()),this,SLOT(nappiapainettu()));
     connect(ui->numero8, SIGNAL(released()),this,SLOT(nappiapainettu()));
     connect(ui->numero9, SIGNAL(released()),this,SLOT(nappiapainettu()));
-
-
 }
 
 MainWindow::~MainWindow()
@@ -39,7 +35,6 @@ MainWindow::~MainWindow()
     timernostarahaa=nullptr;
 }
 
-
 void MainWindow::nappiapainettu()
 {
     QPushButton *button = (QPushButton*)sender();
@@ -48,7 +43,6 @@ void MainWindow::nappiapainettu()
     numero = (ui->hankiID->text() + button->text()).toDouble();
     uusinumero = QString::number(numero);
     ui->hankiID->setText(uusinumero);
-
 }
 
 void MainWindow::on_nappikorjaa_clicked()
@@ -58,18 +52,27 @@ void MainWindow::on_nappikorjaa_clicked()
     }
 }
 
-
 void MainWindow::on_nappiok_clicked()
 {
     saatuID = (ui->hankiID->text());
-    QMessageBox::StandardButton reply;
     if((saatuID == "12" && counterLoginfailedPekka == 3) || (saatuID == "76" && counterLoginfailedMaija == 3) || (saatuID == "21" && counterLoginfailedHarry == 3) || (saatuID == "31" && counterLoginfailedHilleri == 3) || (saatuID == "65" && counterLoginfailedHyvant == 3))
     {
-        reply = QMessageBox::question(this, "Test", "PIN-koodia yritetty 3 kertaa väärin, jonka takia tilisi on lukittu. Ole yhteydessä pankkiisi.", QMessageBox::Ok|QMessageBox::Ok);
-        if (reply == QMessageBox::Ok)
-        {
-            ui->hankiID->setText("");
-        }
+        QMessageBox msg;
+        msg.setText("Kirjautumista yritetty liian monesti väärin, jonka myötä tilisi on lukittu, ole yhteydessä pankkiisi \n Tämä ilmoitus sulkeutuu automaattisesti 10 sekunnissa");
+        int cnt = 10;
+        QTimer cntDown;
+        QObject::connect(&cntDown, &QTimer::timeout, [&msg,&cnt, &cntDown]()->void{
+                             if(--cnt < 0){
+                                 cntDown.stop();
+                                 msg.close();
+                             } else {
+                                 msg.setText(QString("Kirjautumista yritetty liian monesti väärin, jonka myötä tilisi on lukittu, ole yhteydessä pankkiisi \n Tämä ilmoitus sulkeutuu automaattisesti %1 sekunnissa").arg(cnt));
+                             }
+                         });
+        cntDown.start(1000);
+        msg.exec();
+        foreach(QLineEdit* le, findChildren<QLineEdit*>())
+           le->clear();
     }
     else
     {

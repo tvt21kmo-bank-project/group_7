@@ -1,5 +1,5 @@
-#include "mainwindow.h"
 #include "mainwindow2.h"
+#include "mainwindow.h"
 #include "ui_mainwindow2.h"
 #include "mainwindow.cpp"
 #include <QMessageBox>
@@ -13,6 +13,7 @@ MainWindow2::MainWindow2(QWidget *parent) :
 {
     ui->setupUi(this);
     QPixmap pix("C:/Users/Omistaja/Banksimul/group_7/bankautomat/resources/img/logo.jpg");
+    QPixmap pix(":/resources/img/logo.jpg");
     int w = ui->label->width();
     int h = ui->label->height();
     ui->label->setPixmap(pix.scaled(w,h,Qt::KeepAspectRatio));
@@ -149,9 +150,20 @@ void MainWindow2::loginSlot(QNetworkReply *reply)
             counterLoginfailedHyvant++;
             qDebug()<<"Hyväntekeväisyyden väärät yritykset: "<<counterLoginfailedHyvant;
         }
-        QMessageBox::StandardButton reply;
-        reply = QMessageBox::question(this, "Test", "Pankkikortin ID tai PIN-koodi väärin",QMessageBox::Ok|QMessageBox::Ok);
-        if (reply == QMessageBox::Ok) {
+        QMessageBox msg;
+        msg.setText("Käyttäjätunnus tai salasana väärin... \n Tämä ilmoitus sulkeutuu automaattisesti 10 sekunnissa");
+        int cnt = 10;
+        QTimer cntDown;
+        QObject::connect(&cntDown, &QTimer::timeout, [&msg,&cnt, &cntDown]()->void{
+                             if(--cnt < 0){
+                                 cntDown.stop();
+                                 msg.close();
+                             } else {
+                                 msg.setText(QString("Käyttäjätunnus tai salasana väärin... \n Tämä ilmoitus sulkeutuu automaattisesti %1 sekunnissa").arg(cnt));
+                             }
+                         });
+        cntDown.start(1000);
+        msg.exec();
                 disconnect(timer,SIGNAL(timeout()), this, SLOT(menuTimerSlot()));
                 QWidget *koti;
                 koti = new MainWindow;
@@ -160,7 +172,7 @@ void MainWindow2::loginSlot(QNetworkReply *reply)
                 timerCounter = 0;
         }
     }
-}
+
 
 void MainWindow2::menuTimerSlot()
 {
@@ -189,3 +201,4 @@ void MainWindow2::on_nappiLopeta_clicked()
     koti->show();
     this->close();
 }
+

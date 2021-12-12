@@ -9,7 +9,10 @@
 #include <QTimer>
 #include "nostarahaa.h"
 #include "muuttujat.h"
+#include <QObject>
 
+#include "muuttujat.h"
+#include "lahjoita.h"
 
 namespace Ui {
 class kayttoliittyma;
@@ -44,13 +47,9 @@ private:
       QByteArray response_data;
       nostarahaa *objNostarahaa;
       int timerNumero;
-
-/*public slots:
-      void menuTimerSlot2();
-      void resetTimer2(int);*/
+      lahjoita *objLahjoita;     
 
 signals:
-      //void aikaLoppu2();
       void aikaLoppu();
 };
 

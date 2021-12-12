@@ -1,0 +1,12 @@
+INPUT(
+./release/main.o
+./release/mainwindow2.o
+./release/muuttujat.o
+./release/kayttoliittyma.o
+./release/lahjoita.o
+./release/qrc_resurssit.o
+./release/moc_mainwindow.o
+./release/moc_mainwindow2.o
+./release/moc_kayttoliittyma.o
+./release/moc_lahjoita.o
+);

@@ -31,7 +31,8 @@ SOURCES += \
     muuttujat.cpp \
     kayttoliittyma.cpp \
     nostarahaa.cpp\
-    tilitapahtumat.cpp
+    tilitapahtumat.cpp\
+    lahjoita.cpp
 
 HEADERS += \
         mainwindow.h \
@@ -39,13 +40,18 @@ HEADERS += \
     muuttujat.h \
     kayttoliittyma.h \
     nostarahaa.h\
-    tilitapahtumat.h
+    tilitapahtumat.h\
+    lahjoita.h
 
 FORMS += \
         mainwindow.ui \
     mainwindow2.ui \
     kayttoliittyma.ui \
     nostarahaa.ui\
-    tilitapahtumat.ui
+    tilitapahtumat.ui\
+    lahjoita.ui
 
 DISTFILES +=
+
+RESOURCES += \
+    resurssit.qrc
