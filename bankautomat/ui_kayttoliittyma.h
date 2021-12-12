@@ -1,7 +1,11 @@
 /********************************************************************************
 ** Form generated from reading UI file 'kayttoliittyma.ui'
 **
+<<<<<<< HEAD
 ** Created by: Qt User Interface Compiler version 5.9.1
+=======
+** Created by: Qt User Interface Compiler version 6.2.2
+>>>>>>> fa370cb1e7dfd94e994c4f1e168217213af4e109
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -14,6 +18,7 @@
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QButtonGroup>
 #include <QtWidgets/QHeaderView>
+#include <QtWidgets/QApplication>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QMenuBar>

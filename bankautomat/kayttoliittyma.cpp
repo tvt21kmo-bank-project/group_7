@@ -24,6 +24,7 @@ kayttoliittyma::kayttoliittyma(QWidget *parent) :
     connect(timerkayttoliittyma,SIGNAL(timeout()), this, SLOT(menuTimerSlotkayttoliittyma()));
     objLahjoita = new lahjoita;
 
+    objNaytaSaldo = new nayta_saldo;
 }
 
 kayttoliittyma::~kayttoliittyma()
@@ -35,6 +36,7 @@ kayttoliittyma::~kayttoliittyma()
     timernostarahaa=nullptr;
     delete timer;
     timer = nullptr;
+    delete getManager;
 }
 
 void kayttoliittyma::on_nappikayttaja_clicked()
@@ -48,7 +50,7 @@ void kayttoliittyma::on_nappikayttaja_clicked()
     QString headerData = "Basic " + data;
     request.setRawHeader( "Authorization", headerData.toLocal8Bit() );
     getManager = new QNetworkAccessManager(this);
-    connect(getManager, SIGNAL(finished (QNetworkReply*)), this, SLOT(haenimiSlot(QNetworkReply*)));
+    connect(getManager, SIGNAL(finished(QNetworkReply*)), this, SLOT(haenimiSlot(QNetworkReply*)));
     reply = getManager->get(request);
 }
 
@@ -63,6 +65,7 @@ void kayttoliittyma::haenimiSlot(QNetworkReply *reply)
     QString hetu;
     QString puhelinnumero;
     QString osoite;
+
     foreach (const QJsonValue &value, json_array) {
        QJsonObject json_obj = value.toObject();
        etunimi+=(json_obj["etunimi"].toString());
@@ -98,6 +101,9 @@ void kayttoliittyma::on_nappiSaldo_clicked()
     timerkayttoliittyma->stop();
     disconnect(timerkayttoliittyma,SIGNAL(timeout()), this, SLOT(menuTimerSlotkayttoliittyma()));
     timernaytasaldo->start(1000);
+
+    objNaytaSaldo->show();
+    this->close();
 }
 
 void kayttoliittyma::on_nappiTilitapahtuma_clicked()
@@ -150,4 +156,3 @@ void kayttoliittyma::menuTimerSlotkayttoliittyma()
         this->close();
     }
 }
-

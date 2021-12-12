@@ -12,6 +12,7 @@ var nimiRouter = require('./routes/nimi');
 var nosta_rahaaRouter = require('./routes/nosta_rahaa');
 var luottoRouter = require('./routes/luotto');
 var bankRouter = require('./routes/pankki');
+var saldoRouter = require('./routes/saldo');
 
 var app = express();
 
@@ -30,5 +31,6 @@ app.use('/luotto',luottoRouter);
 app.use('/nimi',nimiRouter);
 app.use('/nosta_rahaa', nosta_rahaaRouter);
 app.use('/bank', bankRouter);
+app.use('/saldo',saldoRouter);
 
 module.exports = app;

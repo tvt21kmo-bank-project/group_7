@@ -3,6 +3,7 @@ var connection = mysql.createConnection({
 	host:'localhost',
 	user:'root',
 	password:'kissa1234',
+	
 	database:'banksimul'
 });
 connection.connect(function(error){

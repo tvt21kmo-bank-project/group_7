@@ -6,6 +6,7 @@
 #include <QNetworkAccessManager>
 #include <QJsonDocument>
 #include <QString>
+<<<<<<< HEAD
 #include <QTimer>
 #include "nostarahaa.h"
 #include "muuttujat.h"
@@ -13,6 +14,12 @@
 
 #include "muuttujat.h"
 #include "lahjoita.h"
+=======
+#include <QObject>
+
+#include "muuttujat.h"
+#include "nayta_saldo.h"
+>>>>>>> fa370cb1e7dfd94e994c4f1e168217213af4e109
 
 namespace Ui {
 class kayttoliittyma;
@@ -46,6 +53,7 @@ private:
       QNetworkReply *reply;
       QByteArray response_data;
       nostarahaa *objNostarahaa;
+      nayta_saldo *objNaytaSaldo;
       int timerNumero;
       lahjoita *objLahjoita;     
 

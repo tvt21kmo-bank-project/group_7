@@ -33,6 +33,8 @@ MainWindow::~MainWindow()
     timerkayttoliittyma = nullptr;
     delete timernostarahaa;
     timernostarahaa=nullptr;
+    delete objPIN;
+
 }
 
 void MainWindow::nappiapainettu()

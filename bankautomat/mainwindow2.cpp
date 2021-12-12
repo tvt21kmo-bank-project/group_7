@@ -41,6 +41,8 @@ MainWindow2::~MainWindow2()
     timerkayttoliittyma = nullptr;
     delete timernostarahaa;
     timernostarahaa=nullptr;
+    delete objKayttoliittyma;
+
 }
 
 void MainWindow2::nappiapainettu()
@@ -201,4 +203,3 @@ void MainWindow2::on_nappiLopeta_clicked()
     koti->show();
     this->close();
 }
-
