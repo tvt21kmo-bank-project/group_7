@@ -102,11 +102,9 @@ void kayttoliittyma::on_nappiTilitapahtuma_clicked()
     timerkayttoliittyma->stop();
     disconnect(timerkayttoliittyma,SIGNAL(timeout()), this, SLOT(menuTimerSlotkayttoliittyma()));
     timernaytasaldo->start(1000);
-    objTimer2->stop();
-    timerCounter2 = 0;
-    QWidget *koti;
-    koti = new tilitapahtumat;
-    koti->show();
+    tilitapahtumat *objTili;
+    objTili = new tilitapahtumat;
+    objTili->show();
     this->close();
 }
 
