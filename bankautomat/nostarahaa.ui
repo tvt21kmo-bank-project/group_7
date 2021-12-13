@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>806</width>
-    <height>643</height>
+    <width>1920</width>
+    <height>1080</height>
    </rect>
   </property>
   <property name="palette">
@@ -81,15 +81,15 @@
    <widget class="QPushButton" name="nappiNosta100">
     <property name="geometry">
      <rect>
-      <x>390</x>
-      <y>290</y>
-      <width>101</width>
-      <height>41</height>
+      <x>950</x>
+      <y>480</y>
+      <width>300</width>
+      <height>80</height>
      </rect>
     </property>
     <property name="font">
      <font>
-      <pointsize>10</pointsize>
+      <pointsize>20</pointsize>
       <weight>75</weight>
       <bold>true</bold>
      </font>
@@ -105,9 +105,9 @@
     <property name="geometry">
      <rect>
       <x>150</x>
-      <y>200</y>
-      <width>261</width>
-      <height>21</height>
+      <y>230</y>
+      <width>891</width>
+      <height>41</height>
      </rect>
     </property>
     <property name="palette">
@@ -149,6 +149,7 @@
     </property>
     <property name="font">
      <font>
+      <pointsize>25</pointsize>
       <weight>75</weight>
       <bold>true</bold>
      </font>
@@ -160,15 +161,15 @@
    <widget class="QPushButton" name="nostoNappi">
     <property name="geometry">
      <rect>
-      <x>110</x>
-      <y>490</y>
-      <width>161</width>
-      <height>71</height>
+      <x>20</x>
+      <y>740</y>
+      <width>251</width>
+      <height>81</height>
      </rect>
     </property>
     <property name="font">
      <font>
-      <pointsize>11</pointsize>
+      <pointsize>16</pointsize>
       <weight>75</weight>
       <bold>true</bold>
      </font>
@@ -183,15 +184,15 @@
    <widget class="QPushButton" name="nappiNosta40">
     <property name="geometry">
      <rect>
-      <x>170</x>
-      <y>290</y>
-      <width>101</width>
-      <height>41</height>
+      <x>330</x>
+      <y>480</y>
+      <width>300</width>
+      <height>80</height>
      </rect>
     </property>
     <property name="font">
      <font>
-      <pointsize>10</pointsize>
+      <pointsize>20</pointsize>
       <weight>75</weight>
       <bold>true</bold>
      </font>
@@ -206,15 +207,15 @@
    <widget class="QPushButton" name="nappiNosta60">
     <property name="geometry">
      <rect>
-      <x>280</x>
-      <y>290</y>
-      <width>101</width>
-      <height>41</height>
+      <x>640</x>
+      <y>480</y>
+      <width>300</width>
+      <height>80</height>
      </rect>
     </property>
     <property name="font">
      <font>
-      <pointsize>10</pointsize>
+      <pointsize>20</pointsize>
       <weight>75</weight>
       <bold>true</bold>
      </font>
@@ -229,15 +230,15 @@
    <widget class="QPushButton" name="nappiNosta20">
     <property name="geometry">
      <rect>
-      <x>60</x>
-      <y>290</y>
-      <width>101</width>
-      <height>41</height>
+      <x>20</x>
+      <y>480</y>
+      <width>300</width>
+      <height>80</height>
      </rect>
     </property>
     <property name="font">
      <font>
-      <pointsize>10</pointsize>
+      <pointsize>20</pointsize>
       <weight>75</weight>
       <bold>true</bold>
      </font>
@@ -252,10 +253,10 @@
    <widget class="QLabel" name="label">
     <property name="geometry">
      <rect>
-      <x>70</x>
-      <y>240</y>
-      <width>321</width>
-      <height>51</height>
+      <x>30</x>
+      <y>400</y>
+      <width>741</width>
+      <height>71</height>
      </rect>
     </property>
     <property name="palette">
@@ -297,22 +298,22 @@
     </property>
     <property name="font">
      <font>
-      <pointsize>11</pointsize>
+      <pointsize>30</pointsize>
       <weight>75</weight>
       <bold>true</bold>
      </font>
     </property>
     <property name="text">
-     <string>Valitse kuinka paljon haluat nostaa</string>
+     <string>Valitse kuinka paljon haluat nostaa:</string>
     </property>
    </widget>
    <widget class="QLabel" name="osoitelbl">
     <property name="geometry">
      <rect>
       <x>150</x>
-      <y>140</y>
-      <width>271</width>
-      <height>21</height>
+      <y>150</y>
+      <width>921</width>
+      <height>41</height>
      </rect>
     </property>
     <property name="palette">
@@ -354,6 +355,7 @@
     </property>
     <property name="font">
      <font>
+      <pointsize>25</pointsize>
       <weight>75</weight>
       <bold>true</bold>
      </font>
@@ -365,10 +367,10 @@
    <widget class="QLabel" name="label_2">
     <property name="geometry">
      <rect>
-      <x>40</x>
-      <y>370</y>
-      <width>691</width>
-      <height>31</height>
+      <x>20</x>
+      <y>560</y>
+      <width>1511</width>
+      <height>61</height>
      </rect>
     </property>
     <property name="palette">
@@ -410,7 +412,7 @@
     </property>
     <property name="font">
      <font>
-      <pointsize>11</pointsize>
+      <pointsize>30</pointsize>
       <weight>75</weight>
       <bold>true</bold>
      </font>
@@ -423,9 +425,9 @@
     <property name="geometry">
      <rect>
       <x>150</x>
-      <y>80</y>
-      <width>241</width>
-      <height>21</height>
+      <y>70</y>
+      <width>941</width>
+      <height>41</height>
      </rect>
     </property>
     <property name="palette">
@@ -467,6 +469,7 @@
     </property>
     <property name="font">
      <font>
+      <pointsize>25</pointsize>
       <weight>75</weight>
       <bold>true</bold>
      </font>
@@ -479,9 +482,9 @@
     <property name="geometry">
      <rect>
       <x>150</x>
-      <y>170</y>
-      <width>271</width>
-      <height>21</height>
+      <y>190</y>
+      <width>901</width>
+      <height>41</height>
      </rect>
     </property>
     <property name="palette">
@@ -523,6 +526,7 @@
     </property>
     <property name="font">
      <font>
+      <pointsize>25</pointsize>
       <weight>75</weight>
       <bold>true</bold>
      </font>
@@ -534,15 +538,15 @@
    <widget class="QPushButton" name="nappiNosta200">
     <property name="geometry">
      <rect>
-      <x>500</x>
-      <y>290</y>
-      <width>101</width>
-      <height>41</height>
+      <x>1260</x>
+      <y>480</y>
+      <width>300</width>
+      <height>80</height>
      </rect>
     </property>
     <property name="font">
      <font>
-      <pointsize>10</pointsize>
+      <pointsize>20</pointsize>
       <weight>75</weight>
       <bold>true</bold>
      </font>
@@ -557,15 +561,15 @@
    <widget class="QPushButton" name="nappiNosta500">
     <property name="geometry">
      <rect>
-      <x>610</x>
-      <y>290</y>
-      <width>101</width>
-      <height>41</height>
+      <x>1570</x>
+      <y>480</y>
+      <width>300</width>
+      <height>80</height>
      </rect>
     </property>
     <property name="font">
      <font>
-      <pointsize>10</pointsize>
+      <pointsize>20</pointsize>
       <weight>75</weight>
       <bold>true</bold>
      </font>
@@ -582,8 +586,8 @@
      <rect>
       <x>150</x>
       <y>110</y>
-      <width>251</width>
-      <height>21</height>
+      <width>931</width>
+      <height>41</height>
      </rect>
     </property>
     <property name="palette">
@@ -625,6 +629,7 @@
     </property>
     <property name="font">
      <font>
+      <pointsize>25</pointsize>
       <weight>75</weight>
       <bold>true</bold>
      </font>
@@ -636,15 +641,15 @@
    <widget class="QPushButton" name="nappiSulje">
     <property name="geometry">
      <rect>
-      <x>610</x>
-      <y>520</y>
-      <width>161</width>
-      <height>71</height>
+      <x>1630</x>
+      <y>910</y>
+      <width>231</width>
+      <height>91</height>
      </rect>
     </property>
     <property name="font">
      <font>
-      <pointsize>12</pointsize>
+      <pointsize>20</pointsize>
       <weight>75</weight>
       <bold>true</bold>
      </font>
@@ -660,9 +665,9 @@
     <property name="geometry">
      <rect>
       <x>150</x>
-      <y>50</y>
-      <width>231</width>
-      <height>21</height>
+      <y>30</y>
+      <width>941</width>
+      <height>41</height>
      </rect>
     </property>
     <property name="palette">
@@ -704,6 +709,7 @@
     </property>
     <property name="font">
      <font>
+      <pointsize>25</pointsize>
       <weight>75</weight>
       <bold>true</bold>
      </font>
@@ -716,14 +722,14 @@
     <property name="geometry">
      <rect>
       <x>270</x>
-      <y>400</y>
-      <width>41</width>
-      <height>41</height>
+      <y>630</y>
+      <width>70</width>
+      <height>70</height>
      </rect>
     </property>
     <property name="font">
      <font>
-      <pointsize>14</pointsize>
+      <pointsize>17</pointsize>
       <weight>75</weight>
       <bold>true</bold>
      </font>
@@ -744,15 +750,15 @@
    <widget class="QPushButton" name="numero2">
     <property name="geometry">
      <rect>
-      <x>310</x>
-      <y>400</y>
-      <width>41</width>
-      <height>41</height>
+      <x>340</x>
+      <y>630</y>
+      <width>70</width>
+      <height>70</height>
      </rect>
     </property>
     <property name="font">
      <font>
-      <pointsize>14</pointsize>
+      <pointsize>17</pointsize>
       <weight>75</weight>
       <bold>true</bold>
      </font>
@@ -773,15 +779,15 @@
    <widget class="QPushButton" name="numero3">
     <property name="geometry">
      <rect>
-      <x>350</x>
-      <y>400</y>
-      <width>41</width>
-      <height>41</height>
+      <x>410</x>
+      <y>630</y>
+      <width>70</width>
+      <height>70</height>
      </rect>
     </property>
     <property name="font">
      <font>
-      <pointsize>14</pointsize>
+      <pointsize>17</pointsize>
       <weight>75</weight>
       <bold>true</bold>
      </font>
@@ -803,14 +809,14 @@
     <property name="geometry">
      <rect>
       <x>270</x>
-      <y>440</y>
-      <width>41</width>
-      <height>41</height>
+      <y>700</y>
+      <width>70</width>
+      <height>70</height>
      </rect>
     </property>
     <property name="font">
      <font>
-      <pointsize>14</pointsize>
+      <pointsize>17</pointsize>
       <weight>75</weight>
       <bold>true</bold>
      </font>
@@ -831,15 +837,15 @@
    <widget class="QPushButton" name="numero5">
     <property name="geometry">
      <rect>
-      <x>310</x>
-      <y>440</y>
-      <width>41</width>
-      <height>41</height>
+      <x>340</x>
+      <y>700</y>
+      <width>70</width>
+      <height>70</height>
      </rect>
     </property>
     <property name="font">
      <font>
-      <pointsize>14</pointsize>
+      <pointsize>17</pointsize>
       <weight>75</weight>
       <bold>true</bold>
      </font>
@@ -860,15 +866,15 @@
    <widget class="QPushButton" name="numero6">
     <property name="geometry">
      <rect>
-      <x>350</x>
-      <y>440</y>
-      <width>41</width>
-      <height>41</height>
+      <x>410</x>
+      <y>700</y>
+      <width>70</width>
+      <height>70</height>
      </rect>
     </property>
     <property name="font">
      <font>
-      <pointsize>14</pointsize>
+      <pointsize>17</pointsize>
       <weight>75</weight>
       <bold>true</bold>
      </font>
@@ -890,14 +896,14 @@
     <property name="geometry">
      <rect>
       <x>270</x>
-      <y>480</y>
-      <width>41</width>
-      <height>41</height>
+      <y>770</y>
+      <width>70</width>
+      <height>70</height>
      </rect>
     </property>
     <property name="font">
      <font>
-      <pointsize>14</pointsize>
+      <pointsize>17</pointsize>
       <weight>75</weight>
       <bold>true</bold>
      </font>
@@ -918,15 +924,15 @@
    <widget class="QPushButton" name="numero8">
     <property name="geometry">
      <rect>
-      <x>310</x>
-      <y>480</y>
-      <width>41</width>
-      <height>41</height>
+      <x>340</x>
+      <y>770</y>
+      <width>70</width>
+      <height>70</height>
      </rect>
     </property>
     <property name="font">
      <font>
-      <pointsize>14</pointsize>
+      <pointsize>17</pointsize>
       <weight>75</weight>
       <bold>true</bold>
      </font>
@@ -947,15 +953,15 @@
    <widget class="QPushButton" name="numero9">
     <property name="geometry">
      <rect>
-      <x>350</x>
-      <y>480</y>
-      <width>41</width>
-      <height>41</height>
+      <x>410</x>
+      <y>770</y>
+      <width>70</width>
+      <height>70</height>
      </rect>
     </property>
     <property name="font">
      <font>
-      <pointsize>14</pointsize>
+      <pointsize>17</pointsize>
       <weight>75</weight>
       <bold>true</bold>
      </font>
@@ -976,15 +982,15 @@
    <widget class="QPushButton" name="numero0">
     <property name="geometry">
      <rect>
-      <x>310</x>
-      <y>520</y>
-      <width>41</width>
-      <height>41</height>
+      <x>340</x>
+      <y>840</y>
+      <width>70</width>
+      <height>70</height>
      </rect>
     </property>
     <property name="font">
      <font>
-      <pointsize>14</pointsize>
+      <pointsize>17</pointsize>
       <weight>75</weight>
       <bold>true</bold>
      </font>
@@ -1006,14 +1012,14 @@
     <property name="geometry">
      <rect>
       <x>270</x>
-      <y>520</y>
-      <width>41</width>
-      <height>41</height>
+      <y>840</y>
+      <width>70</width>
+      <height>70</height>
      </rect>
     </property>
     <property name="font">
      <font>
-      <pointsize>14</pointsize>
+      <pointsize>17</pointsize>
       <weight>75</weight>
       <bold>true</bold>
      </font>
@@ -1034,10 +1040,10 @@
    <widget class="QLineEdit" name="nostoTaulu">
     <property name="geometry">
      <rect>
-      <x>110</x>
-      <y>400</y>
-      <width>161</width>
-      <height>91</height>
+      <x>20</x>
+      <y>630</y>
+      <width>250</width>
+      <height>103</height>
      </rect>
     </property>
     <property name="sizePolicy">
@@ -1048,7 +1054,7 @@
     </property>
     <property name="font">
      <font>
-      <pointsize>14</pointsize>
+      <pointsize>20</pointsize>
       <weight>75</weight>
       <bold>true</bold>
      </font>
@@ -1075,7 +1081,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>806</width>
+     <width>1920</width>
      <height>21</height>
     </rect>
    </property>

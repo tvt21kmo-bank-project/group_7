@@ -20,7 +20,7 @@ const bank = {
     },
     tilitapahtumalahj: function(postData, callback){
         return pankki.query('INSERT INTO tilitapahtuma VALUES (NULL, NOW(), "Saapunut lahjoitus", ?, 65)',
-        [postData.lahjsumma],
+        [postData.saatusumma],
         callback);
     }
 };

@@ -40,7 +40,7 @@ public:
     {
         if (nayta_saldo->objectName().isEmpty())
             nayta_saldo->setObjectName(QStringLiteral("nayta_saldo"));
-        nayta_saldo->resize(800, 600);
+        nayta_saldo->resize(1920, 1080);
         QPalette palette;
         QBrush brush(QColor(255, 255, 255, 255));
         brush.setStyle(Qt::SolidPattern);
@@ -57,15 +57,15 @@ public:
         centralwidget->setObjectName(QStringLiteral("centralwidget"));
         nappiPalaa = new QPushButton(centralwidget);
         nappiPalaa->setObjectName(QStringLiteral("nappiPalaa"));
-        nappiPalaa->setGeometry(QRect(630, 0, 171, 31));
+        nappiPalaa->setGeometry(QRect(1590, 10, 321, 101));
         QFont font;
-        font.setPointSize(11);
+        font.setPointSize(20);
         font.setBold(true);
         font.setWeight(75);
         nappiPalaa->setFont(font);
         ohje = new QLabel(centralwidget);
         ohje->setObjectName(QStringLiteral("ohje"));
-        ohje->setGeometry(QRect(30, 40, 751, 71));
+        ohje->setGeometry(QRect(10, 150, 1341, 91));
         QPalette palette1;
         QBrush brush2(QColor(0, 85, 255, 255));
         brush2.setStyle(Qt::SolidPattern);
@@ -129,13 +129,13 @@ public:
         palette1.setBrush(QPalette::Disabled, QPalette::ToolTipText, brush1);
         ohje->setPalette(palette1);
         QFont font1;
-        font1.setPointSize(20);
+        font1.setPointSize(30);
         font1.setBold(true);
         font1.setWeight(75);
         ohje->setFont(font1);
         tilinumerolbl = new QLabel(centralwidget);
         tilinumerolbl->setObjectName(QStringLiteral("tilinumerolbl"));
-        tilinumerolbl->setGeometry(QRect(40, 280, 731, 101));
+        tilinumerolbl->setGeometry(QRect(30, 460, 731, 101));
         QPalette palette2;
         palette2.setBrush(QPalette::Active, QPalette::WindowText, brush2);
         palette2.setBrush(QPalette::Inactive, QPalette::WindowText, brush2);
@@ -150,7 +150,7 @@ public:
         tilinumerolbl->setFont(font2);
         saldolbl = new QLabel(centralwidget);
         saldolbl->setObjectName(QStringLiteral("saldolbl"));
-        saldolbl->setGeometry(QRect(40, 420, 731, 91));
+        saldolbl->setGeometry(QRect(30, 600, 731, 91));
         QPalette palette3;
         palette3.setBrush(QPalette::Active, QPalette::WindowText, brush2);
         palette3.setBrush(QPalette::Inactive, QPalette::WindowText, brush2);
@@ -159,7 +159,7 @@ public:
         saldolbl->setFont(font2);
         tiliNimilbl = new QLabel(centralwidget);
         tiliNimilbl->setObjectName(QStringLiteral("tiliNimilbl"));
-        tiliNimilbl->setGeometry(QRect(40, 140, 731, 91));
+        tiliNimilbl->setGeometry(QRect(30, 320, 731, 91));
         QPalette palette4;
         palette4.setBrush(QPalette::Active, QPalette::WindowText, brush2);
         palette4.setBrush(QPalette::Inactive, QPalette::WindowText, brush2);
@@ -168,12 +168,12 @@ public:
         tiliNimilbl->setFont(font2);
         nappiSaldoni = new QPushButton(centralwidget);
         nappiSaldoni->setObjectName(QStringLiteral("nappiSaldoni"));
-        nappiSaldoni->setGeometry(QRect(0, 0, 171, 31));
+        nappiSaldoni->setGeometry(QRect(10, 10, 321, 101));
         nappiSaldoni->setFont(font);
         nayta_saldo->setCentralWidget(centralwidget);
         menubar = new QMenuBar(nayta_saldo);
         menubar->setObjectName(QStringLiteral("menubar"));
-        menubar->setGeometry(QRect(0, 0, 800, 21));
+        menubar->setGeometry(QRect(0, 0, 1920, 21));
         nayta_saldo->setMenuBar(menubar);
         statusbar = new QStatusBar(nayta_saldo);
         statusbar->setObjectName(QStringLiteral("statusbar"));

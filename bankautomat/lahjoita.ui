@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>800</width>
-    <height>600</height>
+    <width>1920</width>
+    <height>1080</height>
    </rect>
   </property>
   <property name="palette">
@@ -81,15 +81,15 @@
    <widget class="QPushButton" name="nappikorjaalahj">
     <property name="geometry">
      <rect>
-      <x>530</x>
-      <y>410</y>
-      <width>71</width>
-      <height>61</height>
+      <x>1090</x>
+      <y>690</y>
+      <width>101</width>
+      <height>91</height>
      </rect>
     </property>
     <property name="font">
      <font>
-      <pointsize>20</pointsize>
+      <pointsize>25</pointsize>
       <weight>75</weight>
       <bold>true</bold>
      </font>
@@ -107,15 +107,15 @@
    <widget class="QPushButton" name="numero2lahj">
     <property name="geometry">
      <rect>
-      <x>600</x>
-      <y>230</y>
-      <width>71</width>
-      <height>61</height>
+      <x>1190</x>
+      <y>420</y>
+      <width>101</width>
+      <height>91</height>
      </rect>
     </property>
     <property name="font">
      <font>
-      <pointsize>20</pointsize>
+      <pointsize>25</pointsize>
       <weight>75</weight>
       <bold>true</bold>
      </font>
@@ -136,15 +136,15 @@
    <widget class="QPushButton" name="numero0lahj">
     <property name="geometry">
      <rect>
-      <x>600</x>
-      <y>410</y>
-      <width>71</width>
-      <height>61</height>
+      <x>1190</x>
+      <y>690</y>
+      <width>101</width>
+      <height>91</height>
      </rect>
     </property>
     <property name="font">
      <font>
-      <pointsize>20</pointsize>
+      <pointsize>25</pointsize>
       <weight>75</weight>
       <bold>true</bold>
      </font>
@@ -162,10 +162,10 @@
    <widget class="QLineEdit" name="hankiSummalahj">
     <property name="geometry">
      <rect>
-      <x>530</x>
-      <y>120</y>
-      <width>211</width>
-      <height>111</height>
+      <x>1090</x>
+      <y>230</y>
+      <width>301</width>
+      <height>191</height>
      </rect>
     </property>
     <property name="sizePolicy">
@@ -176,7 +176,7 @@
     </property>
     <property name="font">
      <font>
-      <pointsize>43</pointsize>
+      <pointsize>50</pointsize>
       <weight>75</weight>
       <bold>true</bold>
      </font>
@@ -200,9 +200,9 @@
    <widget class="QLabel" name="otsikko1">
     <property name="geometry">
      <rect>
-      <x>20</x>
-      <y>20</y>
-      <width>721</width>
+      <x>130</x>
+      <y>50</y>
+      <width>1661</width>
       <height>71</height>
      </rect>
     </property>
@@ -650,7 +650,7 @@
     </property>
     <property name="font">
      <font>
-      <pointsize>15</pointsize>
+      <pointsize>35</pointsize>
       <weight>75</weight>
       <bold>true</bold>
      </font>
@@ -662,15 +662,15 @@
    <widget class="QPushButton" name="numero8lahj">
     <property name="geometry">
      <rect>
-      <x>600</x>
-      <y>350</y>
-      <width>71</width>
-      <height>61</height>
+      <x>1190</x>
+      <y>600</y>
+      <width>101</width>
+      <height>91</height>
      </rect>
     </property>
     <property name="font">
      <font>
-      <pointsize>20</pointsize>
+      <pointsize>25</pointsize>
       <weight>75</weight>
       <bold>true</bold>
      </font>
@@ -688,15 +688,15 @@
    <widget class="QPushButton" name="numero3lahj">
     <property name="geometry">
      <rect>
-      <x>670</x>
-      <y>230</y>
-      <width>71</width>
-      <height>61</height>
+      <x>1290</x>
+      <y>420</y>
+      <width>101</width>
+      <height>91</height>
      </rect>
     </property>
     <property name="font">
      <font>
-      <pointsize>20</pointsize>
+      <pointsize>25</pointsize>
       <weight>75</weight>
       <bold>true</bold>
      </font>
@@ -714,15 +714,15 @@
    <widget class="QPushButton" name="numero4lahj">
     <property name="geometry">
      <rect>
-      <x>530</x>
-      <y>290</y>
-      <width>71</width>
-      <height>61</height>
+      <x>1090</x>
+      <y>510</y>
+      <width>101</width>
+      <height>91</height>
      </rect>
     </property>
     <property name="font">
      <font>
-      <pointsize>20</pointsize>
+      <pointsize>25</pointsize>
       <weight>75</weight>
       <bold>true</bold>
      </font>
@@ -740,15 +740,15 @@
    <widget class="QPushButton" name="numero6lahj">
     <property name="geometry">
      <rect>
-      <x>670</x>
-      <y>290</y>
-      <width>71</width>
-      <height>61</height>
+      <x>1290</x>
+      <y>510</y>
+      <width>101</width>
+      <height>91</height>
      </rect>
     </property>
     <property name="font">
      <font>
-      <pointsize>20</pointsize>
+      <pointsize>25</pointsize>
       <weight>75</weight>
       <bold>true</bold>
      </font>
@@ -766,10 +766,10 @@
    <widget class="QLabel" name="label">
     <property name="geometry">
      <rect>
-      <x>10</x>
-      <y>120</y>
-      <width>501</width>
-      <height>361</height>
+      <x>240</x>
+      <y>230</y>
+      <width>851</width>
+      <height>551</height>
      </rect>
     </property>
     <property name="text">
@@ -779,15 +779,15 @@
    <widget class="QPushButton" name="nappiPalaa">
     <property name="geometry">
      <rect>
-      <x>30</x>
-      <y>500</y>
-      <width>211</width>
-      <height>51</height>
+      <x>10</x>
+      <y>880</y>
+      <width>391</width>
+      <height>121</height>
      </rect>
     </property>
     <property name="font">
      <font>
-      <pointsize>13</pointsize>
+      <pointsize>20</pointsize>
       <weight>75</weight>
       <bold>true</bold>
      </font>
@@ -802,15 +802,15 @@
    <widget class="QPushButton" name="numero7lahj">
     <property name="geometry">
      <rect>
-      <x>530</x>
-      <y>350</y>
-      <width>71</width>
-      <height>61</height>
+      <x>1090</x>
+      <y>600</y>
+      <width>101</width>
+      <height>91</height>
      </rect>
     </property>
     <property name="font">
      <font>
-      <pointsize>20</pointsize>
+      <pointsize>25</pointsize>
       <weight>75</weight>
       <bold>true</bold>
      </font>
@@ -828,15 +828,15 @@
    <widget class="QPushButton" name="numero5lahj">
     <property name="geometry">
      <rect>
-      <x>600</x>
-      <y>290</y>
-      <width>71</width>
-      <height>61</height>
+      <x>1190</x>
+      <y>510</y>
+      <width>101</width>
+      <height>91</height>
      </rect>
     </property>
     <property name="font">
      <font>
-      <pointsize>20</pointsize>
+      <pointsize>25</pointsize>
       <weight>75</weight>
       <bold>true</bold>
      </font>
@@ -854,15 +854,15 @@
    <widget class="QPushButton" name="numero1lahj">
     <property name="geometry">
      <rect>
-      <x>530</x>
-      <y>230</y>
-      <width>71</width>
-      <height>61</height>
+      <x>1090</x>
+      <y>420</y>
+      <width>101</width>
+      <height>91</height>
      </rect>
     </property>
     <property name="font">
      <font>
-      <pointsize>20</pointsize>
+      <pointsize>25</pointsize>
       <weight>75</weight>
       <bold>true</bold>
      </font>
@@ -883,15 +883,15 @@
    <widget class="QPushButton" name="numero9lahj">
     <property name="geometry">
      <rect>
-      <x>670</x>
-      <y>350</y>
-      <width>71</width>
-      <height>61</height>
+      <x>1290</x>
+      <y>600</y>
+      <width>101</width>
+      <height>91</height>
      </rect>
     </property>
     <property name="font">
      <font>
-      <pointsize>20</pointsize>
+      <pointsize>25</pointsize>
       <weight>75</weight>
       <bold>true</bold>
      </font>
@@ -909,15 +909,15 @@
    <widget class="QPushButton" name="nappiLahjoita">
     <property name="geometry">
      <rect>
-      <x>560</x>
-      <y>500</y>
-      <width>211</width>
-      <height>51</height>
+      <x>1520</x>
+      <y>880</y>
+      <width>391</width>
+      <height>121</height>
      </rect>
     </property>
     <property name="font">
      <font>
-      <pointsize>13</pointsize>
+      <pointsize>20</pointsize>
       <weight>75</weight>
       <bold>true</bold>
      </font>
@@ -935,7 +935,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>800</width>
+     <width>1920</width>
      <height>21</height>
     </rect>
    </property>

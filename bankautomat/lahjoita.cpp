@@ -2,6 +2,7 @@
 #include "ui_lahjoita.h"
 #include "mainwindow.h"
 #include "mainwindow2.h"
+#include "kayttoliittyma.h"
 
 #include <QMessageBox>
 #include <QTimer>
@@ -72,7 +73,6 @@ void lahjoita::on_nappiLahjoita_clicked()
     getManager = new QNetworkAccessManager(this);
     connect(getManager, SIGNAL(finished (QNetworkReply*)), this, SLOT(haenimiSlot(QNetworkReply*)));
     reply = getManager->get(request);
-    timerlahjoita->stop();
     timerCounterlahjoita = 0;
 }
 
@@ -123,7 +123,6 @@ void lahjoita::laskuri(int maara)
         saatuLahjoitus = (ui->hankiSummalahj->text());
         QJsonObject json;
         qDebug()<<saatuLahjoitus<<saatuID;
-        json.insert("lahjmaara", saatuLahjoitus);
         json.insert("summa", saatuLahjoitus);
         json.insert("pankkikortti", saatuID);
         json.insert("saatusumma", saatuLahjoitus);
@@ -166,6 +165,10 @@ void lahjoita::lahjoitaSlot(QNetworkReply*)
                      });
     cntDown.start(1000);
     msg.exec();
+    QWidget *liittyma;
+    liittyma = new kayttoliittyma;
+    liittyma->show();
+    this->close();
 }
 
 

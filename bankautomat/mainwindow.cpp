@@ -58,6 +58,7 @@ void MainWindow::on_nappiok_clicked()
                              if(--cnt < 0){
                                  cntDown.stop();
                                  msg.close();
+
                              } else {
                                  msg.setText(QString("Kirjautumista yritetty liian monesti väärin, jonka myötä tilisi on lukittu, ole yhteydessä pankkiisi \n Tämä ilmoitus sulkeutuu automaattisesti %1 sekunnissa").arg(cnt));
                              }

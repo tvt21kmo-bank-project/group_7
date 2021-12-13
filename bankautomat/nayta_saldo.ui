@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>800</width>
-    <height>600</height>
+    <width>1920</width>
+    <height>1080</height>
    </rect>
   </property>
   <property name="palette">
@@ -81,15 +81,15 @@
    <widget class="QPushButton" name="nappiPalaa">
     <property name="geometry">
      <rect>
-      <x>630</x>
-      <y>0</y>
-      <width>171</width>
-      <height>31</height>
+      <x>1590</x>
+      <y>10</y>
+      <width>321</width>
+      <height>101</height>
      </rect>
     </property>
     <property name="font">
      <font>
-      <pointsize>11</pointsize>
+      <pointsize>20</pointsize>
       <weight>75</weight>
       <bold>true</bold>
      </font>
@@ -101,10 +101,10 @@
    <widget class="QLabel" name="ohje">
     <property name="geometry">
      <rect>
-      <x>30</x>
-      <y>40</y>
-      <width>751</width>
-      <height>71</height>
+      <x>10</x>
+      <y>150</y>
+      <width>1341</width>
+      <height>91</height>
      </rect>
     </property>
     <property name="palette">
@@ -551,7 +551,7 @@
     </property>
     <property name="font">
      <font>
-      <pointsize>20</pointsize>
+      <pointsize>30</pointsize>
       <weight>75</weight>
       <bold>true</bold>
      </font>
@@ -563,8 +563,8 @@
    <widget class="QLabel" name="tilinumerolbl">
     <property name="geometry">
      <rect>
-      <x>40</x>
-      <y>280</y>
+      <x>30</x>
+      <y>460</y>
       <width>731</width>
       <height>101</height>
      </rect>
@@ -620,8 +620,8 @@
    <widget class="QLabel" name="saldolbl">
     <property name="geometry">
      <rect>
-      <x>40</x>
-      <y>420</y>
+      <x>30</x>
+      <y>600</y>
       <width>731</width>
       <height>91</height>
      </rect>
@@ -677,8 +677,8 @@
    <widget class="QLabel" name="tiliNimilbl">
     <property name="geometry">
      <rect>
-      <x>40</x>
-      <y>140</y>
+      <x>30</x>
+      <y>320</y>
       <width>731</width>
       <height>91</height>
      </rect>
@@ -734,15 +734,15 @@
    <widget class="QPushButton" name="nappiSaldoni">
     <property name="geometry">
      <rect>
-      <x>0</x>
-      <y>0</y>
-      <width>171</width>
-      <height>31</height>
+      <x>10</x>
+      <y>10</y>
+      <width>321</width>
+      <height>101</height>
      </rect>
     </property>
     <property name="font">
      <font>
-      <pointsize>11</pointsize>
+      <pointsize>20</pointsize>
       <weight>75</weight>
       <bold>true</bold>
      </font>
@@ -757,7 +757,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>800</width>
+     <width>1920</width>
      <height>21</height>
     </rect>
    </property>
