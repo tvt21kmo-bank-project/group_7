@@ -7,6 +7,8 @@
 #include <QJsonDocument>
 #include <QString>
 #include <QTimer>
+#include <QTableWidget>
+#include <QTableWidgetItem>
 
 namespace Ui {
 class tilitapahtumat;

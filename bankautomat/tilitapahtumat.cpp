@@ -139,16 +139,11 @@ void tilitapahtumat::tilitapahtumatHae(QNetworkReply *reply)
 
            QJsonObject json_obj = value.toObject();
 
-           Summa+=QTableWidgetItem::number(json_obj["Summa"].toDouble(),'f',2);
+//           Summa+=QTableWidgetItem::number(json_obj["Summa"].toDouble(),'f',2);
            pvm_klo->setText(json_obj["pvm_klo"].toString());
            Tapahtuma->setText(json_obj["Tapahtuma"].toString());
 //           Summa->setText(json_obj["Summa"].toQString());
-/*
-           QJsonObject json_obj = value.toObject();
-           pvm_klo+=(json_obj["pvm_klo"].toString());
-           Tapahtuma+=(json_obj["Tapahtuma"].toString());
-           Summa+=(json_obj["Summa"].toDouble());
-*/
+
            ui->taulukko->setItem(rowCount,0,pvm_klo);
            ui->taulukko->setItem(rowCount,1,Tapahtuma);
            ui->taulukko->setItem(rowCount,2,Summa);
@@ -171,8 +166,15 @@ void tilitapahtumat::tilitapahtumatHae2(QNetworkReply *reply)
         foreach (const QJsonValue &value, json_array)
         {
            int rowCount = 0;
+           QTableWidget *table = new QTableWidget(this);
+           table->setRowCount(10);
+           table->setColumnCount(3);
+           QStringList columnLabels;
+           columnLabels << "aika" << "tapahtuma" << "summa";
+           table->setHorizontalHeaderLabels(columnLabels);
 
-           for (int i=0; i < table rowCount>10) {
+           for (int b=0; b < table->rowCount(); b++) {
+               for (int a=0; a < columnCount(); a++)
 
            ui->taulukko->insertRow(rowCount);
            QTableWidgetItem *pvm_klo = new QTableWidgetItem;
@@ -194,7 +196,7 @@ void tilitapahtumat::tilitapahtumatHae2(QNetworkReply *reply)
            ui->taulukko2->setItem(rowCount,2,Summa);
 
            rowCount++;
-        }
+}
     }
     reply->deleteLater();
 }
