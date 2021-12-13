@@ -29,7 +29,13 @@ private slots:
 
     void on_kayttoliittymaannappi_clicked();
 
+    void kayttajatiedotNayta();
+
+    void tilitapahtumatNayta();
+
     void tilitapahtumatHae(QNetworkReply *reply);
+
+    void tilitapahtumatHae2(QNetworkReply *reply);
 
     void kayttajatiedotHae(QNetworkReply *reply);
 
