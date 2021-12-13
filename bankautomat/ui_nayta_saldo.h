@@ -40,7 +40,7 @@ public:
     {
         if (nayta_saldo->objectName().isEmpty())
             nayta_saldo->setObjectName(QStringLiteral("nayta_saldo"));
-        nayta_saldo->resize(1920, 1080);
+        nayta_saldo->resize(1920, 1061);
         QPalette palette;
         QBrush brush(QColor(255, 255, 255, 255));
         brush.setStyle(Qt::SolidPattern);

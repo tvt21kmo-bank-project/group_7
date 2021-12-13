@@ -51,7 +51,7 @@ public:
     {
         if (lahjoita->objectName().isEmpty())
             lahjoita->setObjectName(QStringLiteral("lahjoita"));
-        lahjoita->resize(1920, 1080);
+        lahjoita->resize(1920, 1061);
         QPalette palette;
         QBrush brush(QColor(255, 255, 255, 255));
         brush.setStyle(Qt::SolidPattern);

@@ -46,7 +46,7 @@ public:
     {
         if (kayttoliittyma->objectName().isEmpty())
             kayttoliittyma->setObjectName(QStringLiteral("kayttoliittyma"));
-        kayttoliittyma->resize(1920, 1080);
+        kayttoliittyma->resize(1920, 1061);
         QPalette palette;
         QBrush brush(QColor(255, 255, 255, 255));
         brush.setStyle(Qt::SolidPattern);

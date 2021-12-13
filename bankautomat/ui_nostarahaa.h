@@ -63,7 +63,7 @@ public:
     {
         if (nostarahaa->objectName().isEmpty())
             nostarahaa->setObjectName(QStringLiteral("nostarahaa"));
-        nostarahaa->resize(1920, 1080);
+        nostarahaa->resize(1920, 1061);
         QPalette palette;
         QBrush brush(QColor(255, 255, 255, 255));
         brush.setStyle(Qt::SolidPattern);

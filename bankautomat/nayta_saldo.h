@@ -22,16 +22,13 @@ class nayta_saldo : public QMainWindow
 public:
     explicit nayta_saldo(QWidget *parent = 0);
     ~nayta_saldo();
-
     QString saatuPIN;
-    void saldoValikko();
 
 private:
     Ui::nayta_saldo *ui;
     QNetworkAccessManager *getManager;
     QNetworkReply *reply;
     QByteArray response_data;
-
     nayta_saldo *objNaytaSaldo;
     QString saldo;
 
@@ -42,7 +39,6 @@ private slots:
 
 public slots:
     void menuTimerSlotNaytaSaldo();
-    void huomautusTimer();
 };
 
 

@@ -51,7 +51,7 @@ public:
     {
         if (MainWindow2->objectName().isEmpty())
             MainWindow2->setObjectName(QStringLiteral("MainWindow2"));
-        MainWindow2->resize(1920, 1080);
+        MainWindow2->resize(1920, 1061);
         QPalette palette;
         QBrush brush(QColor(0, 0, 0, 255));
         brush.setStyle(Qt::SolidPattern);
