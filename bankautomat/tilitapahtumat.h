@@ -37,8 +37,6 @@ private slots:
 
     void tilitapahtumatHae(QNetworkReply *reply);
 
-    void tilitapahtumatHae2(QNetworkReply *reply);
-
     void kayttajatiedotHae(QNetworkReply *reply);
 
 private:

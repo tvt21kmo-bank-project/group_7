@@ -116,13 +116,11 @@ void tilitapahtumat::tilitapahtumatHae(QNetworkReply *reply)
         qDebug()<<saatuID+response_data;
         QJsonDocument json_doc = QJsonDocument::fromJson(response_data);
         QJsonArray json_array = json_doc.array();
-        QString pvm_klo;
-        QString Tapahtuma;
-//        QString Summa = 0;
         foreach (const QJsonValue &value, json_array)
         {
 
            int rowCount = 0;
+
            ui->taulukko->setColumnCount(3);
            ui->taulukko->setColumnWidth(0,150);
            ui->taulukko->setColumnWidth(1,70);
@@ -135,71 +133,25 @@ void tilitapahtumat::tilitapahtumatHae(QNetworkReply *reply)
            ui->taulukko->insertRow(rowCount);
            QTableWidgetItem *pvm_klo = new QTableWidgetItem;
            QTableWidgetItem *Tapahtuma = new QTableWidgetItem;
-           QTableWidgetItem *Summa = new QTableWidgetItem;
+//           QTableWidgetItem *Summa = new QTableWidgetItem;
+           QTableWidgetItem *Item = new QTableWidgetItem();
 
            QJsonObject json_obj = value.toObject();
 
-//           Summa+=QTableWidgetItem::number(json_obj["Summa"].toDouble(),'f',2);
            pvm_klo->setText(json_obj["pvm_klo"].toString());
            Tapahtuma->setText(json_obj["Tapahtuma"].toString());
 //           Summa->setText(json_obj["Summa"].toQString());
+           Item->setData(Qt::EditRole, json_obj["Summa"].toDouble());
 
            ui->taulukko->setItem(rowCount,0,pvm_klo);
            ui->taulukko->setItem(rowCount,1,Tapahtuma);
-           ui->taulukko->setItem(rowCount,2,Summa);
-
-           rowCount++;
+           ui->taulukko->setItem(rowCount,2,Item);
 
     }
     reply->deleteLater();
 }
 
-void tilitapahtumat::tilitapahtumatHae2(QNetworkReply *reply)
-{
-        response_data=reply->readLine();
-        qDebug()<<saatuID+response_data;
-        QJsonDocument json_doc = QJsonDocument::fromJson(response_data);
-        QJsonArray json_array = json_doc.array();
-        QString pvm_klo;
-        QString Tapahtuma;
-        double Summa = 0;
-        foreach (const QJsonValue &value, json_array)
-        {
-           int rowCount = 0;
-           QTableWidget *table = new QTableWidget(this);
-           table->setRowCount(10);
-           table->setColumnCount(3);
-           QStringList columnLabels;
-           columnLabels << "aika" << "tapahtuma" << "summa";
-           table->setHorizontalHeaderLabels(columnLabels);
 
-           for (int b=0; b < table->rowCount(); b++) {
-               for (int a=0; a < columnCount(); a++)
-
-           ui->taulukko->insertRow(rowCount);
-           QTableWidgetItem *pvm_klo = new QTableWidgetItem;
-           QTableWidgetItem *Tapahtuma = new QTableWidgetItem;
-           QTableWidgetItem *Summa = new QTableWidgetItem;
-
-           QJsonObject json_obj = value.toObject();
-           pvm_klo->setText(json_obj["pvm_klo"].toString());
-           Tapahtuma->setText(json_obj["Tapahtuma"].toString());
-//          Summa->setText(json_obj["Summa"].toDouble());
-/*
-           QJsonObject json_obj = value.toObject();
-           pvm_klo+=(json_obj["pvm_klo"].toString());
-           Tapahtuma+=(json_obj["Tapahtuma"].toString());
-           Summa+=(json_obj["Summa"].toDouble());
-*/
-           ui->taulukko2->setItem(rowCount,0,pvm_klo);
-           ui->taulukko2->setItem(rowCount,1,Tapahtuma);
-           ui->taulukko2->setItem(rowCount,2,Summa);
-
-           rowCount++;
-}
-    }
-    reply->deleteLater();
-}
 
 void tilitapahtumat::on_edellinennappi_clicked()
 {
