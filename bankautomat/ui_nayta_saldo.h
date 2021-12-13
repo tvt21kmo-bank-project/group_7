@@ -187,7 +187,7 @@ public:
     void retranslateUi(QMainWindow *nayta_saldo)
     {
         nayta_saldo->setWindowTitle(QApplication::translate("nayta_saldo", "MainWindow", Q_NULLPTR));
-        nappiPalaa->setText(QApplication::translate("nayta_saldo", "Palaa", Q_NULLPTR));
+        nappiPalaa->setText(QApplication::translate("nayta_saldo", "LOPETA", Q_NULLPTR));
         ohje->setText(QApplication::translate("nayta_saldo", "Tarkastaaksesi saldosi paina \"N\303\244yt\303\244 Saldo\" -painiketta", Q_NULLPTR));
         tilinumerolbl->setText(QString());
         saldolbl->setText(QString());

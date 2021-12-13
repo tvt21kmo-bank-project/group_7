@@ -32,7 +32,8 @@ SOURCES += \
     kayttoliittyma.cpp \
     lahjoita.cpp \
     nostarahaa.cpp \
-    nayta_saldo.cpp
+    nayta_saldo.cpp \
+    tilitapahtumat.cpp
 
 HEADERS += \
         mainwindow.h \
@@ -41,7 +42,8 @@ HEADERS += \
     kayttoliittyma.h \
     lahjoita.h \
     nostarahaa.h \
-    nayta_saldo.h
+    nayta_saldo.h \
+    tilitapahtumat.h
 
 FORMS += \
         mainwindow.ui \
@@ -49,7 +51,8 @@ FORMS += \
     kayttoliittyma.ui \
     lahjoita.ui \
     nostarahaa.ui \
-    nayta_saldo.ui
+    nayta_saldo.ui \
+    tilitapahtumat.ui
 
 DISTFILES +=
 

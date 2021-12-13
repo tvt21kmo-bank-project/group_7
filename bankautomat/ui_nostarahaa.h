@@ -337,7 +337,7 @@ public:
         nappiNosta200->setText(QApplication::translate("nostarahaa", "200 \342\202\254", Q_NULLPTR));
         nappiNosta500->setText(QApplication::translate("nostarahaa", "500 \342\202\254", Q_NULLPTR));
         hetulbl->setText(QApplication::translate("nostarahaa", "Henkil\303\266turvatunnus: ", Q_NULLPTR));
-        nappiSulje->setText(QApplication::translate("nostarahaa", "PALAA", Q_NULLPTR));
+        nappiSulje->setText(QApplication::translate("nostarahaa", "LOPETA", Q_NULLPTR));
         etunimilbl->setText(QApplication::translate("nostarahaa", "Etunimi: ", Q_NULLPTR));
         numero1->setText(QApplication::translate("nostarahaa", "1", Q_NULLPTR));
         numero2->setText(QApplication::translate("nostarahaa", "2", Q_NULLPTR));

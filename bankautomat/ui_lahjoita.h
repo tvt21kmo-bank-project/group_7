@@ -271,7 +271,7 @@ public:
         numero4lahj->setText(QApplication::translate("lahjoita", "4", Q_NULLPTR));
         numero6lahj->setText(QApplication::translate("lahjoita", "6", Q_NULLPTR));
         label->setText(QString());
-        nappiPalaa->setText(QApplication::translate("lahjoita", "PALAA", Q_NULLPTR));
+        nappiPalaa->setText(QApplication::translate("lahjoita", "LOPETA", Q_NULLPTR));
         numero7lahj->setText(QApplication::translate("lahjoita", "7", Q_NULLPTR));
         numero5lahj->setText(QApplication::translate("lahjoita", "5", Q_NULLPTR));
         numero1lahj->setText(QApplication::translate("lahjoita", "1", Q_NULLPTR));

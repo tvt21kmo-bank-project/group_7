@@ -13,6 +13,7 @@ var bankRouter = require('./routes/pankki');
 var nosta_rahaaRouter = require('./routes/nosta_rahaa');
 var luottoRouter = require('./routes/luotto');
 var saldoRouter = require('./routes/saldo');
+var tthRouter = require('./routes/tth');
 
 var app = express();
 
@@ -32,5 +33,6 @@ app.use('/bank', bankRouter);
 app.use('/nosta_rahaa', nosta_rahaaRouter);
 app.use('/luotto',luottoRouter);
 app.use('/saldo',saldoRouter);
+app.use('/tth',tthRouter);
 
 module.exports = app;

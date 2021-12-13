@@ -6,6 +6,7 @@ INPUT(
 ./debug/lahjoita.o
 ./debug/nostarahaa.o
 ./debug/nayta_saldo.o
+./debug/tilitapahtumat.o
 ./debug/qrc_resurssit.o
 ./debug/moc_mainwindow.o
 ./debug/moc_mainwindow2.o
@@ -13,4 +14,5 @@ INPUT(
 ./debug/moc_lahjoita.o
 ./debug/moc_nostarahaa.o
 ./debug/moc_nayta_saldo.o
+./debug/moc_tilitapahtumat.o
 );

@@ -13,6 +13,7 @@ kayttoliittyma::kayttoliittyma(QWidget *parent) :
     objLahjoita = new lahjoita;
     objNostarahaa = new nostarahaa;
     objNaytaSaldo = new nayta_saldo;
+    objTilitapahtumat = new tilitapahtumat;
 }
 
 kayttoliittyma::~kayttoliittyma()
@@ -90,6 +91,8 @@ void kayttoliittyma::on_nappiTilitapahtuma_clicked()
     timerkayttoliittyma->stop();
     disconnect(timerkayttoliittyma,SIGNAL(timeout()), this, SLOT(menuTimerSlotkayttoliittyma()));
     timertilitapahtuma->start(1000);
+    objTilitapahtumat->show();
+    this->close();
 }
 
 void kayttoliittyma::on_nappiLahjoita_clicked()
@@ -107,10 +110,8 @@ void kayttoliittyma::on_nappiUloskirjaus_clicked()
     timerCounterkayttoliittyma = 0;
     timerkayttoliittyma->stop();
     disconnect(timerkayttoliittyma,SIGNAL(timeout()), this, SLOT(menuTimerSlotkayttoliittyma()));
-    QWidget *koti;
-    koti = new MainWindow;
-    koti->show();
-    this->close();
+    qApp->quit();
+    QProcess::startDetached(qApp->arguments()[0], qApp->arguments());
 }
 
 void kayttoliittyma::menuTimerSlotkayttoliittyma()
@@ -123,10 +124,8 @@ void kayttoliittyma::menuTimerSlotkayttoliittyma()
         timerkayttoliittyma->stop();
         timerCounterkayttoliittyma = 0;
         disconnect(timerkayttoliittyma,SIGNAL(timeout()), this, SLOT(menuTimerSlotkayttoliittyma()));
-        QWidget *koti;
-        koti = new MainWindow;
-        koti->show();
-        this->close();
+        qApp->quit();
+        QProcess::startDetached(qApp->arguments()[0], qApp->arguments());
     }
 }
 

@@ -655,7 +655,7 @@
      </font>
     </property>
     <property name="text">
-     <string>PALAA</string>
+     <string>LOPETA</string>
     </property>
     <property name="default">
      <bool>true</bool>

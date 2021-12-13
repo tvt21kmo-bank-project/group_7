@@ -12,6 +12,7 @@
 #include "muuttujat.h"
 #include "lahjoita.h"
 #include "nayta_saldo.h"
+#include "tilitapahtumat.h"
 
 namespace Ui {
 class kayttoliittyma;
@@ -46,6 +47,7 @@ private:
       lahjoita *objLahjoita;
       nostarahaa *objNostarahaa;
       nayta_saldo *objNaytaSaldo;
+      tilitapahtumat *objTilitapahtumat;
 
 signals:
       void aikaLoppu();

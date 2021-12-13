@@ -95,7 +95,7 @@
      </font>
     </property>
     <property name="text">
-     <string>Palaa</string>
+     <string>LOPETA</string>
     </property>
    </widget>
    <widget class="QLabel" name="ohje">

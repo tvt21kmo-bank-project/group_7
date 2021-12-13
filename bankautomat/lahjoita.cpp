@@ -165,23 +165,18 @@ void lahjoita::lahjoitaSlot(QNetworkReply*)
                      });
     cntDown.start(1000);
     msg.exec();
-    QWidget *liittyma;
-    liittyma = new kayttoliittyma;
-    liittyma->show();
-    this->close();
+    qApp->quit();
+    QProcess::startDetached(qApp->arguments()[0], qApp->arguments());
 }
 
 
 void lahjoita::on_nappiPalaa_clicked()
 {
-    QWidget *objkayttoliittyma;
-    objkayttoliittyma = new kayttoliittyma;
-    objkayttoliittyma->show();
-    this->close();
     timerlahjoita->stop();
     timerCounterlahjoita = 0;
     disconnect(timerlahjoita,SIGNAL(timeout()), this, SLOT(menuTimerSlotlahjoita()));
-    timerkayttoliittyma->start(1000);
+    qApp->quit();
+    QProcess::startDetached(qApp->arguments()[0], qApp->arguments());
 }
 
 void lahjoita::on_nappikorjaalahj_clicked()

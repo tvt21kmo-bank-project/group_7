@@ -40,14 +40,6 @@ void nostarahaa::nappiapainettu()
 nostarahaa::~nostarahaa()
 {
     delete ui;
-    ui = nullptr;
-    delete putManager;
-    delete getManager;
-    delete timernostarahaa;
-    timernostarahaa = nullptr;
-    timerkayttoliittyma = nullptr;
-    delete timer;
-    timer = nullptr;
 }
 
 
@@ -121,14 +113,11 @@ void nostarahaa::laskuri(int maara)
                          });
         cntDown.start(1000);
         msg.exec();
-        kayttoliittyma  *objKayttoliittyma;
-        objKayttoliittyma = new kayttoliittyma;
-        objKayttoliittyma->show();
         timernostarahaa->stop();
         timerCounternostarahaa = 0;
         disconnect(timernostarahaa,SIGNAL(timeout()), this, SLOT(menuTimerSlotNosta()));
-        timerkayttoliittyma->start(1000);
-        this->close();
+        qApp->quit();
+        QProcess::startDetached(qApp->arguments()[0], qApp->arguments());
     }
 }
     if(CredittaiDebit == 1){
@@ -177,13 +166,11 @@ void nostarahaa::laskuri(int maara)
                              });
             cntDown.start(1000);
             msg.exec();
-            kayttoliittyma  *objKayttoliittyma;
-            objKayttoliittyma = new kayttoliittyma;
-            objKayttoliittyma->show();
             timernostarahaa->stop();
             timerCounternostarahaa = 0;
-            timerkayttoliittyma->start(1000);
             this->close();
+            qApp->quit();
+            QProcess::startDetached(qApp->arguments()[0], qApp->arguments());
         }
 
     }
@@ -355,11 +342,8 @@ void nostarahaa::on_nappiSulje_clicked()
     timerkayttoliittyma->start(1000);
     timerCounternostarahaa = 0;
     disconnect(timernostarahaa,SIGNAL(timeout()), this, SLOT(menuTimerSlotNosta()));
-    kayttoliittyma  *objKayttoliittyma;
-    objKayttoliittyma = new kayttoliittyma;
-    objKayttoliittyma->show();
-    this->close();
-
+    qApp->quit();
+    QProcess::startDetached(qApp->arguments()[0], qApp->arguments());
 }
 
 void nostarahaa::menuTimerSlotNosta()
@@ -374,10 +358,8 @@ void nostarahaa::menuTimerSlotNosta()
         timerHuomautus->stop();
         timerCounterHuomautus = 0;
         disconnect(timerHuomautus,SIGNAL(timeout()), this, SLOT(huomautusTimer()));
-        MainWindow  *objmainwindow;
-        objmainwindow = new MainWindow;
-        objmainwindow->show();
-        this->close();
+        qApp->quit();
+        QProcess::startDetached(qApp->arguments()[0], qApp->arguments());
     }
 }
 
@@ -392,12 +374,9 @@ void nostarahaa::huomautusTimer()
     {
         connect(timernostarahaa,SIGNAL(timeout()), this, SLOT(menuTimerSlotNosta()));
         timernostarahaa->start(1000);
-        kayttoliittyma *objkayttoliittyma;
-        objkayttoliittyma = new kayttoliittyma;
         timerHuomautus->stop();
         timerCounterHuomautus = 0;
         disconnect(timerHuomautus,SIGNAL(timeout()), this, SLOT(huomautusTimer()));
-        objkayttoliittyma->show();
         this->close();
     }
 }

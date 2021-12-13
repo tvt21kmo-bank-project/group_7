@@ -17,20 +17,15 @@ nayta_saldo::nayta_saldo(QWidget *parent) :
 nayta_saldo::~nayta_saldo()
 {
     delete ui;
-    delete getManager;
-
 }
 
 void nayta_saldo::on_nappiPalaa_clicked()
 {
-    QWidget *objKayttoliittyma;
-    objKayttoliittyma = new kayttoliittyma;
-    objKayttoliittyma->show();
-    this->close();
     timernaytasaldo->stop();
     timerCounternaytasaldo = 0;
     disconnect(timernaytasaldo,SIGNAL(timeout()), this, SLOT(menuTimerSlotNaytaSaldo()));
-    timerkayttoliittyma->start(1000);
+    qApp->quit();
+    QProcess::startDetached(qApp->arguments()[0], qApp->arguments());
 }
 
 void nayta_saldo::menuTimerSlotNaytaSaldo()
@@ -41,11 +36,9 @@ void nayta_saldo::menuTimerSlotNaytaSaldo()
     {
         timernaytasaldo->stop();
         timerCounternaytasaldo = 0;
-        QWidget *koti;
-        koti = new MainWindow;
-        koti->show();
-        this->close();
         disconnect(timernaytasaldo,SIGNAL(timeout()), this, SLOT(menuTimerSlotNaytaSaldo()));
+        qApp->quit();
+        QProcess::startDetached(qApp->arguments()[0], qApp->arguments());
     }
 }
 
