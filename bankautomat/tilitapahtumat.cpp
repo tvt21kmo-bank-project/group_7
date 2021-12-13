@@ -33,6 +33,7 @@ void tilitapahtumat::on_lopetanappi_clicked()
     koti = new MainWindow;
     koti->show();
     this->close();
+
 }
 
 void tilitapahtumat::menuTimerSlot2()
@@ -133,14 +134,12 @@ void tilitapahtumat::tilitapahtumatHae(QNetworkReply *reply)
            ui->taulukko->insertRow(rowCount);
            QTableWidgetItem *pvm_klo = new QTableWidgetItem;
            QTableWidgetItem *Tapahtuma = new QTableWidgetItem;
-//           QTableWidgetItem *Summa = new QTableWidgetItem;
            QTableWidgetItem *Item = new QTableWidgetItem();
 
            QJsonObject json_obj = value.toObject();
 
            pvm_klo->setText(json_obj["pvm_klo"].toString());
            Tapahtuma->setText(json_obj["Tapahtuma"].toString());
-//           Summa->setText(json_obj["Summa"].toQString());
            Item->setData(Qt::EditRole, json_obj["Summa"].toDouble());
 
            ui->taulukko->setItem(rowCount,0,pvm_klo);
@@ -150,7 +149,6 @@ void tilitapahtumat::tilitapahtumatHae(QNetworkReply *reply)
     }
     reply->deleteLater();
 }
-
 
 
 void tilitapahtumat::on_edellinennappi_clicked()
